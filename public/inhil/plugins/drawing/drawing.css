@@ -1,0 +1,60 @@
+.drawing_point, .drawing_line, .drawing_polygon, .drawing_circle, .drawing_rectangle, .drawing_annotation, 
+.drawing_point_select, .drawing_line_select, .drawing_polygon_select, 
+.drawing_circle_select, .drawing_rectangle_select, .drawing_annotation_select {
+	background-repeat: no-repeat; 
+	background-position: center;
+    width: 40px;
+	height: 20px;
+}
+
+.drawing_point_select, .drawing_line_select, .drawing_polygon_select, .drawing_circle_select, .drawing_rectangle_select, .drawing_annotation_select {
+	background-color: #FFFFFF; 
+}
+
+.drawing_point {
+    background-image: url('images/drawPoint.gif');
+}
+
+.drawing_line {
+    background-image: url('images/drawPolyL.gif');
+}
+
+.drawing_polygon {
+    background-image: url('images/drawPolyG.gif');
+}
+
+.drawing_circle {
+    background-image: url('images/drawCercle.gif');
+}
+
+.drawing_rectangle {
+    background-image: url('images/drawRect.gif');
+}
+
+.drawing_annotation {
+    background-image: url('images/drawLabel.gif');
+}
+
+.drawing_point_select {
+    background-image: url('images/drawPoint-select.gif');
+}
+
+.drawing_line_select {
+    background-image: url('images/drawPolyL-select.gif');
+}
+
+.drawing_polygon_select {
+    background-image: url('images/drawPolyG-select.gif');
+}
+
+.drawing_circle_select {
+    background-image: url('images/drawCercle-select.gif');
+}
+
+.drawing_rectangle_select {
+    background-image: url('images/drawRect-select.gif');
+}
+
+.drawing_annotation_select {
+    background-image: url('images/drawLabel-select.gif');
+}

@@ -1,0 +1,1061 @@
+# MapFile created with Gix Export Tool -  Tue Oct 14 22:55:27 2014
+# http://gix.sourceforge.net
+# View Date   : Sunday, September 14, 2014 10:06:09 PM
+#
+MAP
+  NAME 'View1'
+  SIZE 550 400
+  EXTENT 11476189.21176527 -4588.94986734 11538710.45031161 46475.51721763
+  UNITS meters
+  RESOLUTION 72
+  DATAPATTERN ''
+  TEMPLATEPATTERN ''
+  SHAPEPATH ''
+  SYMBOLSET 'c:\ms4w\apps\petainhil\View1.sym'
+  FONTSET 'c:\ms4w\apps\petainhil\View1.fnt'
+  STATUS on
+  IMAGECOLOR 255 255 255
+  IMAGETYPE png24
+  STATUS on
+  DEBUG false
+
+  WEB
+    MINSCALE 0
+    IMAGEPATH ''
+    IMAGEURL ''
+    LOG 'c:\ms4w\apps\petainhil\View1.log'
+    METADATA
+      wms_extent                       "11399245.07932591 -124222.11994861 11536431.14206716 52409.51520803"
+      wms_abstract                     "yudamukti-pc ** Gix Generated MapFile"
+      wms_encoding                     "KOI8-R"
+      wms_opaque                       "1"
+      wms_accesscontraints             "none"
+      wms_addresstype                  "mailing address"
+      wms_address                      ""
+      wms_city                         ""
+      wms_stateorprovince              ""
+      wms_postcode                     ""
+      wms_country                      ""
+      wms_contactelectronicmailaddress ""
+      wms_contactfacsimiletelephone    ""
+      wms_contactperson                ""
+      wms_contactorganization          ""
+      wms_contactposition              ""
+      wms_contactvoicetelephone        ""
+      wms_feature_info_mime_type       "NONE"
+      wms_fees                         "none"
+#      wms_group_title                  ""
+      wms_keywordlist                  "View1"
+      wms_title                        "View1"
+      wms_timeformat                   "YYYY-MM-DDTHH, YYYY-MM-DDTHH:MM, YYYY-MM-DD HH:MM:SS"
+      wms_onlineresource               "http://yudamukti-pc/cgi-bin/mapserv.exe?map=c:\ms4w\apps\petainhil\View1.map&"
+      wms_srs                          ""
+    END #METADATA
+  END  #WEB
+
+  REFERENCE
+    IMAGE 'c:\ms4w\apps\petainhil\View1.jpg'
+    EXTENT 11476189.21176527 -4588.94986734 11538710.45031161 46475.51721763
+    STATUS on
+    COLOR -1 -1 -1
+    OUTLINECOLOR 255 255 0
+    SIZE 110 120
+    #MARKER 
+    #MARKERSIZE 
+    #MINBOXSIZE 
+    #MAXBOXSIZE 
+  END  #REFERENCE
+
+  LEGEND
+    IMAGECOLOR 255 255 255
+    OUTLINECOLOR -1 -1 -1
+    KEYSIZE 18 12
+    KEYSPACING 2 2
+    POSTLABELCACHE true
+    POSITION ll
+    LABEL
+      ANTIALIAS true
+      BACKGROUNDCOLOR 255 255 255
+      BACKGROUNDSHADOWCOLOR -1 -1 -1
+      BACKGROUNDSHADOWSIZE 2 2
+      OUTLINECOLOR -1 -1 -1
+      COLOR 0 0 0
+      FONT 'Arial-Normal'
+      SIZE 10
+      TYPE truetype
+    END
+    STATUS on
+  END  #LEGEND
+
+  SCALEBAR
+    BACKGROUNDCOLOR 255 255 255
+    COLOR 0 0 0
+    IMAGECOLOR 255 255 255
+    INTERVALS 4
+    LABEL
+      COLOR 0 0 0
+      SIZE tiny
+      TYPE bitmap
+      ANTIALIAS true
+    END
+    OUTLINECOLOR 0 0 0
+    POSITION lr
+    POSTLABELCACHE true
+    SIZE 200 4
+    STATUS on
+    STYLE 0
+    UNITS meters
+  END   #SCALEBAR
+
+  QUERYMAP
+    STYLE hilite
+    STATUS on
+    COLOR 255 255 0
+  END   #QUERYMAP
+
+  LAYER  #14040000.shp
+    TRANSPARENCY 100
+    NAME '14040000.shp'
+    METADATA
+      gix_layername        "14040000.shp"
+      gix_layerfieldnames  "ID|NAMA|LUAS|JMLPDDK|JMLDESA|KET"
+      gix_layerfieldalias  "Id|Nama|Luas|Jmlpddk|Jmldesa|Ket"
+      wms_abstract         "yudamukti-pc 14040000.shp Gix Generated MapFile"
+      wms_extent           "11399245.08368150 -124222.11994861 11536431.14206716 52409.51520803"
+      wms_keywordlist      "14040000.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040000.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\inhilshp\14040000.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Batang Tuaka'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Batang Tuaka'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 130 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Concong'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Concong'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 245 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Enok'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Enok'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 173 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Gaung'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Gaung'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 118
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Gaung Anak Serka'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Gaung Anak Serka'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 187 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kateman'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kateman'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 125 167 153
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kempas'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kempas'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 2 194 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kemuning'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kemuning'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 177
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Keritang'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Keritang'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 237 254 165
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kuala Indragiri'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kuala Indragiri'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 175 254 175
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Mandah'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Mandah'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 160 160
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Pelangiran'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Pelangiran'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 114 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Pulau Burung'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Pulau Burung'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 146 174 47
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Reteh'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Reteh'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 174 165 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Sungai Batang'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sungai Batang'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 184 134 11
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tanah Merah'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tanah Merah'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 239 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Teluk Belengkong'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Teluk Belengkong'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 245 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tembilahan'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tembilahan'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 173 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tembilahan Hulu'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tembilahan Hulu'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 118
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tempuling'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tempuling'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 188 135
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+  END  #LAYER
+
+  LAYER  #14040009.shp
+    TRANSPARENCY 100
+    NAME '14040009.shp'
+    METADATA
+      gix_layername        "14040009.shp"
+      gix_layerfieldnames  "ID|NAMA|LUAS|KET"
+      gix_layerfieldalias  "Id|Nama|Luas|Ket"
+      wms_abstract         "yudamukti-pc 14040009.shp Gix Generated MapFile"
+      wms_extent           "11399245.08368150 -124222.11994861 11536431.14206716 52409.51520803"
+      wms_keywordlist      "14040009.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040009.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\ms4w\apps\petainhil\14040009.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Dyetropepts, Dutropepts,Tropudults'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Dyetropepts, Dutropepts,Tropudults'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 239 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Dyetropepts,Tropudults,Troperthents'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Dyetropepts,Tropudults,Troperthents'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 245 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hidraquarts,Sulfaquarts'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hidraquarts,Sulfaquarts'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 173 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hydraquarts,Sulfaquarts'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hydraquarts,Sulfaquarts'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 118
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tropefuvertx,Troperquepts,Fluvaquests'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tropefuvertx,Troperquepts,Fluvaquests'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 188 135
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tropefuvertx.Troperquepts,Fluvaquests'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tropefuvertx.Troperquepts,Fluvaquests'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 105 105
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tropeharnets,Tropohomests'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tropeharnets,Tropohomests'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 2 194 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tropeharnets,Troponoests'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tropeharnets,Troponoests'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 177
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Troperquepts,Fluraquerts,Tropohermists'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Troperquepts,Fluraquerts,Tropohermists'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 237 254 165
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+  END  #LAYER
+
+  LAYER  #14040010.shp
+    TRANSPARENCY 100
+    NAME '14040010.shp'
+    METADATA
+      gix_layername        "14040010.shp"
+      gix_layerfieldnames  "ID|NAMA|LUAS|KELILING|KET"
+      gix_layerfieldalias  "Id|Nama|Luas|Keliling|Ket"
+      wms_abstract         "yudamukti-pc 14040010.shp Gix Generated MapFile"
+      wms_extent           "11399245.08368150 -124222.11994861 11536431.14206716 52409.51520803"
+      wms_keywordlist      "14040010.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040010.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\ms4w\apps\petainhil\14040010.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Endapan Aluvium Pantai'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Endapan Aluvium Pantai'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 239 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Endapan Danau'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Endapan Danau'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 245 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Endapan Rawa/Pasir'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Endapan Rawa/Pasir'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 173 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Fomasi Gangsal'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Fomasi Gangsal'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 118
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Air Benakit'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Air Benakit'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 188 135
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Gumai'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Gumai'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 105 105
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Kasal'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Kasal'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 2 194 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Kelesa'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Kelesa'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 254 177
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Lakat'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Lakat'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 237 254 165
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Mentulu'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Mentulu'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 175 254 175
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Muaraenim'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Muaraenim'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 160 160
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Pengabuhan'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Pengabuhan'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 114 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Formasi Tualang'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Formasi Tualang'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 191 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Granit Akar'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Granit Akar'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 251 195
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+  END  #LAYER
+
+  LAYER  #14040014.shp
+    TRANSPARENCY 100
+    NAME '14040014.shp'
+    METADATA
+      gix_layername        "14040014.shp"
+      gix_layerfieldnames  "ID|NAMA|LUAS|KELILING|KET"
+      gix_layerfieldalias  "Id|Nama|Luas|Keliling|Ket"
+      wms_abstract         "yudamukti-pc 14040014.shp Gix Generated MapFile"
+      wms_extent           "11399245.07932591 -124222.11988877 11536431.14118773 52409.51499668"
+      wms_keywordlist      "14040014.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040014.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\ms4w\apps\petainhil\14040014.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Awan'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Awan'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 255 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Belukar Rawa'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Belukar Rawa'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 146 174 47
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hutan'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 2 220 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hutan Tanaman'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan Tanaman'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 195 255 195
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kelapa'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kelapa'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 254 188 135
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kelapa Sawit'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kelapa Sawit'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Pemukiman'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Pemukiman'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Pertanian'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Pertanian'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 161 102 50
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Sawah'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sawah'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 255 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Semak Belukar'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Semak Belukar'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 187 166 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tambak'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tambak'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tanah Kosong'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tanah Kosong'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 173 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+  END  #LAYER
+
+  LAYER  #14040046.shp
+    TRANSPARENCY 100
+    NAME '14040046.shp'
+    METADATA
+      gix_layername        "14040046.shp"
+      gix_layerfieldnames  "ID|NAMA|LUAS|KELILING|KETERANGAN"
+      gix_layerfieldalias  "Id|Nama|Luas|Keliling|Keterangan"
+      wms_abstract         "yudamukti-pc 14040046.shp Gix Generated MapFile"
+      wms_extent           "11399245.08459352 -124222.11994319 11536431.14150056 52409.51515206"
+      wms_keywordlist      "14040046.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040046.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\ms4w\apps\petainhil\14040046.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Hutan Lindung'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan Lindung'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 1 130 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hutan Produksi Terbatas'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan Produksi Terbatas'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hutan Produksi Tetap'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan Produksi Tetap'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 250 195 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Hutan Rakyat'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Hutan Rakyat'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 165 165
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Kawasan Industri'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Kawasan Industri'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 210 210 210
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Pemukiman'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Pemukiman'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Penyangga Taman Nasional'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Penyangga Taman Nasional'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 183 223 134
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Perkebunan Rakyat'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Perkebunan Rakyat'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 146 174 47
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Perkebunan Tanaman Tahunan Swasta'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Perkebunan Tanaman Tahunan Swasta'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 255 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Taman Nasional'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Taman Nasional'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 255 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tambak'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tambak'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tanaman Pangan Lahan Basah'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tanaman Pangan Lahan Basah'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 255 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+    CLASS
+      NAME 'Tanaman Pangan Lahan Kering'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Tanaman Pangan Lahan Kering'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 191 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+    END #CLASS
+  END  #LAYER
+
+  LAYER  #14040035.shp
+    TRANSPARENCY 100
+    NAME '14040035.shp'
+    METADATA
+      gix_layername        "14040035.shp"
+      gix_layerfieldnames  "FKELAS|NAMA|NEGERI|SWASTA|ISLAMNEGER|ISLAMSWAST|KET"
+      gix_layerfieldalias  "Fkelas|Nama|Negeri|Swasta|IslamNegeri|IslamSwasta|Ket"
+      wms_abstract         "yudamukti-pc 14040035.shp Gix Generated MapFile"
+      wms_extent           "11418477.16381138 -108133.24922087 11523825.34982068 42600.30927368"
+      wms_keywordlist      "14040035.shp, yudamukti-pc, View1"
+      wms_opaque           "0"
+      wms_srs              "NONE"
+      wms_title            "14040035.shp"
+    END  #METADATA
+    TOLERANCE 3
+    TOLERANCEUNITS pixels
+    DATA 'c:\ms4w\apps\petainhil\14040035.shp'
+    HEADER 'header.html'
+    FOOTER 'footer.html'
+    LABELCACHE on
+#    TILEINDEX ''
+#    TILEITEM  ''
+    STATUS on
+    DEBUG false
+    TRANSFORM true
+    TYPE polygon
+    CLASSITEM 'NAMA'
+    CLASS
+      NAME 'Sekolah Dasar'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sekolah Dasar'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 0 0
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+      LABEL
+        TYPE truetype
+        COLOR 0 0 0
+        FONT 'Arial-Normal'
+        PARTIALS true
+        POSITION cc
+        SIZE 17
+        ANTIALIAS true
+        FORCE false
+      END
+    END #CLASS
+    CLASS
+      NAME 'Sekolah Menengah Khusus'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sekolah Menengah Khusus'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 0 0 255
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+      LABEL
+        TYPE truetype
+        COLOR 0 0 0
+        FONT 'Arial-Normal'
+        PARTIALS true
+        POSITION cc
+        SIZE 17
+        ANTIALIAS true
+        FORCE false
+      END
+    END #CLASS
+    CLASS
+      NAME 'Sekolah Menengah Pertama'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sekolah Menengah Pertama'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 210 210 210
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+      LABEL
+        TYPE truetype
+        COLOR 0 0 0
+        FONT 'Arial-Normal'
+        PARTIALS true
+        POSITION cc
+        SIZE 17
+        ANTIALIAS true
+        FORCE false
+      END
+    END #CLASS
+    CLASS
+      NAME 'Sekolah Menengah Umum'
+      TEMPLATE 'template.html'
+      EXPRESSION 'Sekolah Menengah Umum'
+      #RASTERFILL_STYLE_SOLID
+      STYLE
+        COLOR 255 249 165
+        BACKGROUNDCOLOR 255 255 255
+      END  #STYLE
+      LABEL
+        TYPE truetype
+        COLOR 0 0 0
+        FONT 'Arial-Normal'
+        PARTIALS true
+        POSITION cc
+        SIZE 17
+        ANTIALIAS true
+        FORCE false
+      END
+    END #CLASS
+    LABELITEM 'Negeri'
+  END  #LAYER
+
+OUTPUTFORMAT
+   NAME png24
+   DRIVER "GD/PNG"
+   MIMETYPE "image/png"
+   IMAGEMODE RGBA
+   EXTENSION png
+   TRANSPARENT on
+END  #OUTPUTFORMAT
+
+END  #MAP
+

@@ -1,0 +1,211 @@
+<?php
+/******************************************************************************
+ *
+ * Purpose: p.mapper application main entry file 
+ * Author:  Armin Burger
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2003-2011 Armin Burger
+ *
+ * This file is part of p.mapper.
+ *
+ * p.mapper is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * p.mapper is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+
+// prevent XSS
+if (isset($_REQUEST['PM_INCPHP'])) exit();
+
+// Set separate cookie path for every p.mapper instance to avoid conflicting sessions when session.use_cookies is true
+if (ini_get("session.use_cookies")) {
+    ini_set("session.cookie_path", dirname($_SERVER['SCRIPT_NAME']));
+}
+
+require_once("incphp/pmsession.php");
+
+
+// Define config to be used
+$config = "uilayout";
+
+
+// INCLUDE PHP FILES
+require_once("config/__startup_config.php");
+require_once("incphp/group.php");
+$_SESSION['mapObjModifierFirstInclude'] = true;
+require_once("incphp/globals.php");
+$_SESSION['mapObjModifierFirstInclude'] = false;
+require_once("incphp/common.php");
+require_once("incphp/init/initmap.php");
+require_once("incphp/legend.php");
+include_once("incphp/init/init.php");
+include_once("incphp/uielement.php");
+
+header("Content-type: text/html; charset=$defCharset");
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $gLanguage ?>" xml:lang="<?php echo $gLanguage ?>">
+
+<head>
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+ <meta name="description" content="p.mapper - MapServer PHP/MapScript Framework" />
+ <meta name="author" content="Armin Burger" />
+ <meta name="keywords" content="p.mapper, pmapper, MapServer, PHP, MapScript" />
+
+ <title><?php echo $_SESSION['pmTitle'] ?></title>
+ 
+  <?php 
+    
+    // Load all JS files from 'javascript' and 'config' directory
+    echo $jsReference; 
+    
+    echo $jsConfigReference;
+    
+    echo $jsCustomReference;
+
+    // Reference all global JS variables
+    include("incphp/js/js_init.php"); 
+  ?>
+ 
+ <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+ <link rel="stylesheet" href="templates/default.css" type="text/css" />
+ <link rel="stylesheet" href="templates/layout.css" type="text/css" />
+ <link rel="stylesheet" href="templates/jquery.treeview.css" type="text/css" />
+ <link rel="stylesheet" href="templates/toc.css" type="text/css" />
+ <link rel="stylesheet" href="templates/query.css" type="text/css" />
+ <link rel="stylesheet" href="templates/dialog.css" type="text/css" />
+ <link rel="stylesheet" href="templates/jquery.layout.css" type="text/css" />
+ <!--[if lt IE 7]> 
+ <link rel="stylesheet" href="templates/ie6.css" type="text/css" />
+ <![endif]--> 
+ 
+ <?php 
+    // Load all CSS files from config directory
+    echo $cssReference; 
+ ?>
+ 
+ 	<script type="text/javascript">
+
+	/**
+     * Settings for jquery.ui.layout
+     * ======= ADAPT TO PAGE LAYOUT =======
+     */
+    var myLayout; 
+
+	$(document).ready(function () {
+		myLayout = $('body').layout({
+            west__initClosed: true,
+            north__size: 40,
+            south__size: 35,
+            east__size: 220,
+            north__spacing_open: 0,
+            south__spacing_open: 0,
+            center__onresize: "PM.Layout.resizeMapZone",
+            east__onresize: function(name, element){
+                $('#toc, #toclegend').height(element.height() - $('#toc').itop() - $('#refmap').height() - 8 );
+            }
+		});
+        
+        /** Some components to be added to UI ==== ADAPT ===== */
+        $('#uiLayoutCenter').pmToolBar(PM.buttonsDefault);  // ToolBar, REQUIRED
+        $('#uiLayoutNorth').pmToolLinks(PM.linksDefault);   // Tool links
+        $('#uiLayoutCenter').appendElement('div').addClass('map-top-bar');  // Top bar over map
+        
+        //==== Enable for Tabs and TOC/legend swap ====
+        //$('#tocContainer').pmTabs(PM.tocTabs);  // Tabs for TOC/legend swap
+        //$('#toc, #toclegend').top(35);   // make some space for tabs
+        
+        //==== Enable for TOC and legend in separate zones ====
+        //$('#uiLayoutWest').appendElement('div').html(_p('Legend')).addClass('pm-legend');
+        //$('#uiLayoutWest').appendElement('div').id('legendContainer');
+        //PM.Toc.legendContainer = 'legendContainer';
+        
+        /** Trigger resize event for layout elements */
+        myLayout.resizeAll();
+ 	});
+
+    
+	</script>
+
+</head>
+
+<body>
+
+<!-- ======================= ADAPT START ======================== -->
+
+    <div class="ui-layout-north" id="uiLayoutNorth">
+        <?php echo UiElement::pmHeader() ?>
+    </div>
+
+    <div class="ui-layout-west" id="uiLayoutWest">
+        <div id="legend"></div>
+    </div>
+
+    <div class="ui-layout-south" id="uiLayoutSouth">
+        <?php echo UiElement::displayCoordinates() ?>
+        <?php echo UiElement::pmFooter() ?>
+    </div>
+
+    <div class="ui-layout-east" id="uiLayoutEast">
+        <!-- Legend/TOC -->
+        <?php echo UiElement::tocContainer($_SESSION['userAgent']) ?>
+            
+        <!-- Reference Map -->
+        <?php echo UiElement::refMap($refH, $refW, $refImg, $refH, $refW) ?>
+    </div>
+
+    <div class="ui-layout-center" id="uiLayoutCenter">
+        <!-- Map Zone -->
+        <?php echo UiElement::mapZone() ?>
+        
+        <!-- Slider -->
+        <?php echo UiElement::zoomSlider() ?>
+        
+        <!-- Search Container -->
+        <?php echo UiElement::searchContainer("inline") ?>
+           
+        <!-- Scale -->
+        <?php echo UiElement::scaleForm() ?>
+        
+    </div>
+
+<!-- ======================= ADAPT END ======================== -->
+
+
+<!-- MANDATORY form element for update events; DO NOT REMOVE! -->
+<?php echo UiElement::addUpdateEventForm()?>
+
+
+<script type="text/javascript">
+    // use jQuery for intitialization 
+    $(document).ready(function() {
+        PM.Init.main();
+        <?php echo $jsInitFunctions ?>
+    });
+    
+    // Create drawing object for measure function
+    jg = new jsGraphics('measureLayer');
+    jg.setColor(PM.measureObjects.line.color); 
+    jg.setStroke(PM.measureObjects.line.width);
+    
+    //#fede
+    jg_tmp = new jsGraphics('measureLayerTmp');
+    
+</script>
+
+
+</body>
+</html>

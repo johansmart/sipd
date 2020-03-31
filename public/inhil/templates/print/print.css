@@ -1,0 +1,113 @@
+/* //ALE Modifica perche' non era possibile fare scroll di stampa html*/
+html {
+	overflow: visible;	
+}
+
+/* STYLE FOR PRINT OUTPUT */
+
+/* General settings for HTML print, especially legend */
+
+BODY {
+    background : white;
+    color: black;
+    overflow:auto;
+}
+
+TH {
+    font-size: 11px;
+    font-weight: bold;
+    text-align: left;
+}
+
+TD {
+    font-size: 11px;
+    text-align: left;
+}
+
+
+#print_main {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /*margin: 30px;*/
+    width: 620px;
+    height: 100%;
+}
+
+
+#print_titlebar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 34px;
+    background-color: #336699;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #000000;
+}
+
+#print_titlebar div{
+    display: inline;
+}
+
+#print_title_text {
+    vertical-align:top; 
+    padding: 10px;
+}
+
+
+#print_mapzone {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+}
+
+#print_map_image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 1px solid #000000;
+}
+
+#print_map_refimage {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border: 1px solid #000000;
+}
+
+#print_map_scalebar {
+    position: absolute;
+    top: 510px;
+    left: 3px;
+    border: 1px solid #000000;
+}
+
+#print_scale_text {
+    position: absolute;
+    top: 525px;
+    left: 5px;
+    padding: 4px;
+    font-size: 11px;
+    font-weight:bold;
+    background:#ffffff;
+    layer-background-color:#ffffff;
+    filter: alpha(opacity=80); 
+    -moz-opacity:0.8;
+    opacity:0.8;
+}
+
+
+#print_legendzone {
+    position: absolute;
+    top: 590px;
+    left: 0px;
+    border: 1px solid #000000;
+    width:100%;
+}
+
+#print_legend_table {
+    padding: 8px;
+}

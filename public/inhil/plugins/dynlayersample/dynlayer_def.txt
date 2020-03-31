@@ -1,0 +1,93 @@
+
+{"cities_1":
+    {"name":"cities_1", 
+     "type":"MS_LAYER_POINT", 
+     "data":"cities10000eu", 
+     "status":"MS_OFF",
+     "tolerance":6, 
+     "toleranceunits":6,
+     "labelitem":"asciiname",
+     "template":"void",
+     "FILTER":"([population] > 100000)",
+    
+     "PROJECTION":"init=epsg:4326",
+    
+     "METADATA": 
+        {"DESCRIPTION":"Cities DYN 1",
+         "RESULT_FIELDS":"NAME, ISO2_CODE, POPULATION, GTOPO30",
+         "RESULT_HEADERS":"Name,Country,Inhabitants,Altitude",
+         "RESULT_HYPERLINK":"NAME",
+         "LAYER_ENCODING":"UTF-8",
+         "CATEGORY":"cat_admin"
+        },
+       
+     "class":
+       [
+        {"name":"> 1'000'000",
+         "EXPRESSION":"([population] > 1000000)",
+            
+         "label":  
+            {"position": 2,
+             "size": 1,
+             "color": [0, 0, 150],
+             "backgroundcolor": [255, 255, 128],
+             "backgroundshadowcolor": [150, 150, 150],
+             "backgroundshadowsizex": 2, 
+             "backgroundshadowsizey": 2,
+             "buffer": 0
+            },
+        
+         "style": 
+           [                
+             {"symbolname":"square",
+              "size":6,
+              "color": [255, 0, 0],
+              "outlinecolor": [0, 0, 0]
+             } 
+            ] 
+              
+        },
+        {"name":" 100'000 - 1'000'000",
+         "EXPRESSION":"([population] > 100000 AND [population] <= 1000000)",
+         "style":  
+          [
+           {"symbolname":"circle",
+            "size":3,
+            "color": [0, 0, 250],
+            "outlinecolor": [0, 0, 150]
+           }
+          ] 
+        }
+       ]
+    },
+    
+ "cities_2":   
+    {"TEMPLATE":["cities10000eu", true],
+     "name":"cities_2",
+     "status":"MS_OFF",
+     "FILTER":"([population] > 10000 AND [population] < 15000)",
+     "METADATA": 
+        {"DESCRIPTION":"Cities DYN 2",
+         "CATEGORY":"cat_nature"
+        },
+     "class":
+       [ 
+        {"name":" 10'000 - 15'000",
+         "EXPRESSION":"([population] > 10000 AND [population] < 15000)",
+         "style":  
+          [
+           {"symbolname":"circle",
+            "size":2,
+            "color": [0, 0, 250],
+            "outlinecolor": [0, 0, 150]
+           }
+          ]
+        }
+       ] 
+    }
+
+    
+}
+
+
+

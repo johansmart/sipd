@@ -1,0 +1,29 @@
+<?php
+include_once("transparency.inc");
+
+$groupSelect = createGroupSelect();
+//error_log($groupSelect);
+
+header("Content-type: text/html; charset=$defCharset");
+?>
+<html>
+<head>
+</head>
+<body style="text-align:center">
+ <form action="printmap.phtml" target="_blank" id="choosescale" method="get" style="padding:5px 5px 0px 15px"> 
+    <?php echo $groupSelect ?>
+ </form>
+    <table style="padding-top:5px">
+      <tr>
+        <td><img src="images/zoomminus.gif" alt=""  /></td>
+        <td id="transpdlg_slider"></td>
+        <td><img src="images/zoomplus.gif" alt=""  /></td>
+      </tr>
+    </table>
+ 
+ <script type="text/javascript">
+    PM.Plugin.Transparency.createTransparencySlider('transpdlg_slider', 150);
+ </script>
+
+</body>
+</html>

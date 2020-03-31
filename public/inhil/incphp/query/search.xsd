@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   
+	<xs:element name="searchlist">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dataroot"/>
+				<xs:element ref="searchitem" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="version" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:enumeration value="1.0"/>
+                        <xs:enumeration value="1.1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+    <xs:element name="dataroot" type="xs:anyURI"/>
+    
+    <xs:element name="searchitem">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="layer"/>
+			</xs:sequence>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+			<xs:attribute name="description" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+    
+	<xs:element name="layer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:sequence minOccurs="0">
+					<xs:element ref="sql_from" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="sql_where" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+				<xs:element ref="field" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="postgis"/>
+						<xs:enumeration value="shape"/>
+						<xs:enumeration value="xy"/>
+                        <xs:enumeration value="oracle"/>
+                        <xs:enumeration value="ms"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+    
+	<xs:element name="field">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="definition" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="wildcard">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+                        <xs:enumeration value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="n"/>
+						<xs:enumeration value="s"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sizedesc" type="xs:int"/>
+			<xs:attribute name="size" type="xs:int"/>
+			<xs:attribute name="operator">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="AND"/>
+						<xs:enumeration value="OR"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+			<xs:attribute name="inline">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+                        <xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="description" use="required" type="xs:string"/>
+			<xs:attribute name="compare">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="&lt;"/>
+						<xs:enumeration value="&gt;"/>
+                        <xs:enumeration value="="/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="alias" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:element name="dsn">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:anyURI">
+                    <xs:attribute name="encoding" use="required" type="xs:string"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+	<xs:element name="definition">
+		<xs:complexType mixed="true">
+			<xs:sequence>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="csvfile"/>
+                    <xs:element ref="dbasefile"/>
+                    <xs:element ref="txtfile"/>
+                    <xs:element ref="mslayer"/>
+                    <xs:element ref="input" maxOccurs="unbounded"/>
+                    <xs:element ref="option" maxOccurs="unbounded"/>
+                </xs:choice>
+                <xs:sequence>
+                    <xs:element ref="dsn" minOccurs="0"/>
+                    <xs:element ref="sql" minOccurs="0"/>
+                    <xs:element ref="events" minOccurs="0"/>
+                </xs:sequence>
+            </xs:sequence>
+			<xs:attribute name="value" type="xs:string"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="checkbox"/>
+						<xs:enumeration value="hidden"/>
+						<xs:enumeration value="operator"/>
+						<xs:enumeration value="options"/>
+						<xs:enumeration value="radio"/>
+						<xs:enumeration value="suggest"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="startleft">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sort">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="asc"/>
+                        <xs:enumeration value="desc"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="size" type="xs:int"/>
+			<xs:attribute name="regexleft" type="xs:string"/>
+			<xs:attribute name="minlength" type="xs:int"/>
+            <xs:attribute name="dependfld" type="xs:string"/>
+            <xs:attribute name="dependfldtype" type="xs:string"/>
+            <xs:attribute name="firstoption" type="xs:string"/>
+			<xs:attribute name="connectiontype">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="csv"/>
+						<xs:enumeration value="db"/>
+						<xs:enumeration value="dbase"/>
+						<xs:enumeration value="txt"/>
+                        <xs:enumeration value="ms"/>
+                        <xs:enumeration value="session"/>
+                        <xs:enumeration value="inline"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="checked">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+            <xs:attribute name="existingfilters">
+                <xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="nosubmit">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+    
+	<xs:element name="dbasefile">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:anyURI">
+                    <xs:attribute name="encoding" use="required" type="xs:string"/>
+                    <xs:attribute name="keyfield" type="xs:string"/>
+					<xs:attribute name="showfield" type="xs:string"/>
+					<xs:attribute name="searchfield" type="xs:string"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+    
+	<xs:element name="csvfile">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:anyURI">
+                    <xs:attribute name="encoding" use="required" type="xs:string"/>
+                    <xs:attribute name="separator" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:element name="txtfile">
+        <xs:complexType mixed="true">
+            <xs:attribute name="encoding" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="input">
+		<xs:complexType>
+			<xs:attribute name="value" use="required" type="xs:string"/>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+			<xs:attribute name="checked">
+				<xs:simpleType>
+					<xs:restriction base="xs:byte">
+                        <xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:element name="option">
+		<xs:complexType>
+			<xs:attribute name="value" use="required" type="xs:string"/>
+			<xs:attribute name="name" use="required" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+    
+    <xs:element name="mslayer">
+        <xs:complexType mixed="true">
+            <xs:attribute name="encoding" type="xs:string"/>
+            <xs:attribute name="keyfield" type="xs:string"/>
+            <xs:attribute name="showfield" type="xs:string"/>
+            <!--
+            <xs:attribute name="name" type="xs:string"/>
+            <xs:attribute name="searchfield" type="xs:string"/>
+            <xs:attribute name="fieldtype" type="xs:string"/>
+            -->
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="sql_where" type="xs:string"/>
+	<xs:element name="sql_from" type="xs:string"/>
+	<xs:element name="sql" type="xs:string"/>
+    <xs:element name="events" type="xs:string"/>
+    
+</xs:schema>

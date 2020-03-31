@@ -1,0 +1,278 @@
+/* STYLE FOR QUERY OUTPUT (SEARCH, IDENTIFY, SELECT) */
+
+.pm-info {
+    color: #D4D0C8;
+    overflow: auto;
+    background:#f5f5f5;
+}
+
+.pm-info {
+    color: #D4D0C8;
+    overflow: auto;
+    background:#eeeeee;
+    color: #000000;
+}
+
+.pm-info table {
+    width: 100%;
+    color: #D4D0C8;
+    border-left:  1px solid #D4D0C8;
+    border-bottom:  1px solid #D4D0C8;
+    /*border-top:  1px solid #D4D0C8;*/
+}
+
+
+.pm-info td {
+    font-size: 10px;
+    text-align: center;
+    color: #000000;
+    background-color: #FBFBFB;
+    padding: 1px 3px 1px 4px;
+    border-top:    1px solid #D4D0C8;
+    border-left:   none;
+    border-right:  1px solid #D4D0C8;
+    border-bottom: none;
+}   
+
+/* Link for zoom to feature */
+.pm-info td.zoomlink {
+    width: 22px;
+    background-color:#EBEADB;
+    border-top:  1px solid #D4D0C8;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #ACA899;
+    border-bottom: none;
+}
+
+
+/* FRAME for closing query win */
+.pm-info table.close {
+    border: none;
+}
+
+.pm-info td.close {
+    text-align: right;
+    background-color:#EBEADB;
+    border-top:  1px solid #D4D0C8;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #ACA899;
+    border-bottom: none;
+    padding: 1px;
+}
+
+/* Link for zoom to feature */
+.sortable a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.pm-info img {
+    border: 0;
+    padding: 0px;
+}
+
+
+/* LAYER NAME */
+.pm-info-layerheader  {
+    font-weight: bold;
+    text-align: left;
+    padding: 6px 3px 1px 3px;
+}
+
+
+/** 
+ * SORTABLE TABLES 
+ */
+ 
+ /* header line with <TH> */
+table.sortable a.sortheader {
+    font-size: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color:#003333;
+	white-space: nowrap; 
+}
+
+table.sortable th.sortheader {
+    background-color:#EBEADB;
+    padding: 2px;
+    border-top: 0px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #ACA899;
+    border-bottom: 2px solid #D6D2C2;
+	text-align: center;
+}
+
+table.sortable span.sortheaderlabel {
+	white-space: normal; 
+}
+
+table.sortable span.sortarrow {
+    color: black;
+    text-decoration: none;
+}
+
+
+/**
+ * Styles related to attribute search
+ */
+.pm-searchcont {
+    position:absolute;
+    left: 0px;
+    top:5px;
+} 
+
+.pm-searchoptions select{
+    width:auto;
+}
+
+.pm-searchitem select {
+    width: auto;
+    max-width: 140px;
+}
+
+
+
+table.pm-searchitem td {
+    padding: 0px 1px 0px 4px;
+}
+
+td.pm-searchdesc {
+    /*width:80px;*/
+    white-space: nowrap; 
+}
+
+input.pm-search-textinput-compare {
+    width:6em;
+}
+
+table.pm-searchitem div {
+    display: inline;
+}
+
+table.pm-searchitem td {
+    white-space: nowrap;
+}
+
+table.pm-searchitem img {
+    vertical-align:bottom;
+    padding: 0px 0px 1px 5px;
+}
+
+
+/*--- For treeview style ---*/
+.jqmdMSG ul.treeview a { 
+    color: #000000;
+    text-decoration: underline;
+}
+
+.jqmdMSG ul.treeview a:hover { 
+    color: #0000cc;
+}
+/*----------------------------*/
+
+
+/*** IQuery ***/
+#iqueryContainer {
+	visibility: hidden;
+    position: absolute;
+    right: 34px;
+    bottom: 1px;
+	overflow: hidden;
+    min-width: 150px;
+    max-width: 250px;
+    height: auto;
+    z-index : 96;
+}
+
+.pm-iquery {
+	background:#D1D1D1;
+	layer-background-color:#D1D1D1;
+	filter: alpha(opacity=80); 
+	-moz-opacity:0.8;
+    opacity:0.8;
+	border-width:1px; 
+	border-color:#AEAEAE; 
+	border-style:inset;
+	padding: 4px;
+	
+}
+.pm-iquery th.pm-iquery-header {
+	color: #000080;
+	border-bottom: 2px groove #666666;
+	padding-left: 1px;
+
+}
+.pm-iquery td {
+	padding-left: 2px;
+	vertical-align:top;
+	/*border-top:  1px solid #000000;*/
+
+}
+.pm-iquery th {
+	padding-left: 4px;
+	vertical-align:top;	
+}
+
+
+
+/**
+ * Style for suggest box
+ */
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 11px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.ac_results strong {
+    text-decoration: underline;
+    font-weight:normal;
+}
+
+.ac_loading {
+	background: white url('../images/indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+} 
+
+
+
+

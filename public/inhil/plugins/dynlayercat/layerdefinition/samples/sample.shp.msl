@@ -1,0 +1,21 @@
+LAYER
+  TYPE polygon
+  TEMPLATE "void"
+  METADATA
+     "LAYER_ENCODING" "UTF-8"
+  END
+  CLASS
+    EXPRESSION ([NV] = 1) 
+    STYLE
+      COLOR 50 50 200 
+      OUTLINECOLOR 0 0 0
+    END
+  END
+  CLASS
+    EXPRESSION ([NV] = 0) 
+    STYLE
+      COLOR 225 225 245
+      OUTLINECOLOR 0 0 0
+    END
+  END  
+END   

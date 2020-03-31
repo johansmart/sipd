@@ -1,0 +1,56 @@
+#queryeditor-main {
+	padding: 2px;	
+}
+
+#queryeditor-main fieldset {
+	background: #F6F3E8;
+	border-color: #ABC5D8 -moz-use-text-color -moz-use-text-color;
+	border-style: groove;
+}
+
+#queryeditor-main fieldset fieldset {
+	padding: 2px 10px;
+	margin: 2px 5px 1px 3px;
+	border-color: #ABC5D8;
+	border-style: solid;
+	border-width: 1px;
+}
+
+#queryeditor-main fieldset legend {
+    background-color: #B1BBC5;
+}
+
+#queryeditor-main fieldset label { 
+	width: auto; /* Width of labels */
+	line-height: normal;
+	margin-right: 5px;
+	display: inline;
+/*	padding-top: 2px;*/
+}
+
+#queryeditor-main input[type=button] {
+	right: 0px;
+}
+
+#queryeditor-attributCriteria fieldset, #queryeditor-attributCriteria {
+	padding-left: 0px;
+}
+
+#queryeditor-operatorGroup li {
+	background: transparent;
+	float: left;
+}
+
+#queryeditor-btnReset, #queryeditor-btnApply {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 4px;
+}
+
+#queryeditor-btnCancel {
+	float: right;
+}
+
+.queryeditor-attributeCriteriaComparison {
+	display: none;
+}

@@ -1,0 +1,16 @@
+LAYER
+  TYPE polygon
+  TEMPLATE "void"
+  TOLERANCE 2
+  TOLERANCEUNITS pixels
+  METADATA
+     "LAYER_ENCODING" "UTF-8"
+  END
+  CLASS
+    NAME "Default"
+    STYLE
+      COLOR 220 0 0 
+      OUTLINECOLOR 150 150 150
+    END
+  END  
+END   

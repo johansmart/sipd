@@ -1,0 +1,51 @@
+<?xml version="1.0" standalone="yes"?>
+<themesorviews>
+	<themeorview>
+		<type>Theme</type>
+		<name>theme1</name>
+		<description>Vector data</description>
+		<layers>
+			<layer>
+				<name>countries</name>
+				<opacity>95</opacity>
+			</layer>
+			<layer>
+				<name>cities10000eu</name>
+				<opacity>map</opacity>
+			</layer>
+			<layer>
+				<name>rivers</name>
+				<opacity>map</opacity>
+			</layer>
+		</layers>
+		<extent/>
+	</themeorview>
+	<themeorview>
+		<type>Theme</type>
+		<name>theme2</name>
+		<description>All</description>
+		<layers>
+			<layer>
+				<name>dem</name>
+				<opacity>map</opacity>
+			</layer>
+			<layer>
+				<name>jpl_wms_global_mosaic</name>
+				<opacity>map</opacity>
+			</layer>
+			<layer>
+				<name>countries</name>
+				<opacity>75</opacity>
+			</layer>
+			<layer>
+				<name>cities10000eu</name>
+				<opacity>map</opacity>
+			</layer>
+			<layer>
+				<name>rivers</name>
+				<opacity>map</opacity>
+			</layer>
+		</layers>
+		<extent/>
+	</themeorview>
+</themesorviews>

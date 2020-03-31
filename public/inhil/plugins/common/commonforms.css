@@ -1,0 +1,122 @@
+form.commonform {
+	width: auto;
+	font-size: 1em;
+}
+
+form.commonform legend {
+	padding-left: 0pt;
+}
+
+form.commonform legend, form.commonform label {
+	color: #333333;
+}
+
+form.commonform fieldset {
+	background: transparent url(commonform-fieldset.gif) repeat-x scroll left top;
+	border-color: #b1bbc5 -moz-use-text-color -moz-use-text-color;
+	border-style: solid none none;
+	border-width: 1px medium medium;
+	padding: 2px 10px;
+	margin: 4px 2px;
+}
+
+form.commonform fieldset fieldset {
+	background: transparent none repeat scroll 0%;
+}
+
+form.commonform fieldset li {
+	background: transparent url(commonform-divider.gif) repeat-x scroll left bottom;
+/*	padding: 5px 10px 7px;*/
+}
+
+form.commonform fieldset li.lastli {
+	background: transparent;
+}
+
+form.commonform label.error, label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	display: none;
+	color: red;
+	font-style: italic
+}
+
+form.commonform div.error {
+	display: none;
+}
+
+form.commonform input.error { 
+	border: 1px dotted red; 
+}
+
+form.commonform input[type=text], form.commonform input[type=password] {
+	border: 1px dotted black; 
+}
+
+form.commonform input:focus { 
+	border: 1px solid black;
+}
+   
+form.commonform legend {
+    padding: 0 2px;
+    font-weight: bold;
+    _margin: 0 -7px; /* IE Win */
+}
+   
+form.commonform label {
+    display: inline-block;
+    line-height: 1.8;
+    vertical-align: top;
+}
+   
+form.commonform fieldset ol {
+    margin: 0;
+    padding: 0;
+}
+   
+form.commonform fieldset li {
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+}
+   
+form.commonform fieldset fieldset {
+    border: none;
+    margin: 3px 0 0;
+}
+   
+form.commonform fieldset fieldset legend {
+    padding: 0 0 5px;
+    font-weight: normal;
+	background-color: transparent;
+}
+   
+form.commonform fieldset fieldset label {
+    width: auto;
+	margin-left: 0em; /* Width plus 3 (html space) */
+	margin-right: 1em;
+}
+
+form.commonform em {
+    font-weight: bold;
+    font-style: normal;
+    color: #FF0000;
+}
+
+/* for IE only */
+/*
+* html #qeMain .qecat label { 
+	padding-top: 0px;
+}
+*/
+* html form.commonform fieldset {
+	border-style: solid none none;
+}
+* html form.commonform fieldset fieldset {
+	border-style: solid;
+}
+/* end IE only */
+
+/*\*//*/ 
+form.commonform legend { display: inline-block; } 
+/* IE Mac legend fix */
+

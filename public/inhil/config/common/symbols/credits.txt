@@ -1,0 +1,12 @@
+The files symbols.sym and the symbol images are taken from an arcticle 
+by Peter Freimuth - MapMedia GmbH. It is based on a project of 
+Universität Hannover – Institut für Landschaftspflege und Naturschutz – 
+led by Roland Hachmann, and a report by Karsten Hoffmann.
+
+The docs are available at
+http://www.mapmedia.de/fileadmin/user_upload/dokumente/umn_signaturen_howto/index.html#beispielkomplex
+and
+http://www.mapmedia.de/fileadmin/user_upload/dokumente/umn_signaturen_howto/Praktikumsarbeit.zip
+
+Download symbols and samples for map files
+http://www.mapmedia.de/fileadmin/user_upload/dokumente/umn_signaturen_howto/vortrag_demo.zip

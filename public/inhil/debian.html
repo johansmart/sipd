@@ -1,0 +1,53 @@
+<!DOCTYPE html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta name="description" content="p.mapper - MapServer PHP/MapScript Demo Suite">
+<meta name="author" content="Armin Burger">
+<meta name="keywords" content="p.mapper, pmapper">
+<title>p.mapper PHP/Mapscript framework</title> 
+<style type="text/css">
+H1,H2,H3,H4 {font-family: verdana,arial,helvetica;}
+H1 {font-size : 20px; color: #B1BBC5; padding: 12px 2px 0px 4px;}
+H2 {font-size : 16px; margin-bottom:6px;}
+body {font-family: tahoma,arial,helvetica; font-size : 14px; background-color : #F3F3F3;}
+li{padding:3px;}
+.header {background-color: #336699; height: 60px;vertical-align: middle; color:#B1BBC5; font-size : 16px;}
+</style>
+ <script type="text/javascript">
+    function pmLaunch(winwidth, winheight, gLanguage){
+            myw=window.open("map.phtml?language=" + gLanguage, "pmapper", "width=" + winwidth + ",height=" + winheight + ",menubar=no,scrollbar=auto,resizable=yes,top=0,left=0,status=yes");
+        //}
+        return false;
+    }
+
+ </script>
+
+</head>
+<body> 
+
+<div class="header">
+  <h1>p.mapper Debian &amp; Ubuntu package</h1>
+</div>
+  
+<h2 id="Documentation">Documentation</h2>
+<ul><li><a class="wiki" href="http://svn.pmapper.net/trac/wiki/ReadMeFirst">p.mapper Readme First</a>
+</li><li><a class="wiki" href="http://svn.pmapper.net/trac/wiki/DocQuickinstall">Quick install instructions</a>
+</li><li><a class="wiki" href="http://svn.pmapper.net/trac/wiki/DocManual">p.mapper manual</a>
+</li><li><a class="wiki" href="http://svn.pmapper.net/trac/wiki/DocManualsearch">Search definition via XML file</a>
+</li><li><a class="wiki" href="http://svn.pmapper.net/trac/wiki/UpgradeInfo">Upgrade information</a>
+</li></ul>
+
+
+<h2>Start application</h2>
+<ul><li>
+<a href="map.phtml">In the same browser window</a>
+</li><li><a href="map.phtml" onclick="return pmLaunch(988, 680, 'en')">In a new pop-up window</a>
+</li></ul>
+
+<p><br /></p>
+<div class="header" style="height:30px;">
+  <a href="http://www.pmapper.net"><img src="images/logo.gif" border="0" alt=""></a>
+</div>
+
+</body>
+</html>

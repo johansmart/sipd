@@ -1,0 +1,28 @@
+
+======================
+   ACKNOWLEDGEMENTS
+======================  
+
+The following persons provided support 
+for translations of the language files:
+
+IT: Luca Marletta
+FR: Paul Hasenohr, Thomas Raffin
+NL: Andre van Atten
+ES: Nuria González, Lara Perez, Willington Siabato
+RU: Anna Kostikova
+SK: Ivan Mincik
+HR: Dejan Gambin
+BR: Rodrigo Gaete
+ZH (simplified Chinese): Xiaobao Zang
+HU: Zoltan Siki
+JA: Takashi Ota
+BG: Zlatomir Dimitrov 
+CZ: Petr DOBE
+EL: Andreas P
+HE: Micha Silver
+LV: Aigars Varpins
+CAT: Rosa Olivella González 
+ID: Tri Agus Prayitno 
+SI: Miha Požauko
+

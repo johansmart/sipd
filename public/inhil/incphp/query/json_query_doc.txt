@@ -1,0 +1,133 @@
+
+in case no recors found for query, JSON output is 0.
+
+
+
+ Structure of the JSON output of queries
+------------------------------------------
+
+[ 
+
+    [
+        {"name": "countries", 
+         "description": "Countries", 
+         "header": ["@","Name","Area"], 
+         "values":  [ 
+                        [    
+                            {"shplink": ["countries","10","3057923.0500429+2026548.815946+4290283.2615152+3218639.2567819"]}, 
+                            "France", 
+                            "548780908430.388"
+                        ], 
+                        
+                        [   {"shplink": ["countries","18","4010837.8743164+1381902.3825304+5099564.4860098+2701742.8339509"]}, 
+                            "Italy", 
+                            "301635595620.649"
+                        ]
+                    ]
+        } , 
+        
+        {"name": "cities", 
+         "description": "Cities", 
+         "header": ["@","Name","Administrative Entity","Country","Status","Inhabitants"], 
+         "values":  [ 
+                        [
+                            {"shplink": ["cities","284","3756950.5208565+2881684.8778978+3776950.5376764+2901684.9015424"]}, 
+                            {"hyperlink": ["cities","CITY_NAME","Paris","Paris"]}, 
+                            "Ile-del-France", {"hyperlink": ["cities","CNTRY_NAME","France","Link on detail"]}, 
+                            "Provincial capital", 
+                            "1,000,000 to 5,000,000"
+                        ]
+                    ]
+        } 
+    ], 
+    
+    {"allextent": "", "zoomall": false, "autozoom": false, "infoWin": "window"} 
+];
+
+
+
+
+ROOT ARRAY
+----------
+ROOT ARRAY (line 5-41) containing 
+* result ARRAY (7-38)
+* zoom parameters OBJECT (40)
+
+
+    RESULT ARRAY
+    ------------
+    every GROUP is an object, e.g. the group countries line 8-23, cities 25-37
+
+
+        GROUP OBJECT
+        ------------
+        properties: 
+        * name: NAME in map file
+        * description: METADATA "DESCRIPTION" in map file (STRING)
+        * header: METADATA "RESULT_HEADERS" in map file (ARRAY)
+            header ARRAY : list of header values
+            ------------
+        
+        * values: ARRAY of all records (=rows)
+          (same number of elements as 'header' array)
+
+            values ARRAY
+            ------------
+            ARRAY for each record (feature)
+            
+                RECORD ARRAY
+                ------------
+                    list of STRINGS (normal values) and OBJECTS (shplink and hyperlink)
+
+                    shplink OBJECT
+                    --------------
+                    properties: 
+                    ARRAY of 3 values: 
+                        1) group name 
+                        2) feature index in dataset
+                        3) feature extent
+                    NOT existing for WMS layers
+
+                    hyperlink OBJECT
+                    ----------------
+                    properties: 
+                    ARRAY of 4 values: 
+                        1) layer name 
+                        2) field name (as in dataset)
+                        3) field value
+                        4) display name query results
+
+                    'normal' value as STRING
+                
+                
+        
+        
+        
+    ZOOM PARAMETERS OBJECT
+    ----------------------
+    properties:
+    * allextent: 
+        STRING with max zoom extent (search & select/nquery)
+    
+    * zoomall: 
+        false (identify) OR true (search & select/nquery)   
+            if true:  should do: add button/link with max extent 
+        
+    * autozoom: 
+        false: identify (query)
+        "auto": initiate automatic zoom (after search or select)
+                     should do: applying max extent for all retrieved features (from zoomall)
+        "highlight": initiate map refresh to add highlight features to map
+        
+        
+    * infoWin: infoWin settings in config.ini
+        "window" OR "frame"
+        used to determine link target
+        
+                
+    
+
+
+
+
+

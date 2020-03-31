@@ -1,0 +1,77 @@
+<pmapper>
+    <!-- 
+      ************************************************************************** 
+      * ATTENTION: THIS XML FILE CONTAINS P.MAPPER DEFAULT VALUES              *
+      * !!!!! DO NOT MODIFY, DELETE OR RENAME THIS FILE OR ITS DIRECTORY !!!!! *
+      **************************************************************************
+    -->
+    <ini>
+        <pmapper>
+            <pmTitle>p.mapper 4.3 - A MapServer PHP/MapScript Framework</pmTitle>
+            <version>4.3</version>
+            <debugLevel>0</debugLevel>
+			<pm_merge_css_plugins_files>0</pm_merge_css_plugins_files>
+			<pm_merge_css_config_files>0</pm_merge_css_config_files>  
+            <plugins>scalebar</plugins>
+            <plugins>transparency</plugins>
+        </pmapper>
+        <config>
+            <pm_config_location>default</pm_config_location>
+            <pm_javascript_location>javascript</pm_javascript_location>
+            <pm_print_configfile>common/print.xml</pm_print_configfile>
+        </config>
+        <map>
+            <tplMapFile>common/template.map</tplMapFile>
+            <layerAutoRefresh>1</layerAutoRefresh>
+            <imgFormat>png</imgFormat>
+            <altImgFormat>jpeg</altImgFormat>
+            <sliderMax>max</sliderMax>
+            <sliderMin>100000</sliderMin>
+        </map>
+        <query>
+            <limitResult>300</limitResult>
+            <highlightColor>0 255 255</highlightColor>
+            <highlightSelected>1</highlightSelected> 
+            <autoZoom>nquery</autoZoom>
+            <autoZoom>search</autoZoom>
+            <zoomAll>search</zoomAll>
+            <zoomAll>nquery</zoomAll>
+            <infoWin>dynwin</infoWin>
+            <pointBuffer>10000</pointBuffer>
+            <shapeQueryBuffer>0.02</shapeQueryBuffer>
+        </query>
+        <ui>
+            <tocStyle>tree</tocStyle>
+            <legendStyle>attached</legendStyle>
+            <legendDynamicUpdate>0</legendDynamicUpdate>
+            <useCategories>1</useCategories>
+            <catWithCheckbox>1</catWithCheckbox>
+            <scaleLayers>1</scaleLayers>
+            <icoW>18</icoW>
+            <icoH>14</icoH>
+			<legendKeyimageRewrite>0</legendKeyimageRewrite>
+        </ui>
+        <locale>
+            <defaultLanguage>en</defaultLanguage>
+            <defaultCharset>UTF-8</defaultCharset>
+            <map2unicode>1</map2unicode>
+        </locale>
+        <print>
+            <printImgFormat>png</printImgFormat>
+            <printAltImgFormat>jpeg</printAltImgFormat>
+            <pdfres>2</pdfres>
+            <pdfversion>1.5</pdfversion>
+        </print>
+        <download>
+            <dpiLevels>150</dpiLevels>
+            <dpiLevels>200</dpiLevels>
+            <dpiLevels>300</dpiLevels>
+        </download>
+        <php>
+            <pearDbClass>MDB2</pearDbClass>
+            <defaultTimeZone>Europe/Paris</defaultTimeZone>
+        </php>
+    </ini>
+       
+    
+</pmapper>

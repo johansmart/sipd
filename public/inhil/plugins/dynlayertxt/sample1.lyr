@@ -1,0 +1,97 @@
+LAYER
+    DATA "cities10000eu"
+    FILTER ([POPULATION] > 100000)
+    LABELITEM "NAME"
+    LABELMAXSCALEDENOM 8e+006
+    METADATA
+      "CATEGORY" "cat_admin"
+      "LAYER_ENCODING"	"UTF-8"
+      "DESCRIPTION"	"Cities DynLayer"
+      "RESULT_FIELDS"	"NAME, ISO2_CODE, POPULATION, GTOPO30"
+      "ows_title"	"cities100000"
+      "RESULT_HYPERLINK"	"NAME"
+      "RESULT_HEADERS"	"Name,Country,Inhabitants,Altitude"
+    END
+    NAME "dynsample_cities100000eu"
+    PROJECTION
+      "proj=longlat"
+      "ellps=WGS84"
+      "datum=WGS84"
+      "no_defsno_defs"
+    END
+    STATUS OFF
+    TEMPLATE "void"
+    TOLERANCE 6
+    TYPE POINT
+    UNITS METERS
+    CLASS
+      NAME "> 1'000'000"
+      EXPRESSION ([POPULATION] > 1000000)
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "FreeSans"
+        MAXSIZE 9
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 2
+        COLOR 0 0 150
+        ENCODING "UTF-8"
+        FORCE FALSE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION AUTO
+      END
+      STYLE
+        ANGLE 360
+        COLOR 0 0 255
+        OUTLINECOLOR 0 0 0
+        SIZE 9
+        SYMBOL "square"
+        WIDTH 9
+      END
+    END
+    CLASS
+      NAME "500'000 - 1'000'000"
+      EXPRESSION ([POPULATION] <= 1000000 AND [POPULATION] > 500000)
+      LABEL
+        ANGLE 0.000000
+        ANTIALIAS TRUE
+        FONT "FreeSans"
+        MAXSIZE 9
+        MINSIZE 4
+        SIZE 8
+        TYPE TRUETYPE
+        BUFFER 2
+        COLOR 0 0 150
+        ENCODING "UTF-8"
+        FORCE FALSE
+        MINDISTANCE -1
+        MINFEATURESIZE -1
+        OFFSET 0 0
+        PARTIALS TRUE
+        POSITION AUTO
+      END
+      STYLE
+        ANGLE 360
+        COLOR 0 0 255
+        SIZE 8
+        SYMBOL "circle"
+        WIDTH 1
+      END
+    END
+    CLASS
+      NAME "100'000 - 500'000"
+      EXPRESSION ([POPULATION] <= 500000 AND [POPULATION] > 100000)
+      STYLE
+        ANGLE 360
+        COLOR 50 50 50
+        SIZE 5
+        SYMBOL "square"
+        WIDTH 1
+      END
+    END
+END

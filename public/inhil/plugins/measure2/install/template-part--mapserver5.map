@@ -1,0 +1,77 @@
+
+#==============================================
+#
+# Layer for distance measure
+#
+LAYER
+  NAME "measureDist"
+  METADATA
+    DESCRIPTION "Distances"
+  END
+  TYPE line
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+	  COLOR [color]
+	  SYMBOL "circle"
+	  SIZE 3
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+	  SIZE 8
+	  MAXSIZE 20
+	  PRIORITY 9
+    END 
+  END  
+END 
+
+#==============================================
+#
+# Layer for surface measure
+#
+LAYER  
+  NAME "measureArea"
+  METADATA
+    DESCRIPTION "Areas"
+  END
+  TYPE polygon
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+		SYMBOL "square"
+		COLOR [color]
+		OUTLINECOLOR [color]
+		SIZE 1
+		WIDTH 1
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+#      WRAP ","
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+	  SIZE 8
+	  MAXSIZE 20
+	  PRIORITY 9
+    END 
+  END 
+END 

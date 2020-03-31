@@ -1,0 +1,67 @@
+<?xml version='1.0'?>
+<layerinfo>
+    <group name="countries">
+        <html>
+            <h2>Layer Countries</h2>
+            <b>Description:</b> European countries <hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+    <group name="cities10000eu">
+        <html>
+            <h2>European placenames</h2>
+            <b>Description:</b> European cities with population &gt; 10000 <hr/>
+            Source: <a href="http://www.geonames.org" target="_blank">http://www.geonames.org</a><br/>
+            License: The dataset is licensed under the Creative Commons Attribution 3.0 License
+        </html>
+    </group>
+    <group name="rivers">
+        <html>
+            <h2>Rivers</h2>
+            <b>Description:</b> Major rivers in Europe.<hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+    <group name="water">
+        <html>
+            <h2>Water	</h2>
+            <b>Description:</b> Perennial inland water for Europe.<hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+    <group name="urban">
+        <html>
+            <h2>Urbanized Areas	</h2>
+            <b>Description:</b> The major urbanized areas are depictions of the largest urbanized areas of Europe. 
+            They represent the shape of the major urbanized area as viewed from the air. 
+            These outlines do not necessarily conform to political boundaries.<hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+    <group name="railroad">
+        <html>
+            <h2>Railroads</h2>
+            <b>Description:</b> Major European railroads.<hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+    <group name="roads">
+        <html>
+            <h2>Roads</h2>
+            <b>Description:</b> Major European roads.<hr/>
+            Source: Digital Chart of the World (DCW) <br/>
+            License: Public domain data from U.S. government 
+            are freely distributable with proper source attribution or metadata.
+        </html>
+    </group>
+</layerinfo>

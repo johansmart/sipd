@@ -1,0 +1,86 @@
+
+#================================================
+#
+# Layer for POINT
+#
+
+#================================================
+#
+# Layer for POINT
+#
+LAYER
+  NAME "testjsonpoint"
+  METADATA
+    DESCRIPTION "Point"
+  END
+  TYPE point
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "prop1"
+  
+  CLASS
+    STYLE
+	  COLOR 255 0 0
+      SYMBOL "circle"
+	  SIZE 5
+	END
+	STYLE
+	  OUTLINECOLOR 0 255 0
+	  WIDTH 5
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+	  SIZE 10
+    END
+  END
+END 
+
+
+#==============================================
+#
+# Layer for Polygon
+#
+LAYER  
+  NAME "testjsonpolygon"
+  METADATA
+    DESCRIPTION "Polygon"
+  END
+  TYPE polygon
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "prop1"
+  
+  CLASS
+    STYLE
+	  COLOR 255 0 0
+      SYMBOL "circle"
+	  SIZE 5
+	END
+	STYLE
+	  OUTLINECOLOR 0 255 0
+	  WIDTH 5
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+	  SIZE 10
+    END 
+  END
+END

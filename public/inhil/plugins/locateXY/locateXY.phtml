@@ -1,0 +1,108 @@
+<?php
+
+/******************************************************************************
+ *
+ * Purpose: Locate XY plugin
+ * Author:  Mouanis LAHLOU, IAV Hassan II
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2012
+ *
+ * This is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+
+// prevent XSS
+if (isset($_REQUEST['_SESSION'])) exit();
+
+require_once('../../incphp/pmsession.php');
+
+require_once($_SESSION['PM_INCPHP'] . "/globals.php");
+require_once($_SESSION['PM_INCPHP'] . "/common.php");
+
+// generate projection options (for later insert in HTML)
+$projOptions = '';
+$pluginsConfig = isset($_SESSION['pluginsConfig']['locateXY']) ? $_SESSION['pluginsConfig']['locateXY'] : array();
+if ($pluginsConfig) {
+	$mapPrj = $pluginsConfig['mapPrjDef'];
+
+	if (isset($pluginsConfig['projections']) && isset($pluginsConfig['projections']['prj']) && $pluginsConfig['projections']['prj']) {
+		$prjList = $pluginsConfig['projections']['prj'];
+		$prjAlreadySelected = false;
+		foreach ($prjList as $p) {
+			$prjName = _p($p['name']);
+			$prjDef = $p['definition'];
+			$prjDefForJs = str_ireplace('init=', '', $prjDef); // proj4js compatible definition
+			$selected = '';
+			
+			// select map proj by default:
+			if (!$prjAlreadySelected && strcasecmp($prjDefForJs, $mapPrj) == 0) {
+				$selected = ' selected="selected"';
+				$prjAlreadySelected = true;
+			}
+
+			$projOptions .= "\t\t\t\t\t<option value=\"$prjDefForJs\"$selected>$prjName</option>\r\n";
+		}
+	}
+}
+
+header("Content-Type: text/javascript; charset=$defCharset");
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $gLanguage ?>" xml:lang="<?php echo $gLanguage ?>">
+<head>
+ <link rel="stylesheet" href="templates/default.css" type="text/css" />
+ <title><?php echo _p('locateXY_ZoomToXY') ?></title>
+</head>
+<body>
+	<form enctype="multipart/form-data">
+		<h1><?php echo _p('locateXY_ZoomToXY') ?></h1>
+		<h2><?php echo _p('locateXY_Coordinates') ?></h2>
+		<table style="text-align: left;" cellpadding="2" cellspacing="2">
+			<tr>
+				<th><?php echo _p('locateXY_Projection') ?></th>
+				<td>
+					<select id="locateXY-inproj" style="width: 145px" onchange="PM.Plugin.locateXY.changeProj();">
+<?php echo $projOptions ?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th id="locateXY-Xtext"><?php echo _p('locateXY_Xtext1') ?></th>
+				<td><input type="text" name="locateXY-xcoord" id="locateXY-xcoord" /></td>
+			</tr>
+			<tr>
+				<th id="locateXY-Ytext"><?php echo _p('locateXY_Ytext1') ?></th>
+				<td><input type="text" name="locateXY-ycoord" id="locateXY-ycoord" /></td>
+			</tr>
+			<tr>
+				<th><?php echo _p('locateXY_Text') ?></th>
+				<td><input type="text" name="locateXY-Ptext" id="locateXY-Ptext" /></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" name="locateXY-btnGo" id="locateXY-btnGo" value="<?php echo _p('locateXY_btnGo') ?>" onclick="PM.Plugin.locateXY.load();" />
+				</td>
+			</tr>
+		</table>
+	</form>
+ 	<script type="text/javascript">
+		PM.Plugin.locateXY.changeProj();
+	</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<pmapper>
+    <ini>
+        <pmapper>
+            <pmTitle>BAPPEDA Kabupaten Indragiri Hilir</pmTitle>
+            <debugLevel>3</debugLevel>
+            <plugins>export</plugins>
+            <plugins>wmsclient</plugins>
+            <plugins>scalebar</plugins>
+            <plugins>transparency</plugins>
+            <plugins>layerinfo</plugins>
+            <!--<plugins>tocinfolink</plugins>-->
+            <plugins>coordinates</plugins>
+        </pmapper> 
+        <config>
+            <pm_config_location>dev</pm_config_location>
+            <pm_javascript_location>javascript/src</pm_javascript_location>
+            <pm_javascript_optional>jquery/ui</pm_javascript_optional>
+            <pm_print_configfile>common/print.xml</pm_print_configfile>
+            <!--<pm_search_configfile>inline</pm_search_configfile>-->
+            <pm_search_configfile>dev/search.xml</pm_search_configfile>
+        </config>
+        <map>
+            <mapFile>pmapper_demo_dev.map</mapFile>
+            <tplMapFile>common/template.map</tplMapFile>
+            <categories>
+                <category name="cat_admin" description="cat_admin">
+                    <group>countries</group>
+                    <group>cities10000eu</group>
+                </category>
+                <category name="cat_nature" description="cat_nature">
+                    <group>rivers</group>
+                    <group>aanp</group>
+                    <group>corine_land_cover</group>
+                    <group>ortofoto_colore_06</group>
+                    
+                </category>
+                <category name="cat_raster" description="cat_raster" closed="true">
+                    <group>dem</group>
+                    <group>bluemarble</group>
+                    <group>jpl_wms_global_mosaic</group>
+                </category>
+            </categories>
+            <!--
+            <allGroups>
+                <group>countries</group>
+                <group>cities10000eu</group>
+                <group>cities10000eu_db</group>
+                <group>rivers</group>
+                <group>corine</group>
+                <group>dem</group>
+                <group>jpl_wms_global_mosaic</group>
+                <group>urban</group>
+                <group>water</group>
+                <group>roads</group>
+                <group>railroad</group>
+            </allGroups>
+            -->
+            <defGroups>
+                <group>countries</group>
+            </defGroups>
+            <mutualDisableList>
+                <group>bluemarble</group>
+                <group>dem</group>
+            </mutualDisableList>
+            <layerAutoRefresh>1</layerAutoRefresh>
+            <imgFormat>png</imgFormat>
+            <altImgFormat>jpeg</altImgFormat>
+            <altImgFormatLayers>
+                <layer>jpl_wms_global_mosaic</layer>
+                <layer>dem</layer>
+            </altImgFormatLayers>
+            <sliderMax>max</sliderMax>
+            <sliderMin>50000</sliderMin>
+            <!--
+            <mapZoomToExtent>
+                <bounds>3678982</bounds>
+                <bounds>2134585</bounds>
+                <bounds>4721175</bounds>
+                <bounds>3092410</bounds>
+                <maxExtent>1</maxExtent>
+            </mapZoomToExtent>
+            -->
+        </map>
+        <query>
+            <limitResult>300</limitResult>
+            <highlightColor>0 255 255</highlightColor>
+            <highlightSelected>1</highlightSelected>
+            <zoomAll>nquery</zoomAll>
+            <autoZoom>search </autoZoom>
+            <infoWin>dynwin</infoWin>
+            <alignQueryResults>1</alignQueryResults>
+            <pointBuffer>10000</pointBuffer>
+            <shapeQueryBuffer>0.02</shapeQueryBuffer>
+        </query>
+        <ui>
+            <tocStyle>tree</tocStyle>
+            <legendStyle>attached</legendStyle>
+            <useCategories>1</useCategories>
+            <catWithCheckbox>1</catWithCheckbox>
+            <scaleLayers>1</scaleLayers>
+            <icoW>18</icoW>
+            <icoH>14</icoH>
+			<legendKeyimageRewrite>0</legendKeyimageRewrite>
+        </ui>
+        <locale>
+            <defaultLanguage>en</defaultLanguage>
+            <defaultCharset>UTF-8</defaultCharset>
+            <map2unicode>1</map2unicode>
+        </locale>
+        <print>
+            <printImgFormat>png</printImgFormat>
+            <printAltImgFormat>jpeg</printAltImgFormat>
+            <pdfres>2</pdfres>
+        </print>
+        <download>
+            <dpiLevels>150</dpiLevels>
+            <dpiLevels>200</dpiLevels>
+            <dpiLevels>300</dpiLevels>
+        </download>
+        <php>
+            <pearDbClass>MDB2</pearDbClass>
+        </php>
+        
+        <pluginsConfig>
+            <export>
+                <formats>XLS</formats>
+                <formats>CSV</formats>
+                <formats>PDF</formats>
+            </export>
+            
+            <layerselect>
+                <categories>
+                    <category name="cat_admin">
+                        <group>countries</group>
+                        <group>admins</group>
+                        <group>cities10000eu</group>
+                        <group>urban</group>
+                    </category>
+                    <category name="cat_nature">
+                        <group>rivers</group>
+                        <group>corine</group>
+                        <group>water</group>
+                    </category>
+                    <category name="cat_infrastructure">
+                        <group>roads</group>
+                        <group>railroad</group>
+                    </category>
+                    <category name="cat_raster">
+                        <group>dem</group>
+                        <group>jpl_wms_global_mosaic</group>
+                    </category>
+                </categories>
+            </layerselect>
+            
+            <coordinates>
+                <mapPrj name="ETRS LAEA" roundTo="0">
+                </mapPrj>
+                <prj name="lat/lon WGS84" roundTo="4">
+                    <definition>init=epsg:4326</definition>
+                </prj>
+                <prj name="UTM32" roundTo="0">
+                    <definition>init=epsg:32632</definition>
+                </prj>
+            </coordinates>
+            
+            <layerinfo>
+                <configfile>dev/layerinfo.xml</configfile>
+            </layerinfo>
+            
+        </pluginsConfig>
+        
+    </ini>
+    
+    
+
+    
+    
+    <searchlist version="1.0">
+        <dataroot>$</dataroot>
+        <searchitem name="cities" description="City">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="countries" description="Country">
+            <layer type="shape" name="countries">
+                <field type="s" name="ISO2_CODE" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="ms" sort="asc" firstoption="*">
+                        <mslayer encoding="ISO-8859-1" keyfield="ISO2_CODE" showfield="NAME"/>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        <!-- Sample for suggest function -->
+        <searchitem name="cities_suggest_ms" description="Cities Suggest MS">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="1" startleft="1" sort="asc">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+    </searchlist>
+    
+    
+</pmapper>

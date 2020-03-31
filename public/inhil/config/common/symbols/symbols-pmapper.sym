@@ -1,0 +1,24 @@
+# Symbols for use in p.mapper
+SYMBOLSET
+  SYMBOL
+    Name 'circle'
+    Type ELLIPSE
+    Filled TRUE
+    Points
+      1 1
+    END
+  END 
+
+  SYMBOL
+    Name 'square'
+    Type VECTOR
+    Filled TRUE
+    Points
+      0 1
+      0 0
+      1 0
+      1 1
+      0 1
+    END
+  END
+END

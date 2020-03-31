@@ -1,0 +1,26 @@
+
+/* Styles for export plugin */
+
+#selectexport {
+
+}
+    
+.exportFormat {
+    display:inline; 
+    padding-right:10px
+}
+
+#exportLinkDL {
+    background-color: #eeeeee;
+    border: 1px solid #999999;
+    text-align: center;
+    display:none; 
+    margin: 4px 8px 5px 8px;
+    padding: 3px 6px;
+    width: 10em;
+}
+
+#exportLinkDL a {
+    color: #000000;
+    text-decoration: none; 
+}

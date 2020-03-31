@@ -1,0 +1,81 @@
+Digitizepoints v.0.2
+Author: Niccolo Rigacci <niccolo@rigacci.org>
+
+This is a plugin for p.mapper [http://www.pmapper.net/].
+It allows to digitize points directly into a PostgreSQL/PostGIS
+table. A popup window allow to insert/update metadata information
+for the point. Tested with p.mapper version 4.0-beta2.
+
+The plugin requires the PHP Pear DB module, provided by the
+php-db Debian package.
+
+Main features:
+
+  * Insert new points and update existing ones into a
+    PostgreSQL/PostGIS table.
+  * Allow for different map and layer projections.
+  * Pick existing points for editing, with configurable
+    tolerance.
+  * Automatic web form upon table structure, allow for
+    hiding of unwanted fields.
+  * Easy itegration into the toolbar.
+
+To use the plugin you have to:
+
+* Unpack the plugin files into a p.mapper plugins/digitizepoints/
+  directory.
+
+* Add a layer of type POINT and CONNECTIONTYPE postgis to the
+  mapfile. This is really needed only if you want to see the
+  inserted points into the map.
+
+* Enable the plugin by adding a line in config/config_default.xml
+  file, into the <pmapper> tag:
+  <plugins>digitizepoints</plugins>
+
+* To add the toolbar button: edit config/default/js_config.php,
+  add a button element into PM.buttonsDefault definition:
+  {tool:'digitizepoints', name:'Digitize Points'},
+
+* Copy the button image "digitizepoints_off.gif" into
+  images/buttons/<theme>/
+
+* Edit the plugin file include_conf.php and set database connection
+  details, table info, etc.
+
+
+==== Pop-up configuration ====
+
+You can customize the behaviour of the pop-up by assigning values
+to the following tags into config/config_XXX.xml, under <pmapper>,
+<ini>, <pluginsConfig> section:
+
+    <digitizepoints>
+        <dlgOptions>
+            <!-- Pop-up window width. -->
+            <width>640</width>              <!-- Pop-up window width. -->
+            <height>480</height>            <!-- Pop-up window height.  -->
+            <left>100</left>                <!-- Left position of pop-up.  -->
+            <top>50</top>                   <!-- Top position of pop-up.  -->
+            <decimals>5</decimals>          <!-- How may decimals to keep in coordinates.  -->
+            <dlgTimeout>2000</dlgTimeout>   <!-- Timeout in ms for pop-up disappear. -->
+        </dlgOptions>
+    </digitizepoints>
+
+Otherwise you can set the values into config/XXX/js_config.php:
+
+  PM.Plugin.Digitizepoints.dlgOptions.width = 640;
+  PM.Plugin.Digitizepoints.dlgOptions.height = 480;
+  PM.Plugin.Digitizepoints.dlgOptions.left = 100;
+  PM.Plugin.Digitizepoints.dlgOptions.top = 50;
+  PM.Plugin.Digitizepoints.decimals = 5;
+  PM.Plugin.Digitizepoints.dlgTimeout = 2000;
+
+
+==== Internationalization ====
+
+You can translate strings that appear in PHP code, look for strings
+enclosed into the _p() function.
+
+Create or edit the file incphp/locale/language_XX.php and add
+your translations there.

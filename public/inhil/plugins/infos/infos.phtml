@@ -1,0 +1,93 @@
+<?php
+
+/******************************************************************************
+ *
+ * Purpose: HTML output for the informations contains in METADATA for a layer / group 
+ * Author:  Thomas Raffin, SIRAP
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2007 SIRAP
+ *
+ * This is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * The software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+// prevent XSS
+if (isset($_REQUEST['_SESSION'])) exit();
+
+require_once("../../incphp/group.php");
+
+session_start();
+require_once($_SESSION['PM_INCPHP'] . "/common.php");
+require_once($_SESSION['PM_INCPHP'] . "/globals.php");
+
+
+$metadataName = $_SESSION["infosMetadata"];
+$metadataValue = "";
+
+$groupName = $_REQUEST["group"];
+$groupDescription = "";
+$groupList = $_SESSION["grouplist"];
+$group = $groupList["$groupName"];
+$glayerList = $group->getLayers();
+
+$groupDescription = $group->getDescription();
+
+// the first metadata information found :
+foreach ($glayerList as $glayer) {
+	$mapLayer = $map->getLayerByName($glayer->getLayerName());
+	if ($mapLayer) {
+		$metadataValue = $mapLayer->getMetadata($metadataName);
+	}
+	if ($metadataValue) break;
+}
+
+// if no description
+if (!$metadataValue) {
+	$metadataValue = $groupDescription ? $groupDescription : $groupName;
+}
+
+$inString = $metadataValue;
+$map2unicode = $_SESSION["map2unicode"];
+// code extract from pmapper core sources : "incphp/initgroups.php", function "mapStringEncode"
+if ($map2unicode) {
+	$mapfile_encoding = trim($map->getMetaData("MAPFILE_ENCODING"));
+	if ($mapfile_encoding) {
+		if ($mapfile_encoding != "UTF-8") {
+			$outString = iconv($mapfile_encoding, "UTF-8", $inString);
+		} else {
+			$outString = $inString;
+		}
+	} else {
+		$outString = utf8_encode($inString);
+	}
+} else {
+	$outString = $inString;
+}
+$metadataValue = $outString;
+$metadataValue = _p($metadataValue);
+
+header("Content-type: text/html; charset=$defCharset");
+?>
+
+<html>
+<head>
+</head>
+<body style="text-align:center">
+	<div id="infosGroupLabel"><?php echo _p("Layer Info") ?></div>
+	<div id="infosGroupName"><?php echo _p($groupDescription ? $groupDescription : $groupName) ?></div>
+	<div id="infosGroupContent"><?php echo _p($metadataValue) ?></div>
+</body>
+</html>

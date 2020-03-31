@@ -1,0 +1,11 @@
+LAYER
+  TYPE Raster
+  TEMPLATE "void"
+  TOLERANCE 0
+  TOLERANCEUNITS pixels 
+  METADATA
+    "RESULT_FIELDS" "x,y,class,value_0"
+    "RESULT_HEADERS" "X,Y,CLASS,VALUE" 
+  END
+END
+

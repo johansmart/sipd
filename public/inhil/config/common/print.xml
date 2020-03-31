@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<print>
+    <settings>
+        
+        <printtitle></printtitle>
+        
+        <!-- Settings for HTML print output -->
+        <html>
+            <format papersize="A4" orientation="P">
+                <map width="620" height="540" type="normal" legendNumColumns="2" css="templates/print/print_a4p.css" />
+                <map width="620" height="540" type="legColumns" legendNumColumns="2" css="templates/print/print_a4p.css" />
+                <map width="620" height="540" legendposition="R" legendNumColumns="2" type="legRight" css="templates/print/print_a4p_leg_right.css" />
+                <map width="620" height="540" legendposition="none" type="nolegend" css="templates/print/print_a4p_no_legend.css" />
+            </format>
+            
+            <format papersize="A4" orientation="L">
+                <map width="620" height="540" type="normal" legendNumColumns="3" css="templates/print/print_a4l.css" />
+                <map width="620" height="540" type="legColumns" legendNumColumns="3" css="templates/print/print_a4l.css" />
+                <map width="620" height="540" legendposition="R" legendNumColumns="3" type="legRight" css="templates/print/print_a4l_leg_right.css" />
+                <map width="620" height="540" legendposition="none" type="nolegend" css="templates/print/print_a4l_no_legend.css" />
+            </format>
+            
+            <format papersize="A3" orientation="P">
+                <map width="620" height="540" type="normal" legendNumColumns="3" css="templates/print/print_a3p.css" />
+                <map width="620" height="540" type="legColumns" legendNumColumns="3" css="templates/print/print_a3p.css" />
+                <map width="620" height="540" legendposition="R" legendNumColumns="3" type="legRight" css="templates/print/print_a3p_leg_right.css" />
+                <map width="620" height="540" legendposition="none" type="nolegend" css="templates/print/print_a3p_no_legend.css" />
+            </format>
+            
+            <format papersize="A3" orientation="L">
+                <map width="620" height="540" type="normal" legendNumColumns="4" css="templates/print/print_a3l.css" />
+                <map width="620" height="540" type="legColumns" legendNumColumns="4" css="templates/print/print_a3l.css" />
+                <map width="620" height="540" legendposition="R" legendNumColumns="4" type="legRight" css="templates/print/print_a3l_leg_right.css" />
+                <map width="620" height="540" legendposition="none" type="nolegend" css="templates/print/print_a3l_no_legend.css" />
+            </format>
+            
+        </html>
+        
+        
+        <!-- Settings for PDF print output -->
+        <pdf>
+            <author>Armin Burger</author>
+            <pdftitle>p.mapper</pdftitle>
+            
+            <defFont>FreeSans</defFont>
+            <defFontSize>9</defFontSize>
+            <defFontColor>0,0,0</defFontColor>
+            
+            <printCategory>1</printCategory>
+
+            <top_height>30</top_height>
+            <top_color>255,255,255</top_color>
+            <top_bgcolor>51,102,153</top_bgcolor>
+            <refmap_bgcolor>255,255,255</refmap_bgcolor>
+            <scaletxt_bgcolor>255,255,255</scaletxt_bgcolor>
+            <top_logo>./images/logos/logo.png</top_logo>
+			
+			<title_xoffs>150</title_xoffs>
+			<title_yoffs></title_yoffs>
+
+            <additionnalTitle>
+            	<before>
+            		<text></text>
+            		<textFont>FreeSans</textFont>
+            		<textSize>8</textSize>
+            		<textColor>0,0,0</textColor>
+            		<textBgColor>255,255,255</textBgColor>
+            	</before>
+            	<after>
+            		<text></text>
+            		<textFont>FreeSans</textFont>
+            		<textSize>8</textSize>
+            		<textColor>0,0,0</textColor>
+            		<textBgColor>255,255,255</textBgColor>
+            	</after>
+            </additionnalTitle>
+
+            <format papersize="A4" orientation="P">
+                <map width="740" height="770" legendposition="B" type="normal" legendNumColumns="2" />
+                <map width="740" height="770" legendposition="BC" type="legColumns" legendNumColumns="2" />
+                <map width="550" height="1040" legendposition="R" type="legRight" legendNumColumns="2" />
+                <map width="740" height="1040" legendposition="imgbr" type="imgbr" img="./images/logos/logo.png" imgwidth="116" imgheight="230" />
+                <map width="740" height="1040" legendposition="none" type="nolegend" />
+            </format>
+            
+            <format papersize="A4" orientation="L">
+                <map width="1080" height="540" legendposition="B" type="normal" legendNumColumns="3" />
+                <map width="1080" height="540" legendposition="BC" type="legColumns" legendNumColumns="3" />
+                <map width="890" height="720" legendposition="R" type="legRight" legendNumColumns="3" />
+                <map width="1080" height="720" legendposition="imgbr" type="imgbr" img="./images/logos/logo.png" imgwidth="116" imgheight="230" />
+                <map width="1080" height="720" legendposition="none" type="nolegend" />
+            </format>
+            
+            <format papersize="A3" orientation="P">
+                <map width="1080" height="1300" legendposition="B" type="normal" legendNumColumns="3" />
+                <map width="1080" height="1300" legendposition="BC" type="legColumns" legendNumColumns="3" />
+                <map width="860" height="1500" legendposition="R" type="legRight" legendNumColumns="3" />
+                <map width="1080" height="1500" legendposition="imgbr" type="imgbr" img="./images/logos/logo.png" imgwidth="116" imgheight="230" />
+                <map width="1080" height="1500" legendposition="none" type="nolegend" />
+            </format>
+            
+            <format papersize="A3" orientation="L">
+                <map width="1540" height="870" legendposition="B" type="normal" legendNumColumns="4" />
+                <map width="1540" height="870" legendposition="BC" type="legColumns" legendNumColumns="4" />
+                <map width="1340" height="1040" legendposition="R" type="legRight" legendNumColumns="4" />
+                <map width="1540" height="1040" legendposition="imgbr" type="imgbr" img="./images/logos/logo.png" imgwidth="116" imgheight="230" />
+                <map width="1540" height="1040" legendposition="none" type="nolegend" />
+            </format>
+        </pdf>
+    </settings>
+    
+    <html>
+        <body>    
+            <div id="print_main">
+                <!--
+                    predefined variables: $$printTitle, $$printScale, $$printLegend
+                                          $$printUrlList[0], $$printUrlList[1], $$printUrlList[2]
+                -->
+                
+                <div id="print_titlebar">
+                    <div id="print_logo_header"><img src="images/logos/logo.png" alt="logo" /></div>
+                    <div id="print_title_text">$$printTitle</div>
+                </div>
+                <div id="print_content">
+	                <div id="print_mapzone">
+	                    <div id="print_map_image"><img src="$$printUrlList[0]" alt="map" /></div>
+	                    <div id="print_map_refimage"><img src="$$printUrlList[1]" alt="refmap" /></div>
+	                    <div id="print_map_scalebar"><img src="$$printUrlList[2]" alt="scalebar" /></div>
+	                </div>
+	               
+	                <div id="print_scale_text">@[Scale]@ 1: $$printScale</div>
+
+	                <div id="print_legendzone">
+	                    <div id="print_legend_table">$$printLegend</div>
+	                </div>
+				</div>
+            </div>
+        </body>
+    </html>
+    
+    <printdlg>
+        <div id="printdlg" class="printdlg">
+            <div class="printdlg_main" style="display:inline">
+                <div>@[Print Settings]@</div>
+                <div style="position:absolute; top:25px; right:15px"><img src="images/print.gif" alt="ico" width="35" height="35" /></div>
+            </div>
+            <div>@[Scale]@ 1: <input type="text" name="printscale" size="10" value="$$printScale" /></div>
+            <div>
+                <input type="checkbox" name="printrefmap" value="on" checked="checked">@[With Overview Map]@</input>
+            </div>
+            <div>
+                <input type="checkbox" name="docformat" value="pdf">@[Create PDF Document]@</input>
+            </div>
+
+            <div class="printdlg_button">
+                <input id="printdlg_button_advanced" type="button"  value="@@Advanced (PDF only)"  onclick="PM.Dlg.printShowAdvanced()" />
+                <input id="printdlg_button_normal" type="button"  value="@@Standard"  onclick="PM.Dlg.printHideAdvanced()" style="display:none"/>
+            </div>
+
+            <div class="printdlg_advanced">
+                @[Print Title]@
+                <input type="text" name="printtitle" size="30" value="$$printTitle" />
+            </div>
+            
+            <div class="printdlg_advanced">
+                <label for="papersize">@[Paper size]@</label>
+				<select name="papersize">
+					<option value="A4" selected="selected">A4</option>
+					<option value="A3">A3</option>
+				</select>
+            </div>
+            
+            <div class="printdlg_advanced">
+				<label for="orientation">@[Page orientation]@</label>
+				<select name="orientation">
+					<option value="P" selected="selected">@[Portrait]@</option>
+					<option value="L">@[Landscape]@</option>
+				</select>
+            </div>
+            
+            <div class="printdlg_advanced">
+				<label for="maptype">@[Legend]@</label>
+				<select name="maptype">
+					<option value="normal" selected="selected">@[printLegendBottom]@</option>
+					<!--<option value="imgbr">@[printLegendImage]@</option>-->
+					<option value="legColumns">@[printLegendColumns]@</option>
+					<option value="legRight">@[printLegendRight]@</option>
+					<option value="nolegend">@[printLegendNone]@</option>
+				</select>
+            </div>
+
+            <div class="printdlg_button" style="text-align:center">
+                <input type="button"  value="@@Create Print Page"  onclick="submit();$('#pmDlgContainer').hide()" />
+            </div>
+        </div>
+    </printdlg>
+</print>

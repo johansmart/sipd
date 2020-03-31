@@ -1,0 +1,88 @@
+<?php
+
+/******************************************************************************
+ *
+ * Purpose: file for printing, HTML or PDF
+ * Author:  Armin Burger
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2003-2006 Armin Burger
+ *
+ * This file is part of p.mapper.
+ *
+ * p.mapper is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * p.mapper is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+
+// prevent XSS
+if (isset($_REQUEST['PM_INCPHP'])) exit();
+
+require_once("incphp/group.php");
+require_once("incphp/pmsession.php");
+session_cache_limiter('private');
+require_once("incphp/globals.php");
+require_once("incphp/common.php");
+require_once("incphp/map/map.php");
+require_once("incphp/print/print.php");
+require_once("incphp/print/pdfprint.php");
+require_once("incphp/print/printxml.php");
+require_once("incphp/layerview.php");
+
+//** Base print settings */
+$printScale = $_REQUEST['printscale'];
+$printrefmap = isset($_REQUEST['printrefmap']) ? true : false;
+$papersize   = isset($_REQUEST['papersize']) ? $_REQUEST['papersize'] : "A4";
+$orientation = isset($_REQUEST['orientation']) ? $_REQUEST['orientation'] : "P";
+$maptype     = isset($_REQUEST['maptype']) ? $_REQUEST['maptype'] : "normal";
+
+
+/** Create PRINT PAGE: PDF or HTML */
+
+// =====> PDF <=====
+if (isset($_REQUEST["docformat"])):
+    $printXml = new PrintXML_PDF();
+    $pdfSettings = $printXml->getPrintParams($papersize, $orientation, $maptype);
+    $pdf = new PDF($map, $printScale, $orientation, 'pt', $papersize, $pdfSettings, $printrefmap);
+    $pdf->Output();
+    exit();
+
+// =====> HTML <=====
+else :
+    $printXml = new PrintXML_HTML("/print/html/body", $printScale);
+    $printSettings = $printXml->getPrintParams($papersize, $orientation, $maptype);
+    
+    $printMap = new PrintMap($map, $printSettings['width'], $printSettings['height'], $printScale, "html", 250, 0, $printrefmap, $printSettings);
+    $printUrlList = $printMap->returnImgUrlList(); 
+    $printLegend = $printMap->returnLegStr();
+    
+    $printHTML = $printXml->xmlToHtml($printUrlList, $printrefmap, $printLegend);
+    $css = isset($printSettings['css']) ? "  <link rel=\"stylesheet\" href=\"" . $printSettings['css'] . "\" type=\"text/css\" />\n" : "";
+
+    header("Content-Type: text/html; charset=$defCharset");
+
+    echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"; 
+    echo "<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"$gLanguage\" xml:lang=\"$gLanguage\">\n";
+    echo "<head>\n";
+    echo "  <link rel=\"stylesheet\" href=\"templates/default.css\" type=\"text/css\" />\n";
+    echo "  <link rel=\"stylesheet\" href=\"templates/print/print.css\" type=\"text/css\" />\n";
+    echo $css;
+    echo "  <title>" . _p("Print View") . "</title>\n";
+    echo "</head>\n";
+    echo $printHTML;
+    echo "</html>\n";
+
+endif; 
+?>

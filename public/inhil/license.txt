@@ -1,0 +1,420 @@
+/******************************************************************************
+ *
+ * p.mapper - A MapServer PHP/MapScript Framework
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2003-2009 Armin Burger
+ *
+ * p.mapper is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * p.mapper is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+
+
+ For the specific licensing terms of the p.mapper plugins 
+ please see the respective files for every plugin.
+
+
+======================================================================================
+
+
+=========
+ CREDITS
+=========
+All projects and products that p.mapper is based on or uses
+code snippets from or that gave ideas for the development are listed below,
+together with their licenses:
+
+
+-----------
+ MAPSERVER
+-----------
+Copyright (c) 1996-2001 Regents of the University of Minnesota.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so, subject
+to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies of this Software or works derived from this Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+------------------------------------------
+ PHP/MapScript extension for MapServer
+ GMAP75 (included in ROSA application) 
+------------------------------------------
+**********************************************************************
+ * Copyright (c) 2000-2002, DM Solutions Group
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * DEALINGS IN THE SOFTWARE.
+ ********************************************************************** 
+
+
+
+
+----------
+ PHP PEAR
+----------
++----------------------------------------------------------------------+
+| Copyright (c) 1997-2002 The PHP Group                                |
++----------------------------------------------------------------------+
+| This source file is subject to version 2.0 of the PHP license,       |
+| that is bundled with this package in the file LICENSE, and is        |
+| available at through the world-wide-web at                           |
+| http://www.php.net/license/2_02.txt.                                 |
+| If you did not receive a copy of the PHP license and are unable to   |
+| obtain it through the world-wide-web, please send a note to          |
+| license@php.net so we can mail you a copy immediately.               |
++----------------------------------------------------------------------+
+| Authors: Sterling Hughes <sterling@php.net>                          |
+|          Stig Bakken <ssb@fast.no>                                   |
+|          Tomas V.V.Cox <cox@idecnet.com>                             |
++----------------------------------------------------------------------+
+
+
+
+-----------
+ SLIDER.JS
+----------- 
+/************************************************************
+                    Slider control creator
+              By Mark Wilton-Jones 12-13/10/2002
+Version 1.1 updated 22/10/2003 to provide hand cursor option
+*************************************************************
+
+Please see http://www.howtocreate.co.uk/jslibs/ for details and a demo of this script
+Please see http://www.howtocreate.co.uk/jslibs/termsOfUse.html for terms of use
+
+
+
+-------------------
+ WZ_JSGRAPHICS.JS
+-------------------
+/* This notice must be untouched at all times.
+
+wz_jsgraphics.js    v. 2.3
+The latest version is available at
+http://www.walterzorn.com
+or http://www.devira.com
+or http://www.walterzorn.de
+
+Copyright (c) 2002-2004 Walter Zorn. All rights reserved.
+Created 3. 11. 2002 by Walter Zorn (Web: http://www.walterzorn.com )
+Last modified: 29. 9. 2004
+
+Performance optimizations for Internet Explorer
+by Thomas Frank and John Holdsworth.
+fillPolygon method implemented by Matthieu Haller.
+
+High Performance JavaScript Graphics Library.
+Provides methods
+- to draw lines, rectangles, ellipses, polygons
+  with specifiable line thickness,
+- to fill rectangles and ellipses
+- to draw text.
+NOTE: Operations, functions and branching have rather been optimized
+to efficiency and speed than to shortness of source code.
+
+LICENSE: LGPL
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License (LGPL) as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA,
+or see http://www.gnu.org/copyleft/lesser.html 
+*/
+
+
+
+-----------
+  ka-Map
+-----------  
+
+ **********************************************************************
+ * Copyright (c) 2005, DM Solutions Group Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"),
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included
+ * in all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * DEALINGS IN THE SOFTWARE.
+ ********************************************************************** 
+
+
+ 
+----------------
+ SORTTABLE.JS
+--------------- 
+ Code downloaded from the Browser Experiments section of 
+ kryogenix.org is licenced under the so-called MIT licence. 
+ The licence is below.
+
+ Copyright (c) 1997-date Stuart Langridge
+
+ Permission is hereby granted, free of charge, to any person 
+ obtaining a copy of this software and associated documentation 
+ files (the "Software"), to deal in the Software without 
+ restriction, including without limitation the rights to use, 
+ copy, modify, merge, publish, distribute, sublicense, and/or 
+ sell copies of the Software, and to permit persons to whom the 
+ Software is furnished to do so, subject to the following conditions:
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ DEALINGS IN THE SOFTWARE.
+
+
+
+---------
+ TCPDF
+---------
+============================================================+
+ File name   : tcpdf.php
+ Begin       : 2002-08-03
+ Last Update : 2006-07-16
+ Author      : Nicola Asuni
+ Version     : 1.53.0.TC022_PHP4
+ License     : GNU LGPL (http://www.gnu.org/copyleft/lesser.html)
+
+ Description : This is a PHP4 class for generating PDF files 
+               on-the-fly without requiring external 
+               extensions.
+
+ IMPORTANT:
+ This class is an extension and improvement of the public Domain 
+ FPDF class by Olivier Plathey (http://www.fpdf.org).
+
+ Main changes by Nicola Asuni:
+    PHP4 porting;
+    UTF-8 Unicode support;
+    code refactoring;
+    source code clean up;
+    code style and formatting;
+    source code documentation using phpDocumentor (www.phpdoc.org);
+    All ISO page formats were included;
+    image scale factor;
+    includes methods to parse and printsome XHTML code, supporting the following elements: h1, h2, h3, h4, h5, h6, b, u, i, a, img, p, br, strong, em, font, blockquote, li, ul, ol, hr, td, th, tr, table, sup, sub, small;
+    includes a method to print various barcode formats using an improved version of "Generic Barcode Render Class" by Karim Mribti (http://www.mribti.com/barcode/) (require GD library: http://www.boutell.com/gd/);
+    defines standard Header() and Footer() methods.
+============================================================+
+
+
+
+---------------------
+ jQuery with plugins
+---------------------
+/*
+ * jQuery 1.1.2 - New Wave Javascript
+ *
+ * Copyright (c) 2007 John Resig (jquery.com)
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * and GPL (GPL-LICENSE.txt) licenses.
+ *
+ * $Date: 2007-02-28 12:03:00 -0500 (Wed, 28 Feb 2007) $
+ * $Rev: 1465 $
+ */
+ 
+ 
+/**
+ * @cat Plugins/Dimensions
+ * @author Brandon Aaron (brandon.aaron@gmail.com || http://brandonaaron.net)
+ */
+ 
+ 
+ /*
+ * Treeview 1.2 - jQuery plugin to hide and show branches of a tree
+ *
+ * Copyright (c) 2006 Jörn Zaefferer, Myles Angell
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Revision: $Id: jquery.treeview.js 1443 2007-02-27 20:08:28Z joern $
+ *
+ */
+ 
+ /*
+ * jqModal - Minimalist Modaling with jQuery
+ *
+ * Copyright (c) 2007 Brice Burgess <bhb@iceburg.net>, http://www.iceburg.net
+ * Licensed under the MIT License:
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * $Version: 2007.02.07 +r6???
+ */
+ 
+ /*
+ * ContextMenu - jQuery plugin for right-click context menus
+ *
+ * Author: Chris Domigan
+ * Contributors: Dan G. Switzer, II
+ * Parts of this plugin are inspired by Joern Zaefferer's Tooltip plugin
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Version: r2
+ * Date: 16 July 2007
+ *
+ * For documentation visit http://www.trendskitchens.co.nz/jquery/contextmenu/
+ *
+ */
+
+/*
+ * jquery.layout 1.2.0
+ *
+ * Copyright (c) 2008 
+ *   Fabrizio Balliano (http://www.fabrizioballiano.net)
+ *   Kevin Dalman (http://allpro.net)
+ *
+ * Dual licensed under the GPL (http://www.gnu.org/licenses/gpl.html)
+ * and MIT (http://www.opensource.org/licenses/mit-license.php) licenses.
+ *
+ * $Date: 2008-12-27 02:17:22 +0100 (sab, 27 dic 2008) $
+ * $Rev: 203 $
+ * 
+ * NOTE: For best code readability, view this with a fixed-space font and tabs equal to 4-chars
+ */
+ 
+/*
+ * Autocomplete - jQuery plugin 1.0.2
+ *
+ * Copyright (c) 2007 Dylan Verheul, Dan G. Switzer, Anjesh Tuladhar, Jörn Zaefferer
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Revision: $Id: jquery.autocomplete.js 5747 2008-06-25 18:30:55Z joern.zaefferer $
+ *
+ */
+ 
+/**
+ * Cookie plugin
+ *
+ * Copyright (c) 2006 Klaus Hartl (stilbuero.de)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */ 
+     
+
+ -----------------------
+  FreeFonts
+ -----------------------
+ from http://download.savannah.gnu.org/releases/freefont/
+ see files 'Authors' and 'Credits' under /config/common/fonts/sfd/
+  
+  
+ ------------------------
+  Cartographic TTF fonts
+ ------------------------
+  taken from http://umn.mapserver.ch
+  Copyright (c) Tydac (CH), www.tydac.ch 
+  
+
+--------------
+ SCALEBAR.JS
+-------------- 
+JavaScript Scalebar for MapServer (scalebar.js)
+
+Copyright (c) 2005 Tim Schaub of CommEn Space (http://www.commenspace.org)
+
+This is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation; either version 2.1 of the License, or (at
+your option) any later version.
+
+This software is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with this software; if not, write to the Free Software Foundation,
+Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+
+----------------
+ proj4js plugin
+----------------
+/*
+Author:       Mike Adair madairATdmsolutions.ca
+              Richard Greenwood rich@greenwoodmap.com
+License:      LGPL as per: http://www.gnu.org/copyleft/lesser.html
+
+$Id: Proj.js 2956 2007-07-09 12:17:52Z steven $
+*/
+
+
+
+  
+  

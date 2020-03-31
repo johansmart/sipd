@@ -1,0 +1,46 @@
+.drawingTable, .drawingTableContent {
+	background-color:#EBEADB;
+	border-color:#FFFFFF #ACA899 #D6D2C2 #FFFFFF;
+	border-style:solid;
+	border-width:1px 2px;
+	color:#003333;
+	font-size:10px;
+	font-weight:bold;
+	text-align:center;
+	text-decoration:none;
+	white-space:normal;
+	width:100%; 
+}
+
+.drawingTable {
+	display:block;
+}		
+
+.drawingTable th, .drawingTableContent th {
+	color:#BD2C31;
+	text-align: center;
+	border-style: solid solid solid solid;
+	border-width: 1px 1px 1px 1px;
+	padding: 3px 1px 4px;
+}
+
+.drawingTable td, .drawingTableContent td {
+	font-family: verdana,arial,helvetica,sans-serif;
+	background-color: #FBFBFB;
+	border-color: #D4D0C8 #D4D0C8 -moz-use-text-color -moz-use-text-color;
+	border-style: solid solid none none;
+	border-width: 1px 1px medium medium;
+	color: #000000;
+	font-size: 10px;
+	padding: 1px 3px 1px 4px;
+	text-align: center;
+}
+
+#seven_color_selecter{
+	z-index: 200; 
+}	
+
+* html #seven_color_selecter iframe {
+	width: 0px;
+	height: 0px;
+}

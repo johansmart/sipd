@@ -1,0 +1,15 @@
+<?php
+if (isset($_REQUEST['config'])) {
+    $config = $_REQUEST['config'];
+    $startFile = "map_" . $config . ".phtml";
+    if (file_exists($startFile)) {
+        $startFile = "$startFile?config=$config";
+    } else {
+        $startFile = "map.phtml?config=$config";
+    }
+} else {
+    $startFile = "map_default.phtml";
+}
+
+header("Location: $startFile");
+?>

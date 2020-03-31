@@ -1,0 +1,17 @@
+
+/* Styles for themesandviews comboboxes */
+
+.tavSelectBox {
+	position: relative;
+	padding-left: 10px;
+}
+
+#showThemesBoxForm, #showViewsBoxForm {
+	float: left;
+}
+
+#showThemesBoxForm select, #showViewsBoxForm select, #selThemesBoxForm select, #selViewsBoxForm select {
+	width: auto;
+	margin: 2px;
+}
+

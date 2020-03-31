@@ -1,0 +1,8 @@
+<?php
+//
+// Add custom functions and rename file to "custom.php"
+// The file will then automatically loaded in "map.phtml"
+//
+
+?>
+

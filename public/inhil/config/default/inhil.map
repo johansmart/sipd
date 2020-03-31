@@ -1,0 +1,1267 @@
+################################################################################################ 
+# Adapt settings in map file <tt>pmapper_demo.map</tt> for the following tags to match settings
+# on your machine (see additionally MapServer documentation for detailed information):
+#
+#  MAP
+#    SHAPEPATH 
+#    FONTSET
+#    SYMBOLSET
+#  
+#  WEB
+#    IMAGEPATH  
+#    IMAGEURL    
+#
+##################################################################################################
+
+#
+# Start of map file  
+#
+MAP
+EXTENT  11399245.08 -126222.12 11536431.14 64409.5
+ 
+UNITS meters
+SIZE 1366 800
+SHAPEPATH "../../../petainhil"
+SYMBOLSET "../common/symbols/symbols-pmapper.sym"   
+FONTSET "../common/fonts/msfontset.txt" 
+RESOLUTION 96
+IMAGETYPE png
+INTERLACE OFF
+PROJECTION
+  "+proj=longlat +datum=WGS84 +no_defs"
+END  
+
+
+
+#
+# Start of web interface definition
+#
+WEB
+  TEMPLATE "map.html"
+  IMAGEPATH "/ms4w/tmp/ms_tmp/"
+  IMAGEURL "/ms_tmp/"
+  METADATA
+    #"MAPFILE_ENCODING" "ISO-8859-1" 
+    #"ows_title"     "WMS Demo Server"  
+    #"ows_onlineresource" "http://wms.yourserver.org?owskey=test&"   
+    #"ows_srs"       "EPSG:3035 EPSG:4326"  
+  END  # Metadata
+END  # Web
+
+#
+# Start of Reference map definition
+#
+REFERENCE
+  EXTENT  11399245.08 -126000.12 11546000 64409.5
+  IMAGE "../../images/inhilref.png"
+  SIZE 230 149
+  COLOR -1 -1 -1
+  OUTLINECOLOR 255 0 0
+END  # Reference
+
+
+#
+# Start of legend object
+#
+LEGEND
+	STATUS OFF
+	IMAGECOLOR 255 255 255
+#	OUTLINECOLOR 0 0 0
+	POSITION ll
+	KEYSIZE 18 8
+	KEYSPACING 10 5 
+	TEMPLATE "void"
+	LABEL
+		TYPE TRUETYPE
+		FONT "FreeSans"
+		SIZE small
+		POSITION AUTO
+		COLOR 0 0 89
+		OUTLINECOLOR 255 255 255
+		ANTIALIAS TRUE
+	END
+END
+
+#
+# Start of ScaleBar definition
+#
+SCALEBAR
+  STATUS off
+  TRANSPARENT off
+  INTERVALS 4
+  SIZE 200 3
+  UNITS kilometers
+  COLOR 0 0 0
+  OUTLINECOLOR 0 0 0
+  BACKGROUNDCOLOR 0 0 0
+  STYLE 0
+  POSTLABELCACHE true
+  LABEL
+    COLOR 0 0 0
+    #OUTLINECOLOR 200 200 200
+    SIZE small
+  END  # Label
+END  # Reference
+
+
+
+# SYMBOLS USED IN PMAPPER
+# - 'circle' always necessary (used e.g. for highlight)
+# - 'square' used in currecnt map file
+# Symbols can also be defined via tag SYMBOLSET (see above)
+Symbol
+  Name 'circle'
+  Type ELLIPSE
+  Filled TRUE
+  Points
+    1 1
+  END
+END 
+
+Symbol
+  Name 'square'
+  Type VECTOR
+  Filled TRUE
+  Points
+    0 1
+    0 0
+    1 0
+    1 1
+    0 1
+  END
+END
+
+
+#================== START OF LAYER SECTION =====================#
+
+#
+# Start of Layer 14040000.shp
+#
+LAYER
+  NAME "administrasi"
+  TYPE Polygon
+  DATA "14040000"
+  CLASSITEM "id"
+  STATUS ON
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Administrasi"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "Nama"
+    "HEADERS" "Kecamatan"
+    "ows_title" "Adminitrasi"
+  END  # Metadata   
+  
+  CLASS
+    NAME "Reteh"
+    EXPRESSION "01"
+    COLOR 174 165 255
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Enok"
+    EXPRESSION "02"
+    COLOR 254 173 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Kuala Indragiri"
+    EXPRESSION "03"
+    COLOR 175 254 175
+    OUTLINECOLOR 0 0 0 
+  END  # C lass
+  CLASS
+    NAME "Tembilahan"
+    EXPRESSION "04"
+    COLOR 254 173 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Tempuling"
+    EXPRESSION "05"
+    COLOR 254 188 135
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Gaung Anak serka"
+    EXPRESSION "06"
+    COLOR 187 0 255
+    OUTLINECOLOR 0 0 0 
+  END  # Class  
+  CLASS
+    NAME "Mandah"
+    EXPRESSION "07"
+    COLOR 254 160 160
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Kateman"
+    EXPRESSION "08"
+    COLOR 125 167 153
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Keritang"
+    EXPRESSION "09"
+    COLOR 237 254 165
+    OUTLINECOLOR 0 0 0 
+  END  # Class  
+  CLASS
+    NAME "Tanah Merah"
+    EXPRESSION "10"
+    COLOR 239 0 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Batang Tuaka"
+    EXPRESSION "11"
+    COLOR 130 255 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Gaung"
+    EXPRESSION "12"
+    COLOR 0 254 118
+    OUTLINECOLOR 0 0 0 
+  END  # Class  
+  CLASS
+    NAME "Tembilahan Hulu"
+    EXPRESSION "13"
+    COLOR 0 254 200
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Kemuning"
+    EXPRESSION "14"
+    COLOR 0 254 177
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Pelangiran"
+    EXPRESSION "15"
+    COLOR 254 114 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class   
+  CLASS
+    NAME "Teluk Belengkong"
+    EXPRESSION "16"
+    COLOR 254 245 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Pulau Burung"
+    EXPRESSION "17"
+    COLOR 146 174 47
+  
+  OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Concong"
+    EXPRESSION "18"
+    COLOR 255 150 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class  
+  CLASS
+    NAME "Kempas"
+    EXPRESSION "19"
+    COLOR 2 194 0
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+  CLASS
+    NAME "Sungai Batang"
+    EXPRESSION "20"
+    COLOR 184 134 11
+    OUTLINECOLOR 0 0 0 
+  END  # Class
+   
+END # layer
+#
+# Start of Layer 14040009.shp
+#
+LAYER
+  NAME "jenistanah"
+  TYPE Polygon
+  DATA "14040009"
+  CLASSITEM "id"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Jenis Tanah"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "Nama"
+    "HEADERS" "Jenis Tanah"
+    "ows_title"      "Jenia Tanah"
+  END  # Metadata  
+  CLASS
+    NAME "Hidraquarts,Sulfaquarts"
+    EXPRESSION "A"
+    COLOR 243 137 139
+    OUTLINECOLOR 243 137 139
+  END  # Class
+  CLASS
+    NAME "Dyetropept,Tropudults,Troperthents"
+    EXPRESSION "B"
+    COLOR 123 254 205
+    OUTLINECOLOR 123 254 205
+
+  END  # Class
+  CLASS
+    NAME "Dyetropepts, Dutropepts,Tropudults"
+    EXPRESSION "C"
+    COLOR 179 176 123
+    OUTLINECOLOR 179 176 123
+
+  END  # Class
+  CLASS
+    NAME "Hydraquarts,Sulfaquarts"
+    EXPRESSION "D"
+    COLOR 73 186 133
+    OUTLINECOLOR 73 186 133
+
+  END  # Class
+  CLASS
+    NAME "Troperquepts,Fluraquerts,Tropohermists"
+    EXPRESSION "F"
+    COLOR 0 219 254
+    OUTLINECOLOR 0 219 254
+
+  END  # Class
+  CLASS
+    NAME "Tropefuvertx,Troperquepts,Fluvaquests"
+    EXPRESSION "H"
+    COLOR 132 127 186
+    OUTLINECOLOR 132 127 186
+
+
+  END  # Class
+  CLASS
+    NAME "Tropeharnets,Troponoests"
+    EXPRESSION "I"
+    COLOR 254 168 105
+    OUTLINECOLOR 254 168 105
+
+  END  # Class
+  CLASS
+    NAME "Tropeharnets,Tropohomests"
+    EXPRESSION "J"
+    COLOR 23 188 196
+    OUTLINECOLOR 23 188 196
+
+
+  END  # Class
+END # layer
+#
+# Start of 14040010.shp
+#
+LAYER
+  NAME "geologi"
+  TYPE polygon
+  DATA "14040010"
+  CLASSITEM "id"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Geologi"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "id,nama,luas,ket"
+    "HEADERS" "Kelas,Nama,Luas,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Geologi"
+  END  # Metadata 
+ 
+  CLASS
+    NAME "Endapan Rawa/Pasir"
+    EXPRESSION "00"
+    COLOR 254 173 0
+    OUTLINECOLOR 254 173 0
+
+
+  END  # Class
+  CLASS
+    NAME "Endapan Danau"
+    EXPRESSION "01"
+    COLOR 165 250 255
+    OUTLINECOLOR 165 250 255
+  END  # Class
+  CLASS
+    NAME "Endapan Aluvium Pantai"
+    EXPRESSION "02"
+    COLOR 0 130 255
+    OUTLINECOLOR 0 130 255
+
+  END  # Class
+  CLASS
+    NAME "Formasi Air Benakit"
+    EXPRESSION "03"
+    COLOR 190 60 255
+    OUTLINECOLOR 190 60 255
+
+  END  # Class
+  CLASS
+    NAME "Fomasi Gangsal"
+    EXPRESSION "04"
+    COLOR 0 254 118
+    OUTLINECOLOR 0 254 118
+
+
+  END  # Class
+  CLASS
+    NAME "Formasi Gumai"
+    EXPRESSION "05"
+    COLOR 254 105 105
+    OUTLINECOLOR 254 105 105
+
+
+  END  # Class
+  CLASS
+    NAME "Formasi Kasal"
+    EXPRESSION "06"
+    COLOR 2 194 0
+    OUTLINECOLOR 2 194 0
+
+
+  END  # Class
+  CLASS
+    NAME "Formasi Kelesa"
+    EXPRESSION "07"
+    COLOR 255 255 0 
+    OUTLINECOLOR 255 255 0 
+
+  END  # Class
+  CLASS
+    NAME "Formasi Lakat"
+    EXPRESSION "09"
+    COLOR 223 239 177
+    OUTLINECOLOR 223 239 177
+
+  END  # Class
+  CLASS
+    NAME "Formasi Mentulu"
+    EXPRESSION "10"
+    COLOR 235 51 163
+    OUTLINECOLOR 235 51 163
+
+
+  END  # Class
+  CLASS
+    NAME "Formasi Muaraenim"
+    EXPRESSION "11"
+    COLOR 254 160 160
+    OUTLINECOLOR 254 160 160
+
+  END  # Class
+  CLASS
+    NAME "Formasi Pengabuhan"
+    EXPRESSION "12"
+    COLOR 254 114 0
+    OUTLINECOLOR 254 114 0
+
+
+  END  # Class
+  CLASS
+    NAME "Formasi Tualang"
+    EXPRESSION "13"
+    COLOR 254 191 0
+    OUTLINECOLOR 254 191 0
+
+
+  END  # Class
+  CLASS
+    NAME "Granit Akar"
+    EXPRESSION "15"
+    COLOR 17 207 255
+    OUTLINECOLOR 17 207 255
+
+
+  END  # Class
+
+
+END  # Layer
+
+#
+# Start of 14040014.shp
+#
+LAYER
+  NAME "penggtanah"
+  TYPE polygon
+  DATA "14040014"
+  CLASSITEM "id"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Penggunaan Lahan"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "id,nama,luas,ket"
+    "HEADERS" "Kelas,Nama,Luas,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Geologi"
+  END  # Metadata 
+ 
+  CLASS
+    NAME "Awan"
+    EXPRESSION "A"
+    COLOR 255 255 255
+    OUTLINECOLOR 0 0 0
+
+  END  # Class
+  CLASS
+    NAME "Belukar Rawa"
+    EXPRESSION "B"
+    COLOR 200 200 200
+    OUTLINECOLOR 200 200 200
+
+
+  END  # Class
+  CLASS
+    NAME "Hutan"
+    EXPRESSION "C"
+    COLOR 2 220 0
+    OUTLINECOLOR 2 220 0
+
+  END  # Class
+  CLASS
+    NAME "Hutan Tanaman"
+    EXPRESSION "D"
+    COLOR 192 255 195
+    OUTLINECOLOR 192 255 195
+
+  END  # Class
+  CLASS
+    NAME "Kelapa"
+    EXPRESSION "E"
+    COLOR 254 188 135
+    OUTLINECOLOR 254 188 135
+
+  END  # Class
+  CLASS
+    NAME "Kelapa Sawit"
+    EXPRESSION "F"
+    COLOR 255 0 255
+    OUTLINECOLOR 255 0 255
+
+
+  END  # Class
+  CLASS
+    NAME "Pemukiman"
+    EXPRESSION "G"
+    COLOR 255 0 0
+    OUTLINECOLOR 255 0 0
+
+
+  END  # Class
+  CLASS
+    NAME "Pertanian"
+    EXPRESSION "I"
+    COLOR 161 102 50
+    OUTLINECOLOR 161 102 50
+
+  END  # Class
+  CLASS
+    NAME "Semak Belukar"
+    EXPRESSION "K"
+    COLOR 187 166 0
+    OUTLINECOLOR 187 166 0
+
+
+  END  # Class
+  CLASS
+    NAME "Sawah"
+    EXPRESSION "L"
+    COLOR 255 255 0
+    OUTLINECOLOR 255 255 0
+
+
+  END  # Class
+  CLASS
+    NAME "Tambak"
+    EXPRESSION "M"
+    COLOR 0 0 255
+    OUTLINECOLOR 0 0 255
+
+  END  # Class
+  CLASS
+    NAME "Tanah Kosong"
+    EXPRESSION "N"
+    COLOR 254 191 0
+    OUTLINECOLOR 254 191 0
+  END  # Class
+END  # Layer
+
+#
+# Start of 14040046.shp
+#
+LAYER
+  NAME "tataruang"
+  TYPE polygon
+  DATA "14040046"
+  CLASSITEM "id"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "RTRW"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "id,nama,luas,ket"
+    "HEADERS" "Kelas,Nama,Luas,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Geologi"
+  END  # Metadata 
+ 
+  CLASS
+    NAME "Taman Nasional"
+    EXPRESSION "A"
+    COLOR 0 255 0
+    OUTLINECOLOR 0 255 0
+  END  # Class
+  CLASS
+    NAME "Penyangga Taman Nasional"
+    EXPRESSION "B"
+    COLOR 183 223 134
+    OUTLINECOLOR 183 223 134
+  END  # Class
+  CLASS
+    NAME "Hutan Produksi Tetap"
+    EXPRESSION "C"
+    COLOR 250 195 255
+    OUTLINECOLOR 250 195 255
+
+  END  # Class
+  CLASS
+    NAME "Tanaman Pangan Lahan Kering"
+    EXPRESSION "D"
+    COLOR 255 191 0
+    OUTLINECOLOR 255 191 0
+  END  # Class
+  CLASS
+    NAME "Tanaman Pangan Lahan Basah"
+    EXPRESSION "E"
+    COLOR 0 255 255
+    OUTLINECOLOR 210 210 210
+
+  END  # Class
+  CLASS
+    NAME "Perkebunan Rakyat"
+    EXPRESSION "F"
+    COLOR 146 174 47
+    OUTLINECOLOR 146 174 47
+  END  # Class
+  CLASS
+    NAME "Perkebunan Tanaman Tahunan Swasta"
+    EXPRESSION "G"
+    COLOR 255 255 0
+    OUTLINECOLOR 255 255 0
+  END  # Class
+  CLASS
+    NAME "Tambak"
+    EXPRESSION "K"
+    COLOR 0 0 255
+    OUTLINECOLOR 0 0 255
+  END  # Class
+  CLASS
+    NAME "Hutan Produksi Terbatas"
+    EXPRESSION "I"
+    COLOR 255 0 255
+    OUTLINECOLOR 255 0 255
+  END  # Class
+  CLASS
+    NAME "Pemukiman"
+    EXPRESSION "K"
+    COLOR 255 0 0
+    OUTLINECOLOR 255 0 0
+  END  # Class
+  CLASS
+    NAME "Kawasan Industri"
+    EXPRESSION "L"
+    COLOR 210 210 210
+    OUTLINECOLOR 210 210 210
+
+  END  # Class
+  CLASS
+    NAME "Hutan Lindung"
+    EXPRESSION "M"
+    COLOR 1 130 0
+    OUTLINECOLOR 1 130 0
+  END  # Class
+  CLASS
+    NAME "Hutan Rakyat"
+    EXPRESSION "N"
+    COLOR 255 165 165
+    OUTLINECOLOR 255 165 165
+  END  # Class
+
+END  # Layer
+
+#
+# Start of 14040012.shp
+#
+LAYER
+  NAME "sungai"
+  TYPE line
+  DATA "14040012"
+  CLASSITEM "id"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Sungai"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    #"FIELDS" "id,nama,luas,ket"
+    #"HEADERS" "Kelas,Nama,Luas,Ket"
+    #"HYPERLINK" "nama||Informasi"
+    "ows_title"      "Sungai"
+  END  # Metadata 
+ 
+  CLASS
+    NAME "Sungai"
+    EXPRESSION "A"
+    COLOR 57 125 250
+    OUTLINECOLOR 57 125 250
+
+  END  # Class
+  END #Layer
+
+
+#
+# Start of 14040026.shp
+#
+LAYER
+  NAME "jalan"
+  TYPE line
+  DATA "14040026"
+  CLASSITEM "fkelas"
+  TRANSPARENCY 100
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Jalan"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    #"FIELDS" "Fkelas,nama,ket"
+    #"HEADERS" "Kelas,Nama,Ket"
+    #"HYPERLINK" "nama||Informasi"
+    "ows_title"      "Jalan"
+  END  # Metadata 
+ 
+  CLASS
+    NAME "Jalan Negara"
+    EXPRESSION "A"
+    COLOR 255 0 0
+    OUTLINECOLOR 255 0 0
+  END  # Class
+  CLASS
+    NAME "Jalan Provinsi"
+    EXPRESSION "B"
+    COLOR 0 196 0
+    OUTLINECOLOR 0 196 0
+  END  # Class
+  CLASS
+    NAME "Jalan Kabupaten"
+    EXPRESSION "C"
+    COLOR 121 121 121
+    OUTLINECOLOR 121 121 121
+
+  END  # Class
+
+
+  END #Layer
+
+
+
+
+#
+# Start of 14040035.shp
+#
+LAYER
+  NAME "pendidikan"
+  TYPE polygon
+  DATA "14040035"
+  TRANSPARENCY 100
+  CLASSITEM "fkelas"
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Sarana Pendidikan"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "id,nama,luas,ket"
+    "HEADERS" "Kelas,Nama,Luas,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Sarana Pendidikan"
+  END  # Metadata 
+  LABELITEM 'jumlah' 
+CLASS 
+    NAME 'Raudatul Athfal' 
+    EXPRESSION "A" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 206 47 202
+    COLOR 206 47 202
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+ 
+CLASS 
+    NAME 'Sekolah Dasar' 
+    EXPRESSION "B" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 255 0 0 
+    COLOR 255 0 0 
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+CLASS 
+    NAME 'Madrasah Ibtidaiyah' 
+    EXPRESSION "C" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 255 105 40
+    COLOR 255 105 40
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+ 
+CLASS 
+    NAME 'Sekolah Menengah Pertama' 
+    EXPRESSION "D" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 0 0 255 
+    COLOR 0 0 255 
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+CLASS 
+    NAME 'Madrasah Tsanawiyah' 
+    EXPRESSION "E" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 0 102 255 
+    COLOR 0 102 255 
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+
+CLASS 
+    NAME 'Sekolah Menengah Atas' 
+    EXPRESSION "F" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 121 121 121 
+    COLOR 121 121 121 
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+CLASS 
+    NAME 'Sekolah Menengah Kejuruan' 
+    EXPRESSION "G" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 21 1 133
+    COLOR 21 1 133 
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+CLASS 
+    NAME 'Madrasah Aliayah'
+    EXPRESSION "H" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 0 190 0
+    COLOR 0 190 0
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+CLASS 
+    NAME 'Madrasah Diniyah'
+    EXPRESSION "I" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 169 233 105
+    COLOR 169 233 105
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+CLASS 
+    NAME 'Akademi/Univ/PT'
+    EXPRESSION "J" 
+    STYLE 
+    WIDTH 0.21 
+    OUTLINECOLOR 0 0 0
+    COLOR 255 255 0
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END 
+
+ END  # Layer
+#
+# Start of 14040036.shp
+#
+LAYER
+  NAME "kesehatan"
+  TYPE polygon
+  DATA "14040036"
+  TRANSPARENCY 100
+  CLASSITEM "fkelas"
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Sarana Kesehatan"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "id,nama,luas,ket"
+    "HEADERS" "Kelas,Nama,Luas,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Sarana Kesehatan"
+  END  # Metadata 
+  CLASS 
+    NAME 'Rumah Sakit Umum' 
+    EXPRESSION "A" 
+    COLOR 255 0 0 
+    OUTLINECOLOR 255 0 0 
+   
+ END 
+ CLASS 
+    NAME 'Puskesmas' 
+    EXPRESSION "B" 
+    COLOR 0 255 0 
+    OUTLINECOLOR 0 255 0 
+    
+ END 
+ CLASS 
+    NAME 'Puskesmas Pembantu' 
+    EXPRESSION "C"
+    COLOR 0 0 255 
+    OUTLINECOLOR 0 0 255
+    
+ END
+END #LAYER
+
+#
+# Start of 14040037.shp
+#
+LAYER
+  NAME "ibadah"
+  TYPE polygon
+  DATA "14040037"
+  TRANSPARENCY 100
+  CLASSITEM "fkelas"
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Sarana Ibadah"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "fkelas,fnama,fjumlah,kecamatan"
+    "HEADERS" "Kelas,Nama,Jumalah,Kecamatan"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Sarana Ibadah"
+  END  # Metadata 
+  LABELITEM 'fjumlah' 
+  CLASS 
+    NAME 'Masjid' 
+    EXPRESSION "A" 
+    STYLE 
+    WIDTH 0.21 
+    COLOR 0 255 0 
+    OUTLINECOLOR 0 0 0
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ CLASS 
+    NAME 'Surau' 
+    EXPRESSION "B" 
+    STYLE 
+    WIDTH 0.21 
+    COLOR 0 200 0 
+    OUTLINECOLOR 0 0 0 
+    
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ CLASS 
+    NAME 'Mushola'
+    EXPRESSION "C"
+    STYLE 
+    WIDTH 0.21 
+    COLOR 0 125 0 
+    OUTLINECOLOR 0 0 0
+    
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ LABELITEM 'fjumlah'
+ CLASS 
+    NAME 'Gereja'
+    EXPRESSION "D"
+    STYLE 
+    WIDTH 0.21 
+    COLOR 206 47 202 
+    OUTLINECOLOR 206 47 202
+    
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ CLASS 
+    NAME 'Vihara'
+    EXPRESSION "E"
+    STYLE 
+    WIDTH 0.21 
+    COLOR 233 0 128 
+    OUTLINECOLOR 233 0 128 
+    
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION uc
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ END #layer
+#
+# Start of 14040098.shp
+#
+LAYER
+  NAME "ibukota"
+  TYPE polygon
+  DATA "14040098"
+  TRANSPARENCY 100
+  CLASSITEM "kelas"
+  TEMPLATE void
+  PROJECTION
+    #"init=EPSG:4326"
+    "+proj=longlat +datum=WGS84 +no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Ibukota"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "FIELDS" "kelas,nama,ket"
+    "HEADERS" "Kelas,Nama,Ket"
+    "HYPERLINK" "nama||Informasi"
+    "ows_title"      "Ibukota"
+  END  # Metadata 
+  LABELITEM 'nama' 
+  CLASS 
+    NAME 'Kecamatan' 
+    EXPRESSION "A" 
+    STYLE 
+    WIDTH 0.21 
+    COLOR 200 200 0 
+    OUTLINECOLOR 0 0 0
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION lr
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+ CLASS 
+    NAME 'Kabupaten' 
+    EXPRESSION "B" 
+    STYLE 
+    WIDTH 0.21 
+    COLOR 255 0 0 
+    OUTLINECOLOR 0 0 0 
+    
+ END 
+ LABEL 
+    FONT FreeSans 
+    TYPE truetype 
+    SIZE 6 
+    COLOR 0 0 0 
+    ANGLE 0 
+    POSITION lr
+    FORCE true 
+    ANTIALIAS true 
+    PARTIALS true 
+ END
+ END
+
+ END # layer
+
+
+END  #Map
+

@@ -1,0 +1,119 @@
+// ------------------------------------------------------------------
+// Examples for js ClientDynamicLayers calls
+// ------------------------------------------------------------------
+
+
+// ------------------------------------------------------------------
+// layers definition:
+// ------------------------------------------------------------------
+
+// use template mapfile layer definition:
+var test_def1 = '{"type":"tplMapFile", "tplname": "testjsonpoint", "layername": "testpoints", "category": "cat_test"}';
+var test_def2 = '{"type":"tplMapFile", "tplname": "testjsonpolygon", "layername": "testpolygons", "category": "cat_test"}';
+
+// use json complete definition
+var test_def4 = '{\
+	"type":"json",\
+	"layername":"test4",\
+	"jsondef":{\
+		"name":"test4",\
+		"type":2,\
+	    "template":"void",\
+	    "METADATA": {\
+	        "CATEGORY":"cat_admin"\
+	     },\
+	     "classes": [\
+	         {\
+		    	 "class":{\
+			        "style":  {\
+			            "size":10,\
+			            "color": [0, 255, 0],\
+			            "outlinecolor": [0, 0, 0]\
+			        }\
+		    	}\
+			}\
+		]\
+	}\
+}';
+
+// ------------------------------------------------------------------
+// data definition:
+// ------------------------------------------------------------------
+
+// point:
+var test_data1 = '{"type": "FeatureCollection","features": [{"type": "Feature","geometry": {"type":"Point","coordinates": [3800000,2500000]},"properties": {"prop0": "value0","prop1": "value1"}}]}';
+
+// polygon:
+var test_data2 = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"Indice":0,"prop1":"value1"},"geometry":{"type":"MultiPolygon","coordinates":[[[[4765721.428894814,2563975.3939336273],[4595604.056187894,2432375.9113352336],[4765721.428894814,2436621.0559351817],[4463763.092340031,2313511.862536684],[4765721.428894814,2305021.573336788],[4314910.391221476,2063048.3311397412],[4765721.428894814,2029087.1743401557],[4765721.428894814,1872016.8241420728],[4876297.721154313,1872016.8241420728],[4876297.721154313,2046067.7527399485],[5225038.335203499,2041822.6081400001],[4893309.458425004,2300776.4287368394],[5067679.7654495975,2292286.1395369433],[4880550.655471985,2445111.345135078],[5020897.487955194,2432375.9113352336],[4812503.706389218,2593691.4061332643],[4765721.428894814,2563975.3939336273]]]]}}]}';
+
+// empty polygon:
+var test_data3 = '{"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"MultiPolygon","coordinates":[]}}]}';
+
+// polygon:
+var test_data4 = '{\
+	"type": "FeatureCollection",\
+	"features": [\
+		{\
+			"type": "Feature", \
+			"properties": {\
+				"NAME": "TEST",\
+				"ISO2_CODE": "AD",\
+				"ISO3_CODE": "AND",\
+				"ISO_NUM": 20,\
+				"FIPS_CODE": "AN",\
+				"CAPITAL": "Andorra la Vella",\
+				"POPULATION": 70549, \
+				"AREA_KM2": 468 \
+			}, \
+			"geometry": {\
+				"type": "MultiPolygon", \
+				"coordinates": [\
+	                [[[ 19.501152, 40.962296 ],[ 16.000000, 48.777752 ],[ 1.439922, 42.606491 ],[ 19.501152, 40.962296 ]]],\
+					[[[ -3.116282, 47.322750 ],[ 1.464373, 42.516933 ],[ 19.501152, 40.962296 ],[ -3.116282, 47.322750 ]]] \
+				]\
+			}\
+		}\
+	]\
+}'; 
+
+// ------------------------------------------------------------------
+// complete layer (definition + data)
+// ------------------------------------------------------------------
+
+// template mapfile layer definition, GeoJson point data:
+var test_layer1 = '[{"def": ' + test_def1 + ', "datatype": "GeoJson", "data": ' + test_data1 + '}]';
+
+// template mapfile layer definition, GeoJson polygon data:
+var test_layer2 = '[{"def": ' + test_def2 + ', "datatype": "GeoJson", "data": ' + test_data2 + '}]';
+
+// template mapfile layers definition, GeoJson point and polygon data:
+var test_layers = '[{"def": ' + test_def1 + ', "datatype": "GeoJson", "data": ' + test_data1 + '},{"def": ' + test_def2 + ', "datatype": "GeoJson", "data": ' + test_data2 + '}]';
+
+// template mapfile layer definition, GeoJson point empty data:
+var test_layer3 = '[{"def": ' + test_def2 + ', "datatype": "GeoJson", "data": ' + test_data3 + '}]';
+
+// complete json layer definition, GeoJson polygon data:
+var test_layer4 = '[{"def": ' + test_def4 + ', "datatype": "GeoJson", "data": ' + test_data4 + '}]';
+
+
+// ------------------------------------------------------------------
+// test commands
+// ------------------------------------------------------------------
+
+// add point layer:
+PM.Map.ClientDynamicLayers.addOrReplaceLayers(test_layer1);
+
+// add polygon layer:
+PM.Map.ClientDynamicLayers.addOrReplaceLayers(test_layer2);
+
+// add polygon layer:
+PM.Map.ClientDynamicLayers.addOrReplaceLayers(test_layer4);
+
+// replace point layer and remove polygon layer (replace it with its empty data, so remove it):
+PM.Map.ClientDynamicLayers.addOrReplaceLayers(test_layer3);
+
+// add polygon layer, remove others:
+PM.Map.ClientDynamicLayers.addOrReplaceLayers(test_layer2);
+
+// remove polygon layer:
+PM.Map.ClientDynamicLayers.removeLayers(test_layer2);

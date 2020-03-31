@@ -1,0 +1,194 @@
+<pmapper>
+    <ini>
+        <pmapper>
+            <pmTitle>BAPPEDA INHIL</pmTitle>
+            <pmHeading>BAPPEDA Kabupaten Indragiri Hilir</pmHeading>
+            <debugLevel>3</debugLevel>
+            <plugins>export</plugins>
+            <plugins>scalebar</plugins>
+            <plugins>transparency</plugins>
+            
+        </pmapper>
+        <config>
+            <pm_config_location>default</pm_config_location>
+            <pm_javascript_location>javascript</pm_javascript_location>
+            <pm_print_configfile>common/print.xml</pm_print_configfile>
+            <pm_search_configfile>inline</pm_search_configfile>
+        </config>
+        <map>
+            <mapFile>inhil.map</mapFile>
+            <tplMapFile>common/template.map</tplMapFile>
+            <categories>
+                <category name="Tema Peta">
+                    <group>administrasi</group>
+                    <group>jenistanah</group>
+                    <group>geologi</group>
+                    <group>penggtanah</group>
+                    <group>tataruang</group>
+                    <group>sungai</group>
+                    <group>jalan</group>
+                    <group>pendidikan</group>
+                    <group>kesehatan</group>
+                    <group>ibadah</group>
+                    <group>ibukota</group>
+                </category>
+            </categories>
+            <allGroups>
+                     <group>administrasi</group>
+                    <group>jenistanah</group>
+                    <group>geologi</group>
+                    <group>penggtanah</group>
+                    <group>tataruang</group>
+                    <group>sungai</group>
+                    <group>jalan</group>
+                    <group>pendidikan</group>
+                    <group>kesehatan</group>
+                    <group>ibadah</group>
+                    <group>ibukota</group>
+
+            </allGroups>
+            <defGroups>
+                    <group>administrasi</group>
+                    <group>jenistanah</group>
+                    <group>geologi</group>
+                    <group>penggtanah</group>
+                    <group>tataruang</group>
+                    <group>sungai</group>
+                    <group>jalan</group>
+                    <group>pendidikan</group>
+                    <group>kesehatan</group> 
+                    <group>ibadah</group>
+                    <group>ibukota</group>
+
+            </defGroups>
+            <layerAutoRefresh>1</layerAutoRefresh>
+            <imgFormat>png8</imgFormat>
+            <altImgFormat>jpeg</altImgFormat>
+            <!--
+            <altImgFormatLayers>
+                <layer>jpl_wms_global_mosaic</layer>
+                <layer>dem</layer>
+            </altImgFormatLayers>
+            -->
+            <sliderMax>max</sliderMax>
+            <sliderMin>100000</sliderMin>
+        </map>
+        <query>
+            <limitResult>300</limitResult>
+            <highlightColor>0 255 255</highlightColor>
+            <highlightSelected>1</highlightSelected>
+            <autoZoom>nquery</autoZoom>
+            <autoZoom>search</autoZoom>
+            <zoomAll>search</zoomAll>
+            <zoomAll>nquery</zoomAll>
+            <infoWin>dynwin</infoWin>
+            <alignQueryResults>1</alignQueryResults>
+            <pointBuffer>10000</pointBuffer>
+            <shapeQueryBuffer>0.02</shapeQueryBuffer>
+        </query>
+        <ui>
+            <tocStyle>tree</tocStyle>
+            <legendStyle>attached</legendStyle>
+            <useCategories>1</useCategories>
+            <catWithCheckbox>1</catWithCheckbox>
+            <scaleLayers>1</scaleLayers>
+            <icoW>18</icoW>
+            <icoH>14</icoH> 
+			<legendKeyimageRewrite>0</legendKeyimageRewrite>
+        </ui>
+        <locale>
+            <defaultLanguage>en</defaultLanguage>
+            <defaultCharset>UTF-8</defaultCharset>
+            <map2unicode>1</map2unicode>
+        </locale>
+        <print>
+            <printImgFormat>png</printImgFormat>
+            <printAltImgFormat>jpeg</printAltImgFormat>
+            <pdfres>2</pdfres>
+        </print>
+        <download>
+            <dpiLevels>150</dpiLevels>
+            <dpiLevels>200</dpiLevels>
+            <dpiLevels>300</dpiLevels>
+        </download>
+        <php>
+            <pearDbClass>MDB2</pearDbClass>
+            <defaultTimeZone>Europe/Vienna</defaultTimeZone>
+        </php>
+        <pluginsConfig>
+            <export>
+                <formats>XLS</formats>
+                <formats>CSV</formats>
+                <formats>PDF</formats>
+            </export>
+        </pluginsConfig>
+    </ini>
+    
+    
+    
+    <searchlist version="1.0">
+        <dataroot>$</dataroot>
+        <searchitem name="kecamatan" description="Kecamatan">
+            <layer type="shape" name="14040000">
+                <field type="s" name="NAMA" description="Kecamatan"  wildcard="0" />
+            </layer>
+        </searchitem>
+            <searchitem name="jtanah" description="Jenis Tanah">
+            <layer type="shape" name="14040009">
+                <field type="s" name="NAMA" description="Jenis Tanah"  wildcard="0" />
+            </layer>
+        </searchitem>
+            <searchitem name="geologi" description="Geologi">
+            <layer type="shape" name="14040010">
+                <field type="s" name="NAMA" description="Geologi"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="plahan" description="Penggunaan Lahan">
+            <layer type="shape" name="14040014">
+                <field type="s" name="NAMA" description="Penggunaan Lahan"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="rtrw" description="Tata Ruang">
+            <layer type="shape" name="14040046">
+                <field type="s" name="NAMA" description="Tata Ruang"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="sungai" description="Sungai">
+            <layer type="shape" name="14040012">
+                <field type="s" name="NAMA" description="Sungai"  wildcard="0" />
+            </layer>
+
+        </searchitem>
+        <searchitem name="jalan" description="Jalan">
+            <layer type="shape" name="14040026">
+                <field type="s" name="NAMA" description="Jalan"  wildcard="0" />
+            </layer>
+
+        </searchitem>
+
+        <searchitem name="sardik" description="Sarana Pendidikan">
+            <layer type="shape" name="14040035">
+                <field type="s" name="NAMA" description="Sarana Pendidikan"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="sarkes" description="Sarana Kesehatan">
+            <layer type="shape" name="14040036">
+                <field type="s" name="NAMA" description="Sarana Kesehatan"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="ibadah" description="Sarana Ibadah">
+            <layer type="shape" name="14040037">
+                <field type="s" name="NAMA" description="Sarana Ibadah"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+        <searchitem name="ibukota" description="Ibukota">
+            <layer type="shape" name="14040098">
+                <field type="s" name="NAMA" description="Ibukota"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+    </searchlist>
+    
+    
+</pmapper>

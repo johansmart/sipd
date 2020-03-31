@@ -1,0 +1,188 @@
+LAYER
+  TYPE Raster
+  TEMPLATE "void"
+  TOLERANCE 0
+  TOLERANCEUNITS pixels 
+  METADATA
+    "RESULT_FIELDS" "x,y,class,value_0"
+    "RESULT_HEADERS" "X,Y,CLASS,VALUE" 
+  END
+
+  CLASS
+    EXPRESSION ([pixel] <= 11)
+    NAME 'Urban and industrial fabric'
+    COLOR 230 0 30
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 12)
+    NAME 'Non-irrigated arable land'
+    COLOR 255 255 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 13)
+    NAME 'Permanently irrigated land'
+    COLOR 255 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 14)
+    NAME 'Rice fields'
+    COLOR 230 230 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 15)
+    NAME 'Vineyards'
+    COLOR 230 128 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 16)
+    NAME 'Fruit trees and berry plantations'
+    COLOR 242 166 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 17)
+    NAME 'Olive groves'
+    COLOR 230 166 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 18)
+    NAME 'Pastures'
+    COLOR 230 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 19)
+    NAME 'Annual crops associated with permanent crops'
+    COLOR 255 230 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 20)
+    NAME 'Complex cultivation patterns'
+    COLOR 255 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 21)
+    NAME 'Agriculture, with natural vegetation'
+    COLOR 230 204 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 22)
+    NAME 'Agro-forestry areas'
+    COLOR 242 204 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 23)
+    NAME 'Broad-leaved forest'
+    COLOR 128 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 24)
+    NAME 'Coniferous forest'
+    COLOR 0 166 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 25)
+    NAME 'Mixed forest'
+    COLOR 77 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 26)
+    NAME 'Natural grassland'
+    COLOR 204 242 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 27)
+    NAME 'Moors and heathland'
+    COLOR 166 255 128
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 28)
+    NAME 'Sclerophyllous vegetation'
+    COLOR 166 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 29)
+    NAME 'Transitional woodland-shrub'
+    COLOR 166 242 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 30)
+    NAME 'Beaches, dunes, and sand plains'
+    COLOR 230 230 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 31)
+    NAME 'Bare rock'
+    COLOR 204 204 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 32)
+    NAME 'Sparsely vegetated areas'
+    COLOR 204 255 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 33)
+    NAME 'Burnt areas'
+    COLOR 0 0 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 34)
+    NAME 'Glaciers and perpetual snow'
+    COLOR 166 230 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 35)
+    NAME 'Inland marshes'
+    COLOR 166 166 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 36)
+    NAME 'Peatbogs'
+    COLOR 160 120 230 #77 77 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 37)
+    NAME 'Salt-marshes'
+    COLOR 204 204 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 38)
+    NAME 'Salines'
+    COLOR 230 230 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 39)
+    NAME 'Intertidal flats'
+    COLOR 166 166 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 40 or [pixel] = 41)
+    NAME 'Water bodies'
+    COLOR 0 204 242
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 42)
+    NAME 'Coastal lagoons'
+    COLOR 0 255 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 43)
+    NAME 'Estuaries'
+    COLOR 166 255 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 44)
+    NAME 'Sea and ocean'
+    COLOR 230 242 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 49)
+    NAME 'No Data'
+    COLOR 220 220 220
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 50)
+    NAME 'Sea and ocean'
+    COLOR 80 140 210 #60 120 200
+  END # Class
+ 
+
+END

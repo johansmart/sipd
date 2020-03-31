@@ -1,0 +1,208 @@
+<?php
+
+/******************************************************************************
+ *
+ * Purpose: Query Editor plugin
+ * Author:  Thomas Raffin, SIRAP
+ *
+ ******************************************************************************
+ *
+ * Copyright (c) 2008 SIRAP
+ *
+ * This is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version. See the COPYING file.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with p.mapper; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ ******************************************************************************/
+// prevent XSS
+if (isset($_REQUEST['_SESSION'])) exit();
+
+require_once("../../incphp/group.php");
+require_once('../../incphp/pmsession.php');
+
+if (!isset($_SESSION['queryeditor_activated']) || !$_SESSION['queryeditor_activated']) {
+	exit();
+}
+
+require_once($_SESSION['PM_INCPHP'] . "/common.php");
+require_once($_SESSION['PM_INCPHP'] . "/globals.php");
+require_once($_SESSION['PM_PLUGIN_REALPATH'] . "/common/easyincludes.php");
+
+require_once(dirname(__FILE__) . "/queryeditor.php");
+
+header("Content-type: text/html; charset=$defCharset");
+
+$groups = queryeditorGetGroups($map);
+if (count($groups) == 0) {
+	die(_p("Query editor plugin not activated"));
+	exit();
+}
+//echo "count groups = " . count($groups) . "<br />";
+
+?>
+<html>
+<head>
+<title><?php echo (_p("Query editor")) ?></title>
+<?php
+	$urlReqDir = getURLReqDir();
+	$pmDir = getPMDir("queryeditor");
+
+// "addjsandcss" mean the the result page will be opened in a new window.
+// That's mean we have to add jQuery and css files.
+	if (isset($_REQUEST['addjsandcss']) && $_REQUEST['addjsandcss']) {
+		$jsReference = getJSFiles($pmDir);
+		$jsReference .= "<script type=\"text/javascript\" src=\"" . $urlReqDir . "queryeditor.js\"></script>\n";
+
+		if (strlen($jsReference) > 0) {
+			echo $jsReference;
+		}
+	
+		$css = getCSSReference($pmDir);
+
+		$css .= "<link rel=\"stylesheet\" href=\"" . $urlReqDir . "../common/commonforms.css\" type=\"text/css\" />\n";
+// custom CSS for this window:
+		$css .= "<link rel=\"stylesheet\" href=\"" . $urlReqDir . "queryeditor.css\" type=\"text/css\" />\n";
+		if (strlen($css) > 0 ) {
+			echo $css;
+		}
+	} else {
+		echo ("<script type=\"text/javascript\">\n");
+		echo "var qeDirUrl = '" . $urlReqDir . "';\n";
+		echo ("</script>\n");
+	}
+?>
+</head>
+<body>
+<?php
+		$strTmp = "";
+		$strTmp .= "var SID = '" . SID . "';\n"; 
+		$strTmp .= "var qeDirUrl = '" . $urlReqDir . "';\n";
+	
+		if ($strTmp) {
+			echo ("<script type=\"text/javascript\">\n");
+			echo $strTmp;
+			echo ("</script>\n");
+		}
+?>
+<div id="queryeditor-main">
+	<form action="" target="_blank" id="queryeditor-form" class="commonform" method="get">
+		<fieldset id="queryeditor-layer">
+			<legend><?php echo (_p("Spatial datas")) ?></legend>
+			<ol>
+				<li class="lastli">
+					<label for="queryeditor-layerName"><?php echo (_p("Layer name"))?></label>
+					<select id="queryeditor-layerName" name="queryeditor-layerName" onchange="javascript:PM.Plugin.QueryEditor.setLayerName()">
+						<option value="#" />
+<?php
+foreach ($groups as $grpName => $grpDescription) {
+echo 
+("						<option value=\"$grpName\" label=\"$grpDescription\" >$grpDescription</option>
+");
+}
+?>
+					</select>
+				</li>
+			</ol>
+		</fieldset>
+
+		<fieldset id="queryeditor-attribute">
+			<legend><?php echo (_p("Attribute")) ?></legend>
+			<ol>
+				<li>
+					<label for="queryeditor-attributeName"><?php echo (_p("Name"))?></label>
+					<select id="queryeditor-attributeName" name="queryeditor-attributeName" onchange="javascript:PM.Plugin.QueryEditor.setAttributeName()"></select>
+				</li>
+				<li>
+					<label for="queryeditor-attributeType"><?php echo (_p("Type"))?></label>
+					<select id="queryeditor-attributeType" name="queryeditor-attributeType" onchange="javascript:PM.Plugin.QueryEditor.setAttributeType()">
+						<option label="" value="#" selected="selected" />
+						<option label="<?php echo (_p("Text"))?>" value="S"><?php echo (_p("Text"))?></option>
+						<option label="<?php echo (_p("Numeric")) ?>" value="N"><?php echo (_p("Numeric")) ?></option>
+					</select>
+				</li>
+				<li>
+					<label for="queryeditor-attributeCriteriaComparisonNone"><?php echo (_p("Comparison"))?></label>
+					<select id="queryeditor-attributeCriteriaComparisonNone" name="queryeditor-attributeCriteriaComparisonNone" disabled="disabled">
+						<option label="" value="#" />
+					</select>
+				</li>
+				<li class="queryeditor-attributeCriteriaComparison">
+					<label for="queryeditor-attributeCriteriaComparisonNum"><?php echo (_p("Comparison"))?></label>
+					<select id="queryeditor-attributeCriteriaComparisonNum" name="queryeditor-attributeCriteriaComparisonNum">
+						<option label="" value="#"></option>
+						<option label="=" value="equal">=</option>
+						<option label="&lt;=" value="inferiororequal">&lt;=</option>
+						<option label="&gt;=" value="superiororequal">&gt;=</option>
+						<option label="&lt;" value="strictlyinferior">&lt;</option>
+						<option label="&gt;" value="strictlysuperior">&gt;</option>
+						<option label="&ne;" value="different">&ne;</option>
+					</select>
+				</li>
+				<li class="queryeditor-attributeCriteriaComparison">
+					<label for="queryeditor-attributeCriteriaComparisonTxt"><?php echo (_p("Comparison"))?></label>
+					<select id="queryeditor-attributeCriteriaComparisonTxt" name="queryeditor-attributeCriteriaComparisonTxt">
+						<option label="" value="#"></option>
+						<option label="<?php echo (_p("equal")) ?>" value="equal"><?php echo (_p("equal")) ?></option>
+						<option label="<?php echo (_p("different")) ?>" value="different"><?php echo (_p("different")) ?></option>
+						<option label="<?php echo (_p("contains")) ?>" value="contain"><?php echo (_p("contains")) ?></option>
+						<option label="<?php echo (_p("doesnot contain")) ?>" value="notcontain"><?php echo (_p("doesnot contain")) ?></option>
+						<option label="<?php echo (_p("start with")) ?>" value="startwith"><?php echo (_p("start with")) ?></option>
+						<option label="<?php echo (_p("end with")) ?>" value="endwith"><?php echo (_p("end with")) ?></option>
+					</select>
+					<input id="queryeditor-attributeCriteriaComparisonTxtCS" type="checkbox" value="queryeditor-attributeCriteriaComparisonTxtCS" name="queryeditor-attributeCriteriaComparisonTxtCS" checked="checked" />
+					<label for="queryeditor-attributeCriteriaComparisonTxtCS"><?php echo (_p("case sensitive"))?></label>
+				</li>
+				<li class="lastli">
+					<label for="queryeditor-attributeValue"><?php echo (_p("Value")) ?></label>
+					<input type="text" id="queryeditor-attributeValue" name="queryeditor-attributeValue" onkeypress="return PM.Plugin.QueryEditor.attributeValueKeyPress(event)" onkeyup="javascript:PM.Plugin.QueryEditor.changeAttributeValue()" />
+					<input id="queryeditor-attributeBtnAdd" class="queryeditor-btn" type="button"  value="<?php echo (_p("Add")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setAttributeValue()" />
+				</li>
+			</ol>
+		</fieldset>
+
+		<fieldset id="queryeditor-OperatorGroup">
+			<legend><?php echo (_p("Operator")) ?></legend>
+			<ol>
+				<li id="queryeditor-OperatorGroup1">
+					<input id="queryeditor-OperatorBtnOpenBracket" class="queryeditor-btn queryeditor-btnOperator" type="button"  value="<?php echo (_p("(")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setOperator(this.id)" />
+					<input id="queryeditor-OperatorBtnCloseBracket" class="queryeditor-btn queryeditor-btnOperator" type="button"  value="<?php echo (_p(")")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setOperator(this.id)" />
+					<input id="queryeditor-OperatorBtnNot" class="queryeditor-btn queryeditor-btnOperator" type="button"  value="<?php echo (_p("NOT")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setOperator(this.id)" />
+				</li>
+				<li id="queryeditor-operatorGroup2" class="lastli">
+					<input id="queryeditor-operatorBtnAnd" class="queryeditor-btn queryeditor-btnOperator" type="button"  value="<?php echo (_p("AND")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setOperator(this.id)" />
+					<input id="queryeditor-operatorBtnOr" class="queryeditor-btn queryeditor-btnOperator" type="button"  value="<?php echo (_p("OR")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.setOperator(this.id)" />
+				</li>
+			</ol>
+		</fieldset>
+					
+
+		<fieldset id="queryeditor-request">
+			<legend><?php echo (_p("Generated query")) ?></legend>
+			<ol>
+				<li>
+					<textarea id="queryeditor-generatedQuery" name="queryeditor-generatedQuery" rows="5" cols="35" onkeyup="javascript:PM.Plugin.QueryEditor.queryHasBeenUpdated()"></textarea>
+				</li>
+				<li class="lastli">
+					<input id="queryeditor-btnReset" class="queryeditor-btn" type="button"  value="<?php echo (_p("Reset")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.reset()" />
+					<input id="queryeditor-btnApply"  class="queryeditor-btn" type="button"  value="<?php echo (_p("Apply")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.apply()" />
+					<input id="queryeditor-btnCancel"  class="queryeditor-btn" type="button"  value="<?php echo (_p("Cancel")) ?>"  onclick="javascript:PM.Plugin.QueryEditor.cancel()" />
+				</li>
+			</ol>
+		</fieldset>
+		
+		<input type="hidden" name="<?php echo ini_get("session.name") ?>" value="<?php session_id() ?>" />
+    	<input type="hidden" name="config" value="<?php echo $_SESSION['config'] ?>" />
+	</form>
+</div>
+</body>
+</html>

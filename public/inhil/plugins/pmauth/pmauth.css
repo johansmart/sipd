@@ -1,0 +1,76 @@
+/* For authentication */
+.formAuthContainer {
+    width: 260px;
+    margin:auto;
+    border:1px solid #ccc;
+    padding:10px;
+    margin-top: 60px;
+}
+
+.formElements label {
+    display:block;
+    width:80px;
+    float:left;
+}
+
+.errMsg {
+    width: 360px;
+    margin:auto;
+    border:1px solid #cc0000;
+    background-color: yellow;
+    padding:10px;
+    margin-top: 60px;
+}
+
+/* For user form edit/insert */
+
+#userForm label {
+  display: inline-block;
+  width:140px;
+  padding-right:4px;
+}
+
+.evidence {
+  font-weight: bold;
+  color: #ff0000;
+}
+/* for layout*/
+
+#pmAuthId div.ui-layout-center, #pmAuthId div.ui-layout-west  {
+  padding: 4px;
+}
+
+#pmAuthId div.ui-layout-west ul{
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding:0 0px;
+}
+
+#pmAuthId div.ui-layout-west li img{
+    position:relative;
+    top:5px;
+    padding-right:1px;
+}
+
+/* for users table*/
+
+#tbusers {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-spacing: 0px;
+  margin-bottom:4px;
+}
+
+#tbusers td {
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+#tbusers td a {
+  text-decoration: none;
+}
+
+#tbusers td a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,63 @@
+.selectionManagement_linkImg {
+    background-image: url('images/delObject.gif');
+	background-repeat: no-repeat; 
+	background-position: center;
+	cursor: pointer;
+	height: 16px;
+}
+
+.selOperators_inline {
+	width: 100px;
+	border:1px groove threedface;
+	padding: 0px;
+	height: 23px;
+	border-spacing: 0px;
+}
+
+.selOperators_inline table {
+	border-spacing: 0px;	
+}
+
+.selOperator_new_on, .selOperator_del_on, .selOperator_add_on, .selOperator_intersec_on,
+.selOperator_new_off, .selOperator_del_off, .selOperator_add_off, .selOperator_intersec_off {
+	background-repeat: no-repeat; 
+	background-position: center;
+    width: 24px;
+	height: 24px;
+}
+
+.selOperator_add_on {
+    background-image: url('images/add_down.gif');
+}
+
+.selOperator_del_on {
+    background-image: url('images/del_down.gif');
+}
+
+.selOperator_new_on {
+    background-image: url('images/new_down.gif');
+}
+
+.selOperator_intersec_on {
+    background-image: url('images/intersec_down.gif');
+}
+
+.selOperator_add_off {
+    background-image: url('images/add_up.gif');
+}
+
+.selOperator_del_off {
+    background-image: url('images/del_up.gif');
+}
+
+.selOperator_new_off {
+    background-image: url('images/new_up.gif');
+}
+
+.selOperator_intersec_off {
+    background-image: url('images/intersec_up.gif');
+}
+
+.selOperators {
+	text-align: left;
+}

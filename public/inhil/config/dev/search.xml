@@ -1,0 +1,279 @@
+﻿<?xml version='1.0'?>
+<!-- <?xml-stylesheet href="style.xsl" type="text/xsl" ?> -->
+
+<search  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="search.xsd">
+
+    <searchlist version="1.0">
+        
+        <dataroot>$</dataroot>
+        
+        <searchitem name="cities" description="City">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_sqlite" description="City SQLite">
+            <layer type="shape" name="cities10000eu_db">
+                <field type="s" name="name" description="City"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="cities_pg" description="City PG">
+            <layer type="postgis" name="cities10000eu_pg">
+                <field type="s" name="name" description="City"  wildcard="1" />
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="countries" description="Country">
+            <layer type="shape" name="countries">
+                <field type="s" name="NAME" description="Country"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+        
+        
+        <!-- Sample for suggest function -->
+        
+        <searchitem name="cities_sqlite_suggest_ms" description="Cities SQLite Suggest MS">
+            <layer type="shape" name="cities10000eu_db">
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="2" startleft="1" sort="asc">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_suggest_pg" description="Cities Suggest PG">
+            <layer type="postgis" name="cities10000eu_pg">
+                <field type="s" name="name" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="db" sort="asc" minlength="1" existingfilters="1">
+                        <dsn encoding="UTF-8">pgsql://postgres:postgres@localhost/gisdb</dsn>
+                        <sql>SELECT DISTINCT name FROM cities1000 WHERE name ~* '^[search]' ORDER BY name</sql>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_suggest_dbf" description="Cities Suggest DBF">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="2" startleft="0" sort="asc">
+                        <dbasefile encoding="UTF-8" searchfield="NAME">$/cities10000eu.dbf</dbasefile>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_hidden_suggest_dbf" description="Cities Hidden Suggest DBF">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" wildcard="0">
+                    <definition type="hidden" connectiontype="session" value="gLanguage"/>
+                </field>
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="1" startleft="1" dependfld="ISO2_CODE">
+                        <dbasefile encoding="UTF-8" searchfield="NAME">$/cities10000eu.dbf</dbasefile>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_hidden_inline_suggest_dbf" description="Cities Hidden Inline Suggest DBF">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" wildcard="0">
+                    <definition type="hidden" connectiontype="inline" value="DE"/>
+                </field>
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="1" startleft="1" dependfld="ISO2_CODE">
+                        <dbasefile encoding="UTF-8" searchfield="NAME">$/cities10000eu.dbf</dbasefile>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="cities_options_suggest_dbf" description="Cities Options Suggest DBF">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="dbase" sort="asc" firstoption="0">
+                        <dbasefile encoding="UTF-8" keyfield="ISO2_CODE" showfield="NAME">$/countries.dbf</dbasefile>
+                        <events>onchange="$('#pmsfld_NAME').val('').flushCache()"</events>
+                    </definition>
+                </field>
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="1" startleft="1" sort="asc" dependfld="ISO2_CODE">
+                        <dbasefile encoding="UTF-8" searchfield="NAME">$/cities10000eu.dbf</dbasefile>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_countries_suggest_dbf" description="Countries Cities Suggest DBF">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE"  description="Country" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="1" startleft="1" nosubmit="1" sort="asc">
+                        <dbasefile encoding="ISO-8859-1" searchfield="ISO2_CODE">$/countries.dbf</dbasefile>
+                        <events>onclick="$('#pmsfld_NAME').val('').flushCache()"</events>
+                    </definition> 
+                </field> 
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="dbase" minlength="1" startleft="1" sort="asc" dependfld="ISO2_CODE">
+                        <dbasefile encoding="UTF-8" searchfield="NAME">$/cities10000eu.dbf</dbasefile>
+                    </definition> 
+                </field> 
+            </layer>
+        </searchitem>
+       
+        <searchitem name="cities_options_suggest_pg" description="Communes Suggest PG">
+            <layer type="postgis" name="cmeu01">
+                <field type="s" name="cmcncd" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="db" sort="asc">
+                        <dsn encoding="UTF-8">pgsql://postgres:postgres@localhost/gisdb</dsn>
+                        <sql>SELECT DISTINCT cnty_id, name_en FROM countries WHERE name_en IS NOT NULL ORDER BY name_en</sql>
+                        <events>onchange="$('#pmsfld_CITY_NAME').val('').flushCache()"</events>
+                    </definition>
+                </field>
+                <field type="s" name="cmsbname" description="Name" wildcard="2">
+                    <definition type="suggest" connectiontype="db" sort="asc" minlength="3" dependfld="cmcncd">
+                        <dsn encoding="UTF-8">pgsql://postgres:postgres@localhost/gisdb</dsn>
+                        <sql>SELECT DISTINCT cmsbname FROM cmeu01 WHERE cmsbname ~* '^[search]' {and cmcncd = '[dependfldval]'} ORDER BY cmsbname</sql>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="cities_suggest_ms" description="Cities Suggest MS">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="2" startleft="0" sort="asc">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="cities_options_suggest_ms" description="Cities Options Suggest MS">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="dbase" sort="asc" firstoption="pippo">
+                        <dbasefile encoding="UTF-8" keyfield="ISO2_CODE" showfield="NAME">$/countries.dbf</dbasefile>
+                        <events>onchange="PM.Query.resetSuggestCache();$('#pmsfld_NAME').val('')"</events>
+                    </definition>
+                </field>
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="1" startleft="1" sort="asc" dependfld="ISO2_CODE">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+        
+        
+        <searchitem name="cities_population_1_operator" description="Cities population 1">
+            <layer type="shape" name="cities10000eu">
+                <field type="n" name="POPULATION" description="Cities with Population">
+                    <definition type="operator">
+                        <option name="&gt;" value="&gt;"/>
+                        <option name="=" value="="/>
+                        <option name="&lt;" value="&lt;"/>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_population_2_operator" description="Cities population 2">
+            <layer type="shape" name="cities10000eu">
+                <field type="n" name="POPULATION" alias="POPULATION1" description="Cities with Population">
+                    <definition type="operator">
+                        <option name="&gt;" value="&gt;"/>
+                        <option name="=" value="="/>
+                        <option name="&lt;" value="&lt;"/>
+                    </definition>
+                </field>
+                <field type="n" name="POPULATION" alias="POPULATION2" description="and population">
+                    <definition type="operator">
+                        <option name="&gt;" value="&gt;"/>
+                        <option name="=" value="="/>
+                        <option name="&lt;" value="&lt;"/>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        
+        <searchitem name="cities_options_pg" description="Cities Options PG Filters">
+            <layer type="postgis" name="cities10000eu_pg">
+                <field type="s" name="name" description="City" wildcard="2">
+                    <definition type="options" connectiontype="db" sort="asc" existingfilters="1">
+                        <dsn encoding="UTF-8">pgsql://postgres:postgres@localhost/gisdb</dsn>
+                        <sql>SELECT DISTINCT name, name FROM cities1000 WHERE name IS NOT NULL ORDER BY name</sql>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        
+		<searchitem name="citiesByCountryAndPopulation" description="Cities by country and population">
+            <layer type="postgis" name="cities10000eu_pg">
+                <field type="s" name="iso2_code" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="db" sort="asc">
+                        <dsn encoding="UTF-8">@</dsn>
+                        <sql>SELECT DISTINCT isocode, name_en FROM countries WHERE name_en IS NOT NULL ORDER BY name_en</sql>
+                        <events>onchange="$('#pmsfld_name').val('');$('#pmsfld_name').flushCache();"</events>
+                    </definition>
+                </field>
+                <field type="n" name="population" description="Cities with Population">
+                    <definition type="operator">
+                        <option name="&gt;" value="&gt;"/>
+                        <option name="=" value="="/>
+                        <option name="&lt;" value="&lt;"/>
+                    </definition>
+                </field>
+                <field type="s" name="name" description="Name" wildcard="2">
+                    <definition type="suggest" connectiontype="db" sort="asc" minlength="3" dependfld="iso2_code,population,_fldoperator_population">
+                        <dsn encoding="UTF-8">@</dsn>
+                        <sql>SELECT DISTINCT name FROM cities10000 WHERE name ~* '[search]' AND ('[dependfldval_iso2_code]' = '#' OR iso2_code = '[dependfldval_iso2_code]') AND population [dependfldval__fldoperator_population] [dependfldval_population] ORDER BY name</sql>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>        
+        
+        <!--
+        <searchitem name="radio_country" description="Country-Cities, Radio ">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" >
+                    <definition type="radio" checked="AT"> 
+                        <input name="Austria" value="AT" /> 
+                        <input name="Italy" value="IT" />
+                        <input name="Germany" value="DE" />
+                    </definition>
+                </field>
+                <field type="s" name="NAME" description="City"  wildcard="0" />
+            </layer>
+        </searchitem>
+        
+        <searchitem name="radio_country_city_suggest" description="Country-Cities, Radio, Suggest ">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="ISO2_CODE" description="Country" >
+                    <definition type="radio" checked="AT"> 
+                        <input name="Austria" value="AT" /> 
+                        <input name="Italy" value="IT" />
+                        <input name="Germany" value="DE" />
+                    </definition>
+                </field>
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="1" startleft="1" sort="asc" dependfld="ISO2_CODE">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        -->
+        
+        
+    </searchlist> 
+
+</search>

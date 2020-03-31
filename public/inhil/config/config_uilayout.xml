@@ -1,0 +1,136 @@
+<pmapper>
+    <ini>
+        <pmapper>
+            <pmTitle>BAPPEDA Kabupaten Indragiri Hilir</pmTitle>
+            <debugLevel>3</debugLevel>
+            <plugins>export</plugins>
+            <plugins>scalebar</plugins>
+            <plugins>transparency</plugins>
+        </pmapper>
+        <config>
+            <pm_config_location>default</pm_config_location>
+            <pm_javascript_location>javascript</pm_javascript_location>
+            <pm_javascript_optional>optional/ui</pm_javascript_optional>
+            <pm_print_configfile>common/print.xml</pm_print_configfile>
+            <pm_search_configfile>inline</pm_search_configfile>
+        </config>
+        <map>
+            <mapFile>pmapper_demo.map</mapFile>
+            <tplMapFile>common/template.map</tplMapFile>
+            <categories>
+                <category name="cat_admin">
+                    <group>countries</group>
+                    <group>cities10000eu</group>
+                </category>
+                <category name="cat_nature">
+                    <group>rivers</group>
+                </category>
+                <category name="cat_raster">
+                    <group>dem</group>
+                    <group>jpl_wms_global_mosaic</group>
+                </category>
+            </categories>
+            <allGroups>
+                <group>countries</group>
+                <group>cities10000eu</group>
+                <group>dem</group>
+                <group>rivers</group>
+                <group>jpl_wms_global_mosaic</group>
+            </allGroups>
+            <defGroups>
+                <group>countries</group>
+                <group>cities10000eu</group>
+            </defGroups>
+            <layerAutoRefresh>1</layerAutoRefresh>
+            <imgFormat>png</imgFormat>
+            <altImgFormat>jpeg</altImgFormat>
+            <altImgFormatLayers>
+                <layer>jpl_wms_global_mosaic</layer>
+                <layer>dem</layer>
+            </altImgFormatLayers>
+            <sliderMax>max</sliderMax>
+            <sliderMin>100000</sliderMin>
+        </map>
+        <query>
+            <limitResult>300</limitResult>
+            <highlightColor>0 255 255</highlightColor>
+            <highlightSelected>1</highlightSelected>
+            <autoZoom>nquery</autoZoom>
+            <autoZoom>search</autoZoom>
+            <zoomAll>search</zoomAll>
+            <zoomAll>nquery</zoomAll>
+            <infoWin>dynwin</infoWin>
+            <alignQueryResults>1</alignQueryResults>
+            <pointBuffer>10000</pointBuffer>
+            <shapeQueryBuffer>0.02</shapeQueryBuffer>
+        </query>
+        <ui>
+            <tocStyle>tree</tocStyle>
+            <legendStyle>attached</legendStyle>
+            <useCategories>1</useCategories>
+            <catWithCheckbox>1</catWithCheckbox>
+            <scaleLayers>1</scaleLayers>
+            <icoW>18</icoW>
+            <icoH>14</icoH> 
+			<legendKeyimageRewrite>0</legendKeyimageRewrite>
+        </ui>
+        <locale>
+            <defaultLanguage>en</defaultLanguage>
+            <defaultCharset>UTF-8</defaultCharset>
+            <map2unicode>1</map2unicode>
+        </locale>
+        <print>
+            <printImgFormat>png</printImgFormat>
+            <printAltImgFormat>jpeg</printAltImgFormat>
+            <pdfres>2</pdfres>
+        </print>
+        <download>
+            <dpiLevels>150</dpiLevels>
+            <dpiLevels>200</dpiLevels>
+            <dpiLevels>300</dpiLevels>
+        </download>
+        <php>
+            <pearDbClass>MDB2</pearDbClass>
+            <defaultTimeZone>Europe/Vienna</defaultTimeZone>
+        </php>
+        <pluginsConfig>
+            <export>
+                <formats>XLS</formats>
+                <formats>CSV</formats>
+                <formats>PDF</formats>
+            </export>
+        </pluginsConfig>
+    </ini>
+    
+    
+    
+    <searchlist version="1.0">
+        <dataroot>$</dataroot>
+        <searchitem name="cities" description="City">
+            <layer type="shape" name="cities10000eu">
+                <field type="s" name="NAME" description="City"  wildcard="0" />
+            </layer>
+        </searchitem>
+        <searchitem name="countries" description="Country">
+            <layer type="shape" name="countries">
+                <field type="s" name="ISOCODE" description="Country" wildcard="2">
+                    <definition type="options" connectiontype="ms" sort="asc" firstoption="*">
+                        <mslayer encoding="ISO-8859-1" keyfield="ISOCODE" showfield="NAME"/>
+                    </definition>
+                </field>
+            </layer>
+        </searchitem>
+        <!-- Sample for suggest function -->
+        <searchitem name="cities_suggest_ms" description="Cities Suggest MS">
+            <layer type="ms" name="cities10000eu">
+                <field type="s" name="NAME" description="City" wildcard="2">
+                    <definition type="suggest" connectiontype="ms" minlength="1" startleft="1" sort="asc">
+                        <mslayer encoding="UTF-8"/>
+                    </definition>
+                </field> 
+            </layer>
+        </searchitem>
+    </searchlist>
+    
+    
+</pmapper>

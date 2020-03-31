@@ -1,0 +1,95 @@
+<?php
+/******************************************************************************
+*
+* Purpose: Authentication login page
+* Author:  Walter Lorenzetti, gis3w, lorenzetti@gis3w.it
+*
+******************************************************************************
+*
+* Copyright (c) 2008-2010 gis3w
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version. See the COPYING file.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with p.mapper; if not, write to the Free Software
+* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*
+******************************************************************************/
+session_start();
+// per evitare problemi di loop per config no auth, si prova l'eliminazione dalla'array del plugins auth
+if($key = array_search("pmauth",$_SESSION['plugins'])) unset($_SESSION['plugins'][$key]);
+$_SESSION['config'] = 'default';
+
+$gLanguage = $_SESSION["gLanguage"];
+require_once($_SESSION['PM_INCPHP'] . "/common.php");
+require_once($_SESSION['PM_INCPHP'] . "/locale/language_" . $gLanguage . ".php");
+include_once($_SESSION['PM_INCPHP']."/uielement.php");
+include_once($_SESSION['PM_INCPHP']."/init/initmap.php");
+include($_SESSION['PM_BASE_DIR']."/".$_SESSION['PM_PLUGIN_LOCATION']."/pmauth/incphp/util.php");
+$prepass = $_SESSION['_auth_']['prepass'] = Util::bldRndSword();
+$postpass = $_SESSION['_auth_']['postpass'] = Util::bldRndSword();
+
+// get the correct js file to load:
+$PM_JAVASCRIPT_REALPATH = str_replace('\\', '/', realpath(dirname(__FILE__) . "/../../" . $_SESSION['PM_JAVASCRIPT']));
+define("PM_JAVASCRIPT_REALPATH", $PM_JAVASCRIPT_REALPATH);
+define("PM_JAVASCRIPT","../../".$_SESSION['PM_JAVASCRIPT']);
+define("PM_CONFIG_LOCATION_COMMON", $_SESSION['PM_CONFIG_LOCATION_COMMON']);
+define("PM_CONFIG_LOCATION", $_SESSION['PM_CONFIG_LOCATION']);
+define("PM_BASECONFIG_DIR", $_SESSION['PM_BASECONFIG_DIR']);
+$minInitmap = new minInit_map();
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $gLanguage ?>" xml:lang="<?php echo $gLanguage ?>">
+
+<head>
+ <meta http-equiv="Content-Script-Type" content="text/javascript" />
+ <meta name="description" content="p.mapper - MapServer PHP/MapScript Framework" />
+ <meta name="author" content="Walter Lorenzetti" />
+ <meta name="keywords" content="p.mapper, pmapper, MapServer, PHP, MapScript" />
+ <link rel="stylesheet" href="../../templates/default.css" type="text/css" />
+ <link rel="stylesheet" href="../../templates/layout.css" type="text/css" />
+ <link rel="stylesheet" href="../../templates/jquery.layout.css" type="text/css" />
+ <link rel="stylesheet" href="pmauth.css" type="text/css" />
+<?php 
+  $jsReference = preg_replace("/src=\"config\//","src=\"".""."../../config/",$minInitmap->jsReference);
+  echo $jsReference;
+?>
+ <script type="text/javascript" src="javascript/jquery_md5.js"></script>
+ <script type="text/javascript">
+   // assign the prepass and postpass var for send password to improve the security
+   // from a Thomas Rafin's idea
+   var prepass = "<? echo $prepass ?>";
+   var postpass = "<? echo $postpass ?>";
+   $(document).ready(function(){
+     $(":button").click(function(){
+       $(":password").val($.md5(prepass + $.md5($(":password").val()) + postpass));
+       $(this).parent().submit();
+     });
+   });
+ </script>
+</head>
+<body>
+<div class="ui-layout-north" id="uiLayoutNorth">
+   <?php echo UiElement::pmHeader() ?>
+</div>
+<? if (isset($_SESSION['_auth_']['_error_'])):?>
+  <div class="errMsg"><? echo _p('Attention!, username and/or password wrong! Please try login again'); ?></div>
+<? endif ?>
+	<div class="formAuthContainer">
+	  <form class="formElements" action="<?php echo $_SESSION['_auth_']['uriRequest'];?>" method="post">
+	  <label><?php echo _p('Username')?>:</label><input type="text" name="username"></input><br /><br />
+	  <label><?php echo _p('Password')?>:</label><input type="password" name="password"></input><br /><br />
+    <input type="button" value="<?php echo _p('Login') ?>" />
+	  </form>
+	</div>
+</body>
+</html>

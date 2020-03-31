@@ -1,0 +1,1112 @@
+# Adapt settings in map file <tt>pmapper_demo.map</tt> for the following tags to match settings
+# on your machine (see additionally MapServer documentation for detailed information):
+
+ # MAP
+   # SHAPEPATH 
+   # FONTSET
+   # SYMBOLSET
+  
+ # WEB
+   # IMAGEPATH  
+   # IMAGEURL    
+
+
+#
+# Start of map file  
+#
+MAP
+EXTENT  1988372 1400000 6411627 5400000 
+UNITS meters
+#EXTENT -15 30 40 70
+#UNITS dd
+SIZE 600 500
+SHAPEPATH "../../../pmapper_demodata"
+SYMBOLSET "../common/symbols/symbols-pmapper.sym"    
+FONTSET "../common/fonts/msfontset.txt"   
+RESOLUTION 96
+IMAGETYPE png
+INTERLACE OFF
+CONFIG "PROJ_LIB" "C:/proj/nad/"
+PROJECTION
+  # ETRS-LAEA
+  #"init=epsg:4326"
+  "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs  no_defs"
+END  
+
+
+#
+# Image formates for GD
+#
+OUTPUTFORMAT
+  NAME "png"
+  DRIVER "GD/PNG"
+  MIMETYPE "image/png"
+  IMAGEMODE RGB
+  FORMATOPTION  INTERLACE=OFF
+  TRANSPARENT OFF
+  EXTENSION "png"
+END
+
+OUTPUTFORMAT
+  NAME "png8"
+  DRIVER "GD/PNG"
+  MIMETYPE "image/png"
+  IMAGEMODE PC256
+  FORMATOPTION  INTERLACE=OFF
+  TRANSPARENT OFF
+  EXTENSION "png"
+END
+
+OUTPUTFORMAT
+  NAME "jpeg"
+  DRIVER "GD/JPEG"
+  MIMETYPE "image/jpeg"
+  IMAGEMODE RGB
+  FORMATOPTION "QUALITY=70"
+  EXTENSION "jpg"
+END
+
+#
+# Image formats for AGG
+#
+# OUTPUTFORMAT   ### 24 bit PNG
+  # NAME 'agg_png'
+  # DRIVER AGG/PNG
+  # IMAGEMODE RGB
+# END
+
+# OUTPUTFORMAT  ### 32 bit PNG with alpha channel from transparency
+  # NAME 'agg_pnga'
+  # DRIVER AGG/PNG
+  # IMAGEMODE RGBA
+# END
+
+# OUTPUTFORMAT  ### 8 bit PNG
+  # NAME 'agg_png8'  
+  # DRIVER AGG/PNG
+  # IMAGEMODE RGB
+  # FORMATOPTION "QUANTIZE_FORCE=ON"
+  # FORMATOPTION "QUANTIZE_DITHER=OFF"
+  # FORMATOPTION "QUANTIZE_COLORS=256"
+# END
+
+# OUTPUTFORMAT
+  # NAME 'agg_jpeg'
+  # DRIVER AGG/JPEG
+  # IMAGEMODE RGB
+# END
+ 
+
+
+OUTPUTFORMAT
+  NAME GTiff
+  DRIVER "GDAL/GTiff"
+  MIMETYPE "image/tiff"
+  IMAGEMODE RGB
+  #FORMATOPTION "TFW=YES"
+  #FORMATOPTION "COMPRESS=PACKBITS"
+  EXTENSION "tif"
+END
+
+OUTPUTFORMAT
+  NAME imagemap
+  MIMETYPE "text/html"
+  FORMATOPTION SKIPENDTAG=OFF
+  DRIVER imagemap
+END
+
+#
+# Start of web interface definition
+#
+WEB
+  TEMPLATE "map.html"
+  IMAGEPATH "/home/www/tmp/"
+  IMAGEURL "/tmp/"
+  MINSCALEDENOM 1000
+  METADATA
+    #"MAPFILE_ENCODING" "ISO-8859-1" 
+    "ows_title"     "WMS Demo Server"  
+    "ows_onlineresource" "http://wms.yourserver.org?owskey=test&"   
+    "ows_srs"       "EPSG:3035 EPSG:4326"  
+  END  # Metadata
+END  # Web
+
+#
+# Start of Reference map definition
+#
+REFERENCE
+  EXTENT 1496247 1332616 7055632 5502154 #2200000 1400000 8000000 5400000
+  IMAGE "../../images/reference.png"
+  SIZE 199 149
+  COLOR -1 -1 -1
+  OUTLINECOLOR 255 0 0
+END  # Reference
+
+LEGEND
+END
+
+#
+# Start of ScaleBar definition
+#
+SCALEBAR
+  STATUS off
+  TRANSPARENT off
+  INTERVALS 4
+  SIZE 200 3
+  UNITS kilometers
+  COLOR 250 250 250
+  OUTLINECOLOR 0 0 0
+  BACKGROUNDCOLOR 100 100 100
+  STYLE 0
+  POSTLABELCACHE true
+  LABEL
+    COLOR 0 0 90
+    #OUTLINECOLOR 200 200 200
+    SIZE small
+  END  # Label
+END  # Reference
+
+
+
+# SYMBOLS USED IN PMAPPER
+# - 'circle' always necessary (used e.g. for highlight)
+# - 'square' used in currecnt map file
+# Symbols can also be defined via tag SYMBOLSET (see above)
+Symbol
+  Name 'circle'
+  Type ELLIPSE
+  Filled TRUE
+  Points
+    1 1
+  END
+END 
+
+Symbol
+  Name 'square'
+  Type VECTOR
+  Filled TRUE
+  Points
+    0 1
+    0 0
+    1 0
+    1 1
+    0 1
+  END
+END
+
+
+#================== START OF LAYER SECTION =====================#
+
+
+LAYER
+  NAME "jpl_wms_global_mosaic"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://wms.jpl.nasa.gov/wms.cgi?"
+  CONNECTIONTYPE WMS
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA
+    "DESCRIPTION"         "JPL Global Mosaic (WMS)"
+    "wms_name"            "global_mosaic_base"
+    "wms_style"           "visual"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/jpeg"
+    "ows_title"           "jpl_wms_global_mosaic"
+  END
+END
+
+
+LAYER
+  NAME "test_wms"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://localhost/ows/wms/world_test?" #QUERY_LAYERS=countries,cities"
+  CONNECTIONTYPE WMS
+  PROJECTION
+    "init=epsg:3035"
+  END
+  METADATA
+    "DESCRIPTION"         "TEST WMS"
+    "wms_name"            "countries,cities"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/png"
+    "ows_title"           "jpl_wms_global_mosaic"
+  END
+END
+
+#
+# LAYER DGM
+#
+LAYER
+  NAME "dem"
+  TYPE Raster
+  STATUS OFF
+  DATA 'europa_dem.jpg'
+  MINSCALE 4000000
+  PROJECTION
+    "init=epsg:4326"
+  END
+  CLASS
+    NAME "Shaded relief"
+    KEYIMAGE "images/legend/dem.png"
+  END
+  METADATA
+    "DESCRIPTION"   "NGDC Shaded  relief"
+    "ows_title"     "dem"
+  END
+END
+
+
+#
+# LAYER DGM
+#
+LAYER
+  NAME "bluemarble"
+  TYPE Raster
+  STATUS OFF
+  #DATA 'europa_dem.jpg'
+  DATA "bluemarble_eu.jpg"
+  MINSCALE 3000000
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA
+    "DESCRIPTION"   "NASA Blue Marble"
+    "ows_title"     "dem"
+  END
+END
+
+
+#
+# LAYER CORINE LANDCOVER
+# can be downloaded at: 
+# http://dataservice.eea.eu.int/dataservice/metadetails.asp?id=188&i=1
+#
+LAYER  # corine100
+  NAME "corine1" 
+  GROUP "corine" 
+  TYPE Raster
+  STATUS OFF
+  DATA 'D:\home\gis\data\images\corine\lceugr100.tif'
+  TOLERANCE 0
+  TOLERANCEUNITS pixels
+  MAXSCALE 8000000
+  TEMPLATE "void"
+  PROJECTION
+      "proj=laea"   
+      "lat_0=52.000000"
+      "lon_0=10.000000"
+      "x_0=4321000"
+      "y_0=3210000"
+      "ellps=GRS80"
+      "units=m"
+      "no_defs"
+  END
+  METADATA
+    "DESCRIPTION"   "Corine Landcover"
+    "RESULT_FIELDS" "class, value_0"
+    "RESULT_HEADERS" "CLASS, VALUE"
+    "RESULT_HYPERLINK" "class"
+    "ows_title"     "corine"
+  END
+  CLASS
+    EXPRESSION ([pixel] <= 11)
+    NAME 'Urban and industrial fabric'
+    COLOR 230 0 30
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 12)
+    NAME 'Non-irrigated arable land'
+    COLOR 255 255 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 13)
+    NAME 'Permanently irrigated land'
+    COLOR 255 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 14)
+    NAME 'Rice fields'
+    COLOR 230 230 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 15)
+    NAME 'Vineyards'
+    COLOR 230 128 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 16)
+    NAME 'Fruit trees and berry plantations'
+    COLOR 242 166 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 17)
+    NAME 'Olive groves'
+    COLOR 230 166 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 18)
+    NAME 'Pastures'
+    COLOR 230 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 19)
+    NAME 'Annual crops associated with permanent crops'
+    COLOR 255 230 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 20)
+    NAME 'Complex cultivation patterns'
+    COLOR 255 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 21)
+    NAME 'Agriculture, with natural vegetation'
+    COLOR 230 204 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 22)
+    NAME 'Agro-forestry areas'
+    COLOR 242 204 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 23)
+    NAME 'Broad-leaved forest'
+    COLOR 128 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 24)
+    NAME 'Coniferous forest'
+    COLOR 0 166 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 25)
+    NAME 'Mixed forest'
+    COLOR 77 255 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 26)
+    NAME 'Natural grassland'
+    COLOR 204 242 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 27)
+    NAME 'Moors and heathland'
+    COLOR 166 255 128
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 28)
+    NAME 'Sclerophyllous vegetation'
+    COLOR 166 230 77
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 29)
+    NAME 'Transitional woodland-shrub'
+    COLOR 166 242 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 30)
+    NAME 'Beaches, dunes, and sand plains'
+    COLOR 230 230 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 31)
+    NAME 'Bare rock'
+    COLOR 204 204 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 32)
+    NAME 'Sparsely vegetated areas'
+    COLOR 204 255 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 33)
+    NAME 'Burnt areas'
+    COLOR 0 0 0
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 34)
+    NAME 'Glaciers and perpetual snow'
+    COLOR 166 230 204
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 35)
+    NAME 'Inland marshes'
+    COLOR 166 166 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 36)
+    NAME 'Peatbogs'
+    COLOR 160 120 230 #77 77 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 37)
+    NAME 'Salt-marshes'
+    COLOR 204 204 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 38)
+    NAME 'Salines'
+    COLOR 230 230 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 39)
+    NAME 'Intertidal flats'
+    COLOR 166 166 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 40 or [pixel] = 41)
+    NAME 'Water bodies'
+    COLOR 0 204 242
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 42)
+    NAME 'Coastal lagoons'
+    COLOR 0 255 166
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 43)
+    NAME 'Estuaries'
+    COLOR 166 255 230
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 44)
+    NAME 'Sea and ocean'
+    COLOR 230 242 255
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 49)
+    NAME 'No Data'
+    COLOR 220 220 220
+  END # Class
+  CLASS
+    EXPRESSION ([pixel] = 50)
+    NAME 'Sea and ocean'
+    COLOR 80 140 210 #60 120 200
+  END # Class
+
+END
+ 
+ 
+#
+# Start of Layer Countries.shp
+#
+LAYER
+  NAME "countries"
+  TYPE polygon
+  DATA "countries"
+  OPACITY 40
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Countries"
+    "RESULT_FIELDS" "NAME,AREA_KM2"
+    "RESULT_HEADERS" "Name,Area"
+    "ows_title"      "countries"
+  END  # Metadata 
+  CLASS
+    Name 'Countries'
+    COLOR 200 254 199
+    OUTLINECOLOR 0 0 0
+    TEMPLATE void
+  END  # Class
+END  # Layer
+
+
+
+LAYER
+  NAME "admins"
+  TYPE polygon
+  DATA "admins"
+  OPACITY 25
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Administrative Regions"
+    "RESULT_FIELDS" "NAME,CNTRY_NAME,POP_ADMIN,SQKM_ADMIN,TYPE_ENG,TYPE_LOC"
+    "RESULT_HEADERS" "Admin_name,Country,Population,Area,Type,Type (local)"
+  END  # Metadata 
+  CLASS
+    Name 'Administrative Regions'
+    COLOR 210 210 210
+    OUTLINECOLOR 0 0 0
+  END  # Class
+END  # Layer
+
+
+#
+# Start of Layer Urban.shp
+#
+LAYER
+  NAME "urban"
+  TYPE polygon
+  DATA "urban"
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Urban Area"
+    "RESULT_FIELDS" "TYPE_DESC,NAME"
+    "RESULT_HEADERS" "Type,Name"
+  END  # Metadata 
+  CLASS
+    Name 'Urban Area'
+    COLOR 255 0 0
+    OUTLINECOLOR 0 0 0
+  END  # Class
+END  # Layer
+
+
+#
+# Start of Layer Water.shp
+#
+LAYER
+  NAME "water"
+  TYPE polygon
+  DATA "water"
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Water"
+    "RESULT_FIELDS" "TYPE_DESC"
+    "RESULT_HEADERS" "Type"
+  END  # Metadata 
+  CLASS
+    Name 'Water'
+    COLOR     73 130 235
+    #OUTLINECOLOR 0 0 0
+  END  # Class
+END  # Layer
+
+
+
+
+
+
+
+LAYER
+  NAME "cities10000eu" 
+  TYPE point
+  DATA "cities10000eu"
+  FILTER ([POPULATION] > 20000)
+  TOLERANCE 6
+  TOLERANCEUNITS pixels
+  LABELITEM "ASCIINAME"
+  LABELMAXSCALE 8000000
+  TEMPLATE void
+  #FILTER ('[ISO2_CODE]'='FR')
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Cities"
+    "RESULT_FIELDS" "NAME, ISO2_CODE, POPULATION, GTOPO30"
+    "RESULT_HEADERS" "Name,Country,Population,Altitude" 
+    #,Inhabitants,Altitude"
+    "RESULT_HYPERLINK" "NAME"
+    #"RESULT_JOIN" "pgsql://postgres:postgres@localhost/gisdb||cities1000@name@1@population,gtopo30||NAME||0"
+    "LAYER_ENCODING" "UTF-8"
+    "ows_title"      "cities1000"
+  END  # Metadata  
+  
+  CLASS
+    #KEYIMAGE "images/legend/cities-gt-1000000.png"
+    NAME "> 1'000'000"
+    EXPRESSION ([POPULATION] > 1000000)
+    COLOR 255 0 0 
+    OUTLINECOLOR 0 0 0 
+    SYMBOL 'square' 
+    SIZE 9
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "500'000 - 1'000'000"
+    EXPRESSION ([POPULATION] <= 1000000 AND [POPULATION] > 500000)
+    COLOR 255 0 0
+    SYMBOL 'circle' 
+    SIZE 8
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "100'000 - 500'000"
+    EXPRESSION ([POPULATION] <= 500000 AND [POPULATION] > 100000)
+    COLOR 255 0 0
+    SYMBOL 'square' 
+    SIZE 5
+  END  # Class
+  CLASS
+    NAME "50'000 - 100'000"
+    EXPRESSION ([POPULATION] <= 100000 AND [POPULATION] > 50000)
+    COLOR 0 0 0
+    SYMBOL 'square' 
+    SIZE 4
+    #MAXSCALE 20000000
+  END  # Class
+  CLASS
+    NAME "10'000 - 50'000"
+    EXPRESSION ([POPULATION] <= 50000 AND [POPULATION] > 10000)
+    COLOR 100 100 100
+    SYMBOL 'circle' 
+    SIZE 3
+    #MAXSCALE 10000000
+  END  # Class
+
+END  # Layer
+
+
+LAYER
+  NAME "cities10000eu_db" 
+  TYPE point
+  CONNECTIONTYPE OGR
+  CONNECTION "demodata.db"
+  DATA "cities10000eu"
+  TOLERANCE 6
+  TOLERANCEUNITS pixels
+  LABELITEM "ASCIINAME"
+  LABELMAXSCALE 8000000
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Cities SQLite"
+    "RESULT_FIELDS" "NAME, ISO2_CODE, POPULATION, GTOPO30"
+    "RESULT_HEADERS" "Name,Country,Population,Altitude" 
+    #,Inhabitants,Altitude"
+    "RESULT_HYPERLINK" "NAME"
+    #"RESULT_JOIN" "pgsql://postgres:postgres@localhost/gisdb||cities1000@name@1@population,gtopo30||NAME||0"
+    "LAYER_ENCODING" "UTF-8"
+    "ows_title"      "cities1000"
+  END  # Metadata  
+  
+  CLASS
+    #KEYIMAGE "images/legend/cities-gt-1000000.png"
+    NAME "> 1'000'000"
+    EXPRESSION ([POPULATION] > 1000000)
+    COLOR 255 0 0 
+    OUTLINECOLOR 0 0 0 
+    SYMBOL 'square' 
+    SIZE 9
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "500'000 - 1'000'000"
+    EXPRESSION ([POPULATION] <= 1000000 AND [POPULATION] > 500000)
+    COLOR 255 0 0
+    SYMBOL 'circle' 
+    SIZE 8
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "100'000 - 500'000"
+    EXPRESSION ([POPULATION] <= 500000 AND [POPULATION] > 100000)
+    COLOR 255 0 0
+    SYMBOL 'square' 
+    SIZE 5
+  END  # Class
+  CLASS
+    NAME "50'000 - 100'000"
+    EXPRESSION ([POPULATION] <= 100000 AND [POPULATION] > 50000)
+    COLOR 0 0 0
+    SYMBOL 'square' 
+    SIZE 4
+    #MAXSCALE 20000000
+  END  # Class
+  CLASS
+    NAME "10'000 - 50'000"
+    EXPRESSION ([POPULATION] <= 50000 AND [POPULATION] > 10000)
+    COLOR 100 100 100
+    SYMBOL 'circle' 
+    SIZE 3
+    #MAXSCALE 10000000
+  END  # Class
+
+END  # Layer
+
+
+LAYER
+  NAME "cities10000eu_pg" 
+  TYPE point
+  CONNECTION 'user=postgres password=postgres dbname=gisdb host=localhost'
+  CONNECTIONTYPE POSTGIS 
+  DATA "the_geom from (select * from cities10000eu) AS foo USING UNIQUE gid_1 using SRID=4326"
+  #FILTER "continent = 'Europe' AND population > 200000"
+  TOLERANCE 6
+  TOLERANCEUNITS pixels
+  LABELITEM "asciiname"
+  LABELMAXSCALE 8000000
+  TEMPLATE void
+  #FILTERITEM "iso2_code"
+  FILTER "iso2_code='DE'"
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Cities PG"
+    "RESULT_FIELDS" "name, iso2_code, population, gtopo30"
+    "RESULT_HEADERS" "Name,Country,Population,Altitude"
+    "RESULT_HYPERLINK" "NAME"
+    "LAYER_ENCODING" "UTF-8"
+    #"CATEGORY" "cat_admin1"
+    "ows_title"      "cities1000"
+  END  # Metadata  
+  
+  CLASS
+    NAME "> 1'000'000"
+    EXPRESSION ([population] > 1000000)
+    COLOR 255 0 0 
+    OUTLINECOLOR 0 0 0 
+    SYMBOL 'square' 
+    SIZE 9
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "500'000 - 1'000'000"
+    EXPRESSION ([population] <= 1000000 AND [population] > 500000)
+    COLOR 255 0 0
+    SYMBOL 'circle' 
+    SIZE 8
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      #TYPE truetype
+      #ENCODING "UTF-8"
+      #FONT verdana
+      #SIZE 8
+      #MAXSIZE 9
+      SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "100'000 - 500'000"
+    EXPRESSION ([population] <= 500000 AND [population] > 100000)
+    COLOR 255 0 0
+    SYMBOL 'square' 
+    SIZE 5
+  END  # Class
+  CLASS
+    NAME "50'000 - 100'000"
+    EXPRESSION ([population] <= 100000 AND [population] > 50000)
+    COLOR 0 0 0
+    SYMBOL 'square' 
+    SIZE 4
+    #MAXSCALE 20000000
+  END  # Class
+  CLASS
+    NAME "10'000 - 50'000"
+    EXPRESSION ([population] <= 50000 AND [population] > 10000)
+    COLOR 100 100 100
+    SYMBOL 'circle' 
+    SIZE 3
+    #MAXSCALE 10000000
+  END  # Class
+
+END  # Layer 
+
+
+
+
+LAYER
+  STATUS OFF
+  NAME "citiesxy"
+  TYPE POINT
+  UNITS METERS
+  SIZEUNITS PIXELS
+  PROJECTION
+     "init=epsg:4326"
+  END
+  #MAXSCALE 10000000
+  TOLERANCE 12
+  TOLERANCEUNITS PIXELS
+  METADATA
+    "DESCRIPTION"    "Cities10000eu XY"
+    "RESULT_FIELDS"    "geonameid,name,asciiname,iso2_code,population,gtopo30,lat,lon"
+    "RESULT_HEADERS"   "Geonameid,Name,Asciiname,Iso2_code,Population,Gtopo30,Lat,Lon"
+    #|--- IN METADATA --" |--- PEAR DB definition string ----------||- DB table -@- Filter -||coordinate fields  
+    "XYLAYER_PROPERTIES" "sqlite://'':''//home/www/data/cities10000eu.db||cities@population>25000||lon,lat,gtopo30,geonameid||0"
+  END
+  CLASS
+    NAME ">1000000"
+    #TEMPLATE void
+    STYLE
+      SYMBOL 'square'
+      COLOR 255 0 0
+      SIZE 7
+      MINSIZE 1
+      MAXSIZE 100
+    END
+  END
+  CLASS
+    NAME "100000-1000000"
+    #TEMPLATE void
+    STYLE
+      SYMBOL 'circle'
+      COLOR 255 0 0
+      SIZE 5
+      MINSIZE 1
+      MAXSIZE 100
+    END
+  END
+  CLASS
+    NAME "<100000"
+    #TEMPLATE void
+    STYLE
+      SYMBOL 'circle'
+      COLOR 0 0 0
+      SIZE 3
+      MINSIZE 1
+      MAXSIZE 100
+    END
+  END
+END
+
+
+
+
+#
+# Start of Layer Rivers.shp
+#
+LAYER
+  NAME "rivers"
+  TYPE line
+  DATA "rivers"
+  TOLERANCE 3
+  TOLERANCEUNITS pixels
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Rivers"
+    "RESULT_FIELDS" "NAME,LENGTH"
+    "RESULT_HEADERS" "Name,Length"
+    "ows_title"      "cities"
+  END  # Metadata 
+  CLASS
+    Name 'Rivers'
+    COLOR 0 0 255
+    TEMPLATE void
+  END  # Class
+END  # Layer
+
+#
+# Start of Layer Railroad.shp
+#
+LAYER
+  NAME "railroad"
+  TYPE line
+  DATA "railroad"
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Railroad"
+    "RESULT_FIELDS" "TYPE_DESC,STAT_DESC"
+    "RESULT_HEADERS" "Type,Status"
+  END  # Metadata 
+  CLASS
+    Name 'Railroad'
+    COLOR 0 0 0
+    SYMBOL 'circle' 
+    SIZE 1
+  END  # Class
+END  # Layer
+
+
+#
+# Start of Layer Roads.shp
+#
+LAYER
+  NAME "roads"
+  TYPE line
+  DATA "roads"
+  TEMPLATE void
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA 
+    "DESCRIPTION" "Roads"
+    "RESULT_FIELDS" "TYPE_DESC,STAT_DESC"
+    "RESULT_HEADERS" "Type,Status"
+  END  # Metadata 
+  CLASSITEM TYPE_DESC
+  CLASS
+    NAME "Connector within urbanized area"
+    EXPRESSION "Connector within urbanized area"
+    COLOR 239 0 0
+    SYMBOL 'circle' 
+    SIZE 2
+  END  # Class
+  CLASS
+    NAME "Dual lane highway"
+    EXPRESSION "Dual lane (divided) highway"
+    COLOR 255 0 0
+    SYMBOL 'circle' 
+    SIZE 2
+  END  # Class
+  CLASS
+    NAME "Primary and secondary road"
+    EXPRESSION "Primary and secondary road"
+    COLOR 255 255 0
+    SYMBOL 'circle' 
+    SIZE 1
+  END  # Class
+  CLASS
+    NAME "Track, trail"
+    EXPRESSION "Track, trail, or footpath"
+    COLOR 0 0 0
+    SYMBOL 'circle' 
+    SIZE 1
+  END  # Class
+END  # Layer
+
+
+LAYER
+  NAME "aanp"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://wms.pcn.minambiente.it/cgi-bin/mapserv.exe?map=/ms_ogc/service/aanp.map&"
+  CONNECTIONTYPE WMS
+  TOLERANCE 3
+  TOLERANCEUNITS pixels
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA
+    "DESCRIPTION"         "Altre aree naturali protette"
+    "wms_srs"             "EPSG:4326"
+    "wms_name"            "aanp"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/png"
+    "wms_transparent"     "TRUE"
+    "wms_show_legend"     "TRUE"
+  END
+END
+
+
+LAYER
+  NAME "corine_land_cover"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://wms.pcn.minambiente.it/cgi-bin/mapserv.exe?map=/ms_ogc/service/corine_land_cover.map&"
+  CONNECTIONTYPE WMS
+  TOLERANCE 0
+  TOLERANCEUNITS pixels
+  PROJECTION
+    "init=epsg:4326"
+  END
+  METADATA
+    "DESCRIPTION"         "Corine land cover"
+    "wms_srs"             "EPSG:4326"
+    "wms_name"            "corine_land_cover"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/png"
+    "wms_transparent"     "TRUE"
+    "wms_show_legend"     "TRUE"
+    "wms_connectiontimeout" "15"
+  END
+END
+
+
+LAYER
+  NAME "ortofoto_colore_06"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://wms.pcn.minambiente.it/cgi-bin/mapserv.exe?map=/ms_ogc/service/ortofoto_colore_06_f32.map&"
+  CONNECTIONTYPE WMS
+  TOLERANCE 0
+  TOLERANCEUNITS pixels
+  MAXSCALEDENOM 75000
+  PROJECTION
+    "init=epsg:32632"
+  END
+  METADATA
+    "DESCRIPTION"         "Ortofoto Colore 06"
+    "wms_srs"             "EPSG:32632"
+    "wms_name"            "ortofoto_colore_06"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/jpeg"
+    "wms_transparent"     "TRUE"
+    "wms_show_legend"     "TRUE"
+    "wms_connectiontimeout" "30"
+  END
+END
+
+END  #Map

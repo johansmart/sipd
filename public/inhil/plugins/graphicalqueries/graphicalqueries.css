@@ -1,0 +1,70 @@
+.graphicalQueries {
+	background-color: #E9E9E9;
+	border: 1px solid #CCCCCC;
+	display: inline;
+	height: auto;
+	right: 34px;
+	overflow: hidden;
+	padding: 4px 4px 3px;
+	position: absolute;
+	text-align: right;
+	top: 63px;
+	width: auto;
+	z-index: 95;
+}
+
+.graphicalqueries_add_on, .graphicalqueries_del_on, .graphicalqueries_new_on, .graphicalqueries_add_off, .graphicalqueries_del_off, .graphicalqueries_new_off, .graphicalqueries_intersec_on, .graphicalqueries_intersec_off{
+	background-repeat: no-repeat; 
+	background-position: center;
+    width: 24px;
+	height: 24px;
+}
+
+.ori-add_on, .ori-del_on, .ori-new_on {
+	background-color: #FFFFFF; 
+}
+
+.graphicalqueries_add_on, .graphicalqueries_del_on, .graphicalqueries_new_on, .graphicalqueries_intersec_on {
+	 
+}
+
+.graphicalqueries_add_on {
+    background-image: url('images/add_down.gif');
+}
+
+.graphicalqueries_del_on {
+    background-image: url('images/del_down.gif');
+}
+
+.graphicalqueries_new_on {
+    background-image: url('images/new_down.gif');
+}
+
+.graphicalqueries_intersec_on {
+    background-image: url('images/intersec_down.gif');
+}
+
+.graphicalqueries_add_off {
+    background-image: url('images/add_up.gif');
+}
+
+.graphicalqueries_del_off {
+    background-image: url('images/del_up.gif');
+}
+
+.graphicalqueries_new_off {
+    background-image: url('images/new_up.gif');
+}
+
+.graphicalqueries_intersec_off {
+    background-image: url('images/intersec_up.gif');
+}
+
+.oldselectionType {
+	display:inline;
+	padding-right:50px;
+}
+
+* html #GraphicalQueries_Select {
+	display: inline;
+}

@@ -1,0 +1,19 @@
+2154 : RGF93 / Lambert-93
+
+3942 : Conique conforme 1ère Zone : CC42
+3943 : Conique conforme 2ème Zone : CC43
+3944 : Conique conforme 3ème Zone : CC44
+3945 : Conique conforme 4ème Zone : CC45
+3946 : Conique conforme 5ème Zone : CC46
+3947 : Conique conforme 6ème Zone : CC47
+3948 : Conique conforme 7ème Zone : CC48
+3949 : Conique conforme 8ème Zone : CC49
+3950 : Conique conforme 9ème Zone : CC50
+
+4171 : RGF93 non projeté
+
+27561 : NTF / Lambert 1 Nord
+27562 : NTF / Lambert 2 Centre
+27563 : NTF / Lambert 3 Sud
+27564 : NTF / Lambert 4 Corse
+27572 : NTF / Lambert II étendu

@@ -1,0 +1,332 @@
+################################################################################################ 
+# Adapt settings in map file <tt>pmapper_demo.map</tt> for the following tags to match settings
+# on your machine (see additionally MapServer documentation for detailed information):
+#
+#  MAP
+#    SHAPEPATH 
+#    FONTSET
+#    SYMBOLSET
+#  
+#  WEB
+#    IMAGEPATH  
+#    IMAGEURL    
+#
+##################################################################################################
+
+#
+# Start of map file  
+#
+MAP
+EXTENT  1988372 1400000 6411627 5400000 
+ 
+UNITS meters
+#EXTENT -15 30 40 70
+#UNITS dd
+SIZE 600 500
+SHAPEPATH "../../../pmapper_demodata"
+SYMBOLSET "../common/symbols/symbols-pmapper.sym"   
+FONTSET "../common/fonts/msfontset.txt" 
+RESOLUTION 96
+IMAGETYPE png
+INTERLACE OFF
+#CONFIG "PROJ_LIB" "C:/proj/nad/"
+PROJECTION
+  # ETRS-LAEA
+  #"init=epsg:3035"
+  "+proj=laea +lat_0=52 +lon_0=10 +x_0=4321000 +y_0=3210000 +ellps=GRS80 +units=m +no_defs  no_defs"
+END  
+
+
+
+#
+# Start of web interface definition
+#
+WEB
+  TEMPLATE "map.html"
+  IMAGEPATH "/home/www/tmp/"
+  IMAGEURL "/tmp/"
+  METADATA
+    #"MAPFILE_ENCODING" "ISO-8859-1" 
+    #"ows_title"     "WMS Demo Server"  
+    #"ows_onlineresource" "http://wms.yourserver.org?owskey=test&"   
+    #"ows_srs"       "EPSG:3035 EPSG:4326"  
+  END  # Metadata
+END  # Web
+
+#
+# Start of Reference map definition
+#
+REFERENCE
+  EXTENT 1496247 1332616 7055632 5502154 #2200000 1400000 8000000 5400000
+  IMAGE "../../images/reference.png"
+  SIZE 199 149
+  COLOR -1 -1 -1
+  OUTLINECOLOR 255 0 0
+END  # Reference
+
+
+#
+# Start of legend object
+#
+LEGEND
+	STATUS OFF
+	IMAGECOLOR 255 255 255
+#	OUTLINECOLOR 0 0 0
+	POSITION ll
+	KEYSIZE 18 12
+	KEYSPACING 10 5 
+	TEMPLATE "void"
+	LABEL
+		TYPE TRUETYPE
+		FONT "FreeSans"
+		SIZE small
+		POSITION AUTO
+		COLOR 0 0 89
+		OUTLINECOLOR 255 255 255
+		ANTIALIAS TRUE
+	END
+END
+
+#
+# Start of ScaleBar definition
+#
+SCALEBAR
+  STATUS off
+  TRANSPARENT off
+  INTERVALS 4
+  SIZE 200 3
+  UNITS kilometers
+  COLOR 250 250 250
+  OUTLINECOLOR 0 0 0
+  BACKGROUNDCOLOR 100 100 100
+  STYLE 0
+  POSTLABELCACHE true
+  LABEL
+    COLOR 0 0 90
+    #OUTLINECOLOR 200 200 200
+    SIZE small
+  END  # Label
+END  # Reference
+
+
+
+# SYMBOLS USED IN PMAPPER
+# - 'circle' always necessary (used e.g. for highlight)
+# - 'square' used in currecnt map file
+# Symbols can also be defined via tag SYMBOLSET (see above)
+Symbol
+  Name 'circle'
+  Type ELLIPSE
+  Filled TRUE
+  Points
+    1 1
+  END
+END 
+
+Symbol
+  Name 'square'
+  Type VECTOR
+  Filled TRUE
+  Points
+    0 1
+    0 0
+    1 0
+    1 1
+    0 1
+  END
+END
+
+
+#================== START OF LAYER SECTION =====================#
+
+
+LAYER
+  NAME "jpl_wms_global_mosaic"
+  TYPE RASTER
+  STATUS OFF
+  CONNECTION "http://wms.jpl.nasa.gov/wms.cgi?"
+  CONNECTIONTYPE WMS
+  PROJECTION
+    #"init=epsg:4326"
+    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs  no_defs"
+  END
+  METADATA
+    "DESCRIPTION"         "JPL Global Mosaic (WMS)"
+    "wms_name"            "global_mosaic_base"
+    "wms_style"           "visual"
+    "wms_server_version"  "1.1.1"
+    "wms_format"          "image/jpeg"
+    "ows_title"           "jpl_wms_global_mosaic"
+  END
+END
+
+
+
+#
+# LAYER DGM
+#
+LAYER
+  NAME "dem"
+  TYPE Raster
+  STATUS OFF
+  DATA 'europa_dem.jpg'
+  MINSCALE 3000000
+  PROJECTION
+    #"init=epsg:4326"
+    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs  no_defs"
+  END
+  METADATA
+    "DESCRIPTION"   "NGDC Shaded  relief"
+    "LEGENDICON"    "images/legend/dem.png"
+    "ows_title"     "dem"
+  END
+END
+
+
+
+ 
+#
+# Start of Layer Countries.shp
+#
+LAYER
+  NAME "countries"
+  TYPE polygon
+  DATA "countries"
+  TRANSPARENCY 30
+  TEMPLATE void
+  PROJECTION
+    #"init=epsg:4326"
+    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs  no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Countries"
+    ## ADAPTED TO MULTILINGUAL SHAPEFILE
+    "RESULT_FIELDS" "ISOCODE,@default:NAME_EN@de:NAME_DE@it:NAME_IT@fr:NAME_FR@br:NAME_BR@es:NAME_ES,@default:CAPITAL_EN@de:CAPITAL_DE@it:CAPITAL_IT@fr:CAPITAL_FR@br:CAPITAL_BR@es:CAPITAL_ES,AREA_KM2,POPULATION"
+    "RESULT_HEADERS" "ISO Code,Name,Capital,Area,Population"
+    "ows_title"      "countries"
+  END  # Metadata 
+  CLASS
+    Name 'Countries'
+    COLOR 200 254 199
+    OUTLINECOLOR 0 0 0
+  END  # Class
+END  # Layer
+
+
+
+LAYER
+  NAME "cities10000eu" 
+  TYPE point
+  DATA "cities10000eu"
+  TOLERANCE 6
+  TOLERANCEUNITS pixels
+  LABELITEM "NAME"
+  LABELMAXSCALE 8000000
+  TEMPLATE void
+  PROJECTION
+    #"init=epsg:4326"
+    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs  no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Cities"
+    "RESULT_FIELDS" "NAME, ISO2_CODE, POPULATION, GTOPO30"
+    "RESULT_HEADERS" "Name,Country,Inhabitants,Altitude"
+    "RESULT_HYPERLINK" "NAME"
+    "LAYER_ENCODING" "UTF-8"
+    "ows_title"      "cities1000"
+  END  # Metadata  
+  
+  CLASS
+    NAME "> 1'000'000"
+    EXPRESSION ([POPULATION] > 1000000)
+    COLOR 255 0 0 
+    OUTLINECOLOR 0 0 0 
+    SYMBOL 'square' 
+    SIZE 9
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+      SIZE 8
+      MAXSIZE 9
+      #SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "500'000 - 1'000'000"
+    EXPRESSION ([POPULATION] <= 1000000 AND [POPULATION] > 500000)
+    COLOR 255 0 0
+    SYMBOL 'circle' 
+    SIZE 8
+    LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT FreeSans
+      SIZE 8
+      MAXSIZE 9
+      #SIZE small
+    END #Label  
+  END  # Class
+  CLASS
+    NAME "100'000 - 500'000"
+    EXPRESSION ([POPULATION] <= 500000 AND [POPULATION] > 100000)
+    COLOR 255 0 0
+    SYMBOL 'square' 
+    SIZE 5
+  END  # Class
+  CLASS
+    NAME "50'000 - 100'000"
+    EXPRESSION ([POPULATION] <= 100000 AND [POPULATION] > 50000)
+    COLOR 0 0 0
+    SYMBOL 'square' 
+    SIZE 4
+    #MAXSCALE 20000000
+  END  # Class
+  CLASS
+    NAME "10'000 - 50'000"
+    EXPRESSION ([POPULATION] <= 50000 AND [POPULATION] > 10000)
+    COLOR 100 100 100
+    SYMBOL 'circle' 
+    SIZE 3
+    #MAXSCALE 10000000
+  END  # Class
+
+END  # Layer
+
+
+#
+# Start of Layer Rivers.shp
+#
+LAYER
+  NAME "rivers"
+  TYPE line
+  DATA "rivers"
+  TOLERANCE 3
+  TOLERANCEUNITS pixels
+  TEMPLATE void
+  PROJECTION
+    #"init=epsg:4326"
+    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs  no_defs"
+  END
+  METADATA 
+    "DESCRIPTION" "Rivers"
+    "RESULT_FIELDS" "NAME"
+    "RESULT_HEADERS" "Name"
+    "ows_title"      "cities"
+  END  # Metadata 
+  CLASS
+    Name 'Rivers'
+    COLOR 0 0 255
+  END  # Class
+END  # Layer
+
+
+
+
+END  #Map

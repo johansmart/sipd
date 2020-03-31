@@ -1,0 +1,41 @@
+
+/* Styles for roundedboxes */
+
+.xtop, .xbottom {display:block; background:transparent; font-size:1px;}
+.xb1, .xb2, .xb3, .xb4 {display:block; overflow:hidden;}
+.xb1, .xb2, .xb3 {height:1px;}
+.xb2, .xb3, .xb4 {background:#ccc; border-left:1px solid #08c; border-right:1px solid #08c;}
+.xb1 {margin:0 5px; background:#08c;}
+.xb2 {margin:0 3px; border-width:0 2px;}
+.xb3 {margin:0 2px;}
+.xb4 {height:2px; margin:0 1px;}
+
+.xboxcontent {display:block; background:#ccc; border:0 solid #08c; border-width:0 1px;}
+
+
+/* overwrite the standard p.mapper styles */
+/* old version
+#mapZone {
+	border: none;
+}
+
+#toolBar, #mapToolArea {
+    height: auto;
+    width: auto;
+    position: static;
+    overflow: visible;
+}
+
+body, #uiLayoutCenter {
+	background-color: #DDDDDD;
+}
+span.pm-tabs-selected {
+	background-color: #999999;
+}
+old version*/
+
+.jqmDialog {
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}

@@ -1,0 +1,214 @@
+
+#==============================================
+#
+# Layer for Polygon
+#
+LAYER  
+  NAME "drawPolygon"
+  METADATA
+    DESCRIPTION "Polygon"
+  END
+  TYPE polygon
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+	  COLOR [color]
+      SYMBOL [symbolShape]
+	  SIZE 5
+	  # TEMP: FOR HATCH
+	  ANGLE 45
+	END
+	STYLE
+	  OUTLINECOLOR [outLineColor]
+	  WIDTH 5
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+#      WRAP ","
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT [fontFamily]
+	  SIZE [textSize]
+      MAXSIZE 20
+    END 
+  END
+END
+
+#==============================================
+#
+# Layer for Line
+#
+LAYER
+  NAME "drawLine"
+  METADATA
+    DESCRIPTION "Line"
+  END
+  TYPE line
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+	  COLOR [color]
+      SYMBOL [symbolShape]
+	  SIZE [symbolThickness]
+    END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT [fontFamily]
+	  SIZE [textSize]
+	  MAXSIZE 20
+    END
+  END
+END
+
+#================================================
+#
+# Layer for POINT
+#
+LAYER
+  NAME "drawPoint"
+  METADATA
+    DESCRIPTION "Point"
+  END
+  TYPE point
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+      COLOR [color]
+	  OUTLINECOLOR [outLineColor]
+	  SYMBOL [symbolShape]
+	  SIZE [symbolThickness]
+	END
+	LABEL
+      POSITION cc
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT [fontFamily]
+	  SIZE [textSize]
+	  MAXSIZE 20
+    END
+  END
+END 
+
+#================================================
+#
+# Layer for CIRCLE
+#
+LAYER
+  NAME "drawCircle"
+  METADATA
+    DESCRIPTION "Circle"
+  END
+  TYPE point
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  SIZEUNITS meters
+  CLASS
+    STYLE
+      COLOR [color]
+	  SYMBOL [symbolShape]
+	  SIZE [symbolThickness] #diameter
+	  MAXSIZE 100000000
+	END
+  END
+END 
+
+#================================================
+#
+# Layer for Rectangle
+#
+LAYER
+  NAME "drawRectangle"
+  METADATA
+    DESCRIPTION "Rectangle"
+  END
+  TYPE polygon
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+    STYLE
+	  COLOR [color]
+      SYMBOL [symbolShape]
+	  SIZE 5
+	  # TEMP: FOR HATCH
+	  ANGLE 45
+	END
+	STYLE
+	  OUTLINECOLOR [outLineColor]
+	  WIDTH 5
+	END
+	LABEL
+      POSITION Auto
+      COLOR 0 0 150 
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+#      WRAP ","
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT [fontFamily]
+	  SIZE [textSize]
+      MAXSIZE 20
+    END
+  END
+END
+
+#==============================================
+#
+# Layer for Annotation
+#
+LAYER
+  NAME "drawAnnotation"
+  METADATA
+    DESCRIPTION "Annotation"
+  END
+  TYPE annotation
+  CONNECTIONTYPE OGR
+  STATUS ON
+  OPACITY 80
+  LABELITEM "comment"
+  CLASS
+	LABEL
+      POSITION cc
+      COLOR  0 0 0
+      BACKGROUNDCOLOR 255 255 128
+      BACKGROUNDSHADOWCOLOR 150 150 150
+      BACKGROUNDSHADOWSIZE 2 2
+      BUFFER 2
+      TYPE truetype
+      ENCODING "UTF-8"
+      FONT [fontFamily]
+      SIZE [textSize]
+      MAXSIZE 20
+    END
+  END
+END

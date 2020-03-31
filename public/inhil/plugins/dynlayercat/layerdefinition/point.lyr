@@ -1,0 +1,15 @@
+LAYER
+  TYPE point
+  TEMPLATE "void"
+  TOLERANCE 4
+  TOLERANCEUNITS pixels
+  METADATA
+     "LAYER_ENCODING" "UTF-8"
+  END
+  CLASS
+    STYLE
+      COLOR 220 220 220
+      OUTLINECOLOR 0 0 0
+    END
+  END  
+END   
